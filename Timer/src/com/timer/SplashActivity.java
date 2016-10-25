@@ -20,6 +20,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private static final int BTN_STOP1_TAG = 65;
 	private static final int BTN_STOP2_TAG = 66;
 	private static final int BTN_STOP3_TAG = 67;
+	private static final int BTN_ACTIVATION_TAG = 75;
 	private static final int WHEELVIEW1_TAG = 85;
 	private static final int WHEELVIEW2_TAG = 86;
 	private static final int WHEELVIEW3_TAG = 87;
@@ -32,6 +33,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private Button btnStop1;
 	private Button btnStop2;
 	private Button btnStop3;
+	private Button btnActivation;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,8 @@ public class SplashActivity extends Activity implements OnClickListener {
 		  btnStop1.setOnClickListener(this);
 		  btnStop2.setOnClickListener(this);
 		  btnStop3.setOnClickListener(this);
+		  
+		  btnActivation.setOnClickListener(this);
 	}
 
 	private void setWheelViewListener(final WheelView view) {
@@ -102,6 +106,9 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStart3.setTag(BTN_START3_TAG);
          btnStop3 = (Button) cardView3.findViewById(R.id.btn_stop);
          btnStop3.setTag(BTN_STOP3_TAG);
+         
+         btnActivation = (Button) findViewById(R.id.btn_activation);
+         btnActivation.setTag(BTN_ACTIVATION_TAG);
 	}
 
 	private void initData() {
@@ -147,6 +154,10 @@ public class SplashActivity extends Activity implements OnClickListener {
 			break;
 		case BTN_STOP3_TAG:
 			Toast.makeText(SplashActivity.this, "第3个card stop", 0).show();
+			
+			break;
+		case BTN_ACTIVATION_TAG://激活软件
+			Toast.makeText(SplashActivity.this, "激活软件", 0).show();
 			
 			break;
 

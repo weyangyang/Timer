@@ -1,0 +1,45 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_main"
+    android:layout_gravity="center_horizontal"
+   >
+   <include layout="@layout/item_cardview" 
+       android:id="@+id/item_cardview"
+       android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+       />
+   <include layout="@layout/item_cardview" 
+       android:id="@+id/item_cardview2"
+       android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+       />
+   <include layout="@layout/item_cardview" 
+       android:id="@+id/item_cardview3"
+       android:layout_below="@id/item_cardview"
+       android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+       />
+   <include layout="@layout/item_activation_view" 
+       android:id="@+id/item_cardview4"
+       android:layout_below="@id/item_cardview"
+       android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+       />
+   
+  
+
+</RelativeLayout>

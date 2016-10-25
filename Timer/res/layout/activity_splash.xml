@@ -31,6 +31,15 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
        />
+   <include layout="@layout/item_activation_view" 
+       android:id="@+id/item_cardview4"
+       android:layout_below="@id/item_cardview2"
+       android:layout_alignParentRight="true"
+       android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+       />
    
   
 
