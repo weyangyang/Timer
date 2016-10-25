@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/bg_item_cardview"
+   >
+    <com.timer.view.WheelView
+        android:id="@+id/main_wv"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+         />
+<LinearLayout 
+    android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+    >
+     
+      <Button 
+          android:id="@+id/btn_start"
+          android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始"
+        android:background="@drawable/btn_other_bg"
+          />
+      <Button 
+          android:id="@+id/btn_stop"
+          android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="暂停"
+         android:background="@drawable/btn_other_bg"
+          />
+</LinearLayout>
+  
+
+</LinearLayout>

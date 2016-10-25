@@ -1,0 +1,33 @@
+package com.timer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.timer.view.WheelView;
+public class SplashActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+        List<String> numList = new ArrayList<String>();
+        for(int i =0;i<100;i++){
+        	numList.add(i+" 小时");
+        }
+        WheelView wva = (WheelView) findViewById(R.id.main_wv);
+        wva.setOffset(1);
+        wva.setItems(numList);
+        wva.setOnWheelViewListener(new WheelView.OnWheelViewListener() {
+            @Override
+            public void onSelected(int selectedIndex, String item) {
+                Log.d("sge", "selectedIndex: " + selectedIndex + ", item: " + item);
+            }
+        });
+    }
+
+
+}
