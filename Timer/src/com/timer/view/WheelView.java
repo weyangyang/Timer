@@ -181,7 +181,7 @@ private View createView(String item){
 	TextView tv = (TextView) view.findViewById(R.id.item_tv_num);
 	tv.setText(item);
   view.setGravity(Gravity.CENTER_VERTICAL);
-  view.setPadding(0, 0,dip2px(15), 0);
+  view.setPadding(0, 0,dip2px(5), 0);
   if (0 == itemHeight) {
       itemHeight = getViewMeasuredHeight(tv);
       Log.d(TAG, "itemHeight: " + itemHeight);
