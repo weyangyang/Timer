@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.timer.utils.PreferenceUtils;
 import com.timer.view.TimerTextView;
@@ -171,6 +170,7 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop1 = (Button) cardView1.findViewById(R.id.btn_stop);
          btnStop1.setTag(BTN_STOP1_TAG);
          btnStop1.setEnabled(false);
+         btnStop1.setBackgroundResource(R.drawable.btn_other_pressed_bg);
          mTimerTextView1 = (TimerTextView) cardView1.findViewById(R.id.timer_text_view);
          coverView1  = cardView1.findViewById(R.id.iv_cover);
          coverView1.setVisibility(View.GONE);
@@ -183,6 +183,7 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop2 = (Button) cardView2.findViewById(R.id.btn_stop);
          btnStop2.setTag(BTN_STOP2_TAG);
          btnStop2.setEnabled(false);
+         btnStop2.setBackgroundResource(R.drawable.btn_other_pressed_bg);
          mTimerTextView2 = (TimerTextView) cardView2.findViewById(R.id.timer_text_view);
          coverView2  = cardView2.findViewById(R.id.iv_cover);
          
@@ -194,9 +195,9 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop3 = (Button) cardView3.findViewById(R.id.btn_stop);
          btnStop3.setTag(BTN_STOP3_TAG);
          btnStop3.setEnabled(false);
+         btnStop3.setBackgroundResource(R.drawable.btn_other_pressed_bg);
          mTimerTextView3 = (TimerTextView) cardView3.findViewById(R.id.timer_text_view);
          coverView3  = cardView3.findViewById(R.id.iv_cover);
-         coverView3.setVisibility(View.GONE);
          btnActivation = (Button) findViewById(R.id.btn_activation);
          btnActivation.setTag(BTN_ACTIVATION_TAG);
          btnProLib = (Button) findViewById(R.id.btn_pro_lib);
@@ -242,6 +243,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch ((Integer)v.getTag()) {
 		case BTN_START1_TAG:
 			btnStop1.setEnabled(true);
+			btnStop1.setBackgroundResource(R.drawable.btn_other_bg);
 			long[] times = new long[4]; 
 			times[0]=0;
 			times[1]=timeNum1;
@@ -249,7 +251,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			times[3]=0;
 			if("开始".equals(btnStart1.getText())){
 				btnStop1.setText("暂停");
-				//设置不可点击颜色
 				mWheelView1.setVisibility(View.GONE);
 				mTimerTextView1.setVisibility(View.VISIBLE);
 				mTimerTextView1.setTimes(times);  
@@ -259,7 +260,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 				} 
 			}else if("归零".equals(btnStart1.getText())){
 				btnStop1.setText("继续");
-				//设置不可点击颜色
 				mWheelView1.setVisibility(View.GONE);
 				mTimerTextView1.setVisibility(View.VISIBLE);
 				mTimerTextView1.setTimes(times);
@@ -287,6 +287,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			break;
 		case BTN_START2_TAG:
 			btnStop2.setEnabled(true);
+			btnStop2.setBackgroundResource(R.drawable.btn_other_bg);
 			long[] times2 = new long[4]; 
 			times2[0]=0;
 			times2[1]=timeNum1;
@@ -330,6 +331,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			break;
 		case BTN_START3_TAG:
 			btnStop3.setEnabled(true);
+			 btnStop3.setBackgroundResource(R.drawable.btn_other_bg);
 			long[] times3 = new long[4]; 
 			times3[0]=0;
 			times3[1]=timeNum3;
@@ -433,18 +435,15 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			
 			break;
 		case BTN_ACTIVATION_TAG://激活软件
-			Toast.makeText(SplashActivity.this, "激活软件", 0).show();
 			intent = new Intent(this,ActivationActivity.class);
 			startActivityForResult(intent, REQUEST_CODE_ACTIVATION_SOFT);
 			
 			break;
 		case BTN_PRO_LIB_TAG://产品知识库
-			Toast.makeText(SplashActivity.this, "产品知识库", 0).show();
 			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_LIB_URL);
 			this.startActivity(intent);
 			break;
 		case BTN_PRO_BUY_TAG://产品优惠购
-			Toast.makeText(SplashActivity.this, "产品优惠购", 0).show();
 			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_BUY_URL);
 			this.startActivity(intent);
 			break;

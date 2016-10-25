@@ -20,6 +20,7 @@
         android:textSize="14sp"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
         android:text="返回" />
      <TextView
         android:layout_width="wrap_content"
@@ -49,11 +50,13 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btn_create_num"
         android:textSize="40sp"
-        android:text="2ef56u"
         android:gravity="center_vertical"
         android:textColor="@color/yellow"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
+         android:background="@drawable/bg_edit"
+         android:paddingLeft="10dp"
+         android:paddingRight="10dp"
         android:layout_below="@id/rl_nav"
          />
      <TextView 
@@ -63,7 +66,7 @@
         android:textSize="16sp"
         android:text="请输入序列号激活软件："
         android:gravity="center_vertical"
-        android:textColor="@color/black"
+        android:textColor="@color/gray"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
@@ -83,6 +86,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="24dp"
         android:layout_below="@id/tv_tips"
+        android:background="@drawable/bg_edit"
         android:maxLength="6"
          />
        <Button 

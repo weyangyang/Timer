@@ -36,6 +36,7 @@ private void initData() {
 	if(isSucc){
 		btnActivationSoft.setText("激活成功");
 		btnActivationSoft.setEnabled(false);
+		btnActivationSoft.setBackgroundResource(R.drawable.btn_other_pressed_bg);
 		//设置成灰色
 	}
 	
@@ -138,6 +139,7 @@ public void onClick(View v) {
 				Toast.makeText(this, "激活成功", Toast.LENGTH_LONG).show();
 				btnActivationSoft.setText("激活成功");
 				btnActivationSoft.setEnabled(false);
+				btnActivationSoft.setBackgroundResource(R.drawable.btn_other_pressed_bg);
 				//设置成灰色
 				PreferenceUtils.setPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, true);
 			}else{

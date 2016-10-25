@@ -29,14 +29,16 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int bg_item_cardview=0x7f020000;
-        public static final int bg_item_cardview_timer=0x7f020001;
-        public static final int bg_itemcard_cover=0x7f020002;
-        public static final int bg_main=0x7f020003;
-        public static final int btn_other_bg=0x7f020004;
-        public static final int btn_pro_bg=0x7f020005;
-        public static final int ic_alarm_clock=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
+        public static final int bg_edit=0x7f020000;
+        public static final int bg_item_cardview=0x7f020001;
+        public static final int bg_item_cardview_timer=0x7f020002;
+        public static final int bg_itemcard_cover=0x7f020003;
+        public static final int bg_main=0x7f020004;
+        public static final int btn_other_bg=0x7f020005;
+        public static final int btn_other_pressed_bg=0x7f020006;
+        public static final int btn_pro_bg=0x7f020007;
+        public static final int ic_alarm_clock=0x7f020008;
+        public static final int ic_launcher=0x7f020009;
     }
     public static final class id {
         public static final int btn_activation=0x7f080011;
