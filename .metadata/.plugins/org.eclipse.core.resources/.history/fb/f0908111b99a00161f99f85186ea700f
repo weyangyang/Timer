@@ -1,0 +1,20 @@
+package com.timer;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class ActivationActivity extends Activity {
+	private TextView btn_back;
+	private Button btnCreateNum;
+	private Button btnActivationSoft;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	// TODO Auto-generated method stub
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_activation);  
+	btnActivationSoft = (Button) findViewById(R.id.btn_activation_soft);
+	btnCreateNum = (Button) findViewById(R.id.btn_create_num);
+}
+}

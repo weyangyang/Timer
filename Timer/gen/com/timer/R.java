@@ -39,29 +39,34 @@ public final class R {
         public static final int ic_launcher=0x7f020007;
     }
     public static final class id {
-        public static final int btn_activation=0x7f08000d;
-        public static final int btn_pro_buy=0x7f080008;
-        public static final int btn_pro_lib=0x7f080007;
-        public static final int btn_start=0x7f080010;
-        public static final int btn_stop=0x7f080011;
-        public static final int item_cardview=0x7f080003;
-        public static final int item_cardview2=0x7f080004;
-        public static final int item_cardview3=0x7f080005;
-        public static final int item_cardview4=0x7f080006;
-        public static final int item_tv_num=0x7f080015;
-        public static final int item_view_line=0x7f080013;
-        public static final int ivAlarmClock=0x7f08000a;
-        public static final int iv_cover=0x7f08000e;
-        public static final int main_start_btn=0x7f080000;
-        public static final int main_stop_btn=0x7f080001;
-        public static final int main_wv=0x7f08000f;
-        public static final int timer_text_view=0x7f080002;
-        public static final int tvPro=0x7f08000b;
-        public static final int tvPro2=0x7f08000c;
-        public static final int tv_hour=0x7f080014;
-        public static final int tv_version=0x7f080009;
-        public static final int view_line1=0x7f080012;
-        public static final int view_line2=0x7f080016;
+        public static final int btn_activation=0x7f080011;
+        public static final int btn_activation_soft=0x7f080006;
+        public static final int btn_back=0x7f080001;
+        public static final int btn_create_num=0x7f080002;
+        public static final int btn_pro_buy=0x7f08000c;
+        public static final int btn_pro_lib=0x7f08000b;
+        public static final int btn_start=0x7f080015;
+        public static final int btn_stop=0x7f080016;
+        public static final int et_input_num=0x7f080005;
+        public static final int item_cardview=0x7f080007;
+        public static final int item_cardview2=0x7f080008;
+        public static final int item_cardview3=0x7f080009;
+        public static final int item_cardview4=0x7f08000a;
+        public static final int item_tv_num=0x7f08001a;
+        public static final int item_view_line=0x7f080018;
+        public static final int ivAlarmClock=0x7f08000e;
+        public static final int iv_cover=0x7f080012;
+        public static final int main_wv=0x7f080013;
+        public static final int rl_nav=0x7f080000;
+        public static final int timer_text_view=0x7f080014;
+        public static final int tvPro=0x7f08000f;
+        public static final int tvPro2=0x7f080010;
+        public static final int tv_activation_num=0x7f080003;
+        public static final int tv_hour=0x7f080019;
+        public static final int tv_tips=0x7f080004;
+        public static final int tv_version=0x7f08000d;
+        public static final int view_line1=0x7f080017;
+        public static final int view_line2=0x7f08001b;
     }
     public static final class layout {
         public static final int activity_activation=0x7f030000;

@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.timer.utils.PreferenceUtils;
 import com.timer.view.TimerTextView;
 import com.timer.view.TimerTextView.TimerTextViewListener;
 import com.timer.view.WheelView;
@@ -37,6 +38,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private static final int TIMERTEXTVIEW3_TAG = 97;
 	private static final int WHEELVIEW_SELECT_TIME = 14;
 	private static final int WHEELVIEW_OFFSET = 1;
+	private static final int REQUEST_CODE_ACTIVATION_SOFT = 898;
 	private static final Uri BTN_PRO_LIB_URL = Uri.parse("https://www.baidu.com");//产品知识库url
 	private static final Uri BTN_PRO_BUY_URL = Uri.parse("https://www.jd.com");//产品优惠购url
 	private WheelView mWheelView1;
@@ -68,6 +70,11 @@ public class SplashActivity extends Activity implements OnClickListener {
         initView();
         initData();
         setListener(); 
+        boolean isSucc = PreferenceUtils.getPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, false);
+		if(isSucc){
+			coverView2.setVisibility(View.GONE);
+			coverView3.setVisibility(View.GONE);
+		}
     }
 
 	private void setListener() {
@@ -141,15 +148,12 @@ public class SplashActivity extends Activity implements OnClickListener {
 	                switch((Integer)view.getTag()){
 	                case WHEELVIEW1_TAG:
 	                	timeNum1 = selectedIndex;
-	                	Toast.makeText(SplashActivity.this, "第1个selectedIndex: " + selectedIndex + ", item: " + item, Toast.LENGTH_SHORT).show();
 	                	break;
 	                case WHEELVIEW2_TAG:
 	                	timeNum2 = selectedIndex;
-	                	Toast.makeText(SplashActivity.this, "第2个selectedIndex: " + selectedIndex + ", item: " + item, Toast.LENGTH_SHORT).show();
 	                	break;
 	                case WHEELVIEW3_TAG:
 	                	timeNum3 = selectedIndex;
-	                	Toast.makeText(SplashActivity.this, "第3个selectedIndex: " + selectedIndex + ", item: " + item, Toast.LENGTH_SHORT).show();
 	                	break;
 	                	
 	                }
@@ -181,7 +185,6 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop2.setEnabled(false);
          mTimerTextView2 = (TimerTextView) cardView2.findViewById(R.id.timer_text_view);
          coverView2  = cardView2.findViewById(R.id.iv_cover);
-         coverView2.setVisibility(View.GONE);
          
          View cardView3 =  findViewById(R.id.item_cardview3);
          mWheelView3 = (WheelView)cardView3.findViewById(R.id.main_wv);
@@ -220,7 +223,19 @@ public class SplashActivity extends Activity implements OnClickListener {
         mWheelView3.setSeletion(WHEELVIEW_SELECT_TIME);
         mWheelView3.setItems(numList);
 	}
-
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	super.onActivityResult(requestCode, resultCode, data);
+	if(requestCode == REQUEST_CODE_ACTIVATION_SOFT && RESULT_OK == resultCode){
+		//查询软件是否激活成功
+		boolean isSucc = PreferenceUtils.getPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, false);
+		if(isSucc){
+			coverView2.setVisibility(View.GONE);
+			coverView3.setVisibility(View.GONE);
+		}
+	}
+	
+}
 	@Override
 	public void onClick(View v) {
 		Intent intent;
@@ -420,7 +435,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 		case BTN_ACTIVATION_TAG://激活软件
 			Toast.makeText(SplashActivity.this, "激活软件", 0).show();
 			intent = new Intent(this,ActivationActivity.class);
-			startActivity(intent);
+			startActivityForResult(intent, REQUEST_CODE_ACTIVATION_SOFT);
 			
 			break;
 		case BTN_PRO_LIB_TAG://产品知识库
