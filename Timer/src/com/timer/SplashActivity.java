@@ -45,6 +45,9 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private TimerTextView mTimerTextView1;
 	private TimerTextView mTimerTextView2;
 	private TimerTextView mTimerTextView3;
+	private View coverView1;
+	private View coverView2;
+	private View coverView3;
 	private Button btnStart1;
 	private Button btnStart2;
 	private Button btnStart3;
@@ -165,6 +168,8 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop1.setTag(BTN_STOP1_TAG);
          btnStop1.setEnabled(false);
          mTimerTextView1 = (TimerTextView) cardView1.findViewById(R.id.timer_text_view);
+         coverView1  = cardView1.findViewById(R.id.iv_cover);
+         coverView1.setVisibility(View.GONE);
          
          View cardView2 =  findViewById(R.id.item_cardview2);
          mWheelView2 = (WheelView)cardView2.findViewById(R.id.main_wv);
@@ -175,6 +180,8 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop2.setTag(BTN_STOP2_TAG);
          btnStop2.setEnabled(false);
          mTimerTextView2 = (TimerTextView) cardView2.findViewById(R.id.timer_text_view);
+         coverView2  = cardView2.findViewById(R.id.iv_cover);
+         coverView2.setVisibility(View.GONE);
          
          View cardView3 =  findViewById(R.id.item_cardview3);
          mWheelView3 = (WheelView)cardView3.findViewById(R.id.main_wv);
@@ -185,7 +192,8 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop3.setTag(BTN_STOP3_TAG);
          btnStop3.setEnabled(false);
          mTimerTextView3 = (TimerTextView) cardView3.findViewById(R.id.timer_text_view);
-         
+         coverView3  = cardView3.findViewById(R.id.iv_cover);
+         coverView3.setVisibility(View.GONE);
          btnActivation = (Button) findViewById(R.id.btn_activation);
          btnActivation.setTag(BTN_ACTIVATION_TAG);
          btnProLib = (Button) findViewById(R.id.btn_pro_lib);

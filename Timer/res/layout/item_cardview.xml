@@ -7,6 +7,18 @@
     android:background="@drawable/bg_item_cardview"
     android:gravity="center_horizontal"
    >
+   <FrameLayout 
+     android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/iv_cover"
+    >
+    <View 
+        
+         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_itemcard_cover"
+        />
+</FrameLayout>
     <com.timer.view.WheelView
         android:id="@+id/main_wv"
         android:layout_width="130dp"
