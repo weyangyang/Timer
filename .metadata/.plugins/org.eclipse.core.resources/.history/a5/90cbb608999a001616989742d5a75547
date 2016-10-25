@@ -75,13 +75,9 @@ public class TimerTextView extends TextView implements Runnable{
     public void run() {  
         //标示已经启动  
         if(run){  
-            ComputeTime(); 
-            String strTime;
-            if(mhour==0){
-            	strTime= "0"+ mhour+":"+ mmin+":"+msecond+"";  
-            }else{
-            	strTime=  mhour+":"+ mmin+":"+msecond+"";  
-            }
+            ComputeTime();  
+  
+            String strTime=  mhour+":"+ mmin+":"+msecond+"";  
             this.setText(strTime);  
             if(null !=onTimerTextViewListener&& mday==0 && mhour==0 && mmin==0 && msecond==0){
             	onTimerTextViewListener.onCompleted();

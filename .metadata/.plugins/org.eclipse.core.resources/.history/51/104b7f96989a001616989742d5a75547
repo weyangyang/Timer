@@ -242,9 +242,9 @@ public class SplashActivity extends Activity implements OnClickListener {
 				mTimerTextView1.setTimes(times);
 				String strTime;
 				if(timeNum1>9){
-					 strTime=  timeNum1+":"+"00"+":"+"00";  
+					 strTime=  timeNum1+":"+ 00+":"+00+"";  
 				}else{
-					strTime= "0"+timeNum1+":"+"00"+":"+"00";  
+					strTime= "0"+timeNum1+":"+ 00+":"+00+"";  
 					
 				}
 				 mTimerTextView1.setText(strTime);  

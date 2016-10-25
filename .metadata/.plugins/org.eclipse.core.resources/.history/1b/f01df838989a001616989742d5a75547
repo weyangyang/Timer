@@ -239,14 +239,8 @@ public class SplashActivity extends Activity implements OnClickListener {
 				//设置不可点击颜色
 				mWheelView1.setVisibility(View.GONE);
 				mTimerTextView1.setVisibility(View.VISIBLE);
-				mTimerTextView1.setTimes(times);
-				String strTime;
-				if(timeNum1>9){
-					 strTime=  timeNum1+":"+"00"+":"+"00";  
-				}else{
-					strTime= "0"+timeNum1+":"+"00"+":"+"00";  
-					
-				}
+				mTimerTextView1.setTimes(times); 
+				 String strTime=  timeNum1+":"+ 0+":"+0+"";  
 				 mTimerTextView1.setText(strTime);  
 				if(mTimerTextView1.isRun()){  
 					mTimerTextView1.stopRun(); 
