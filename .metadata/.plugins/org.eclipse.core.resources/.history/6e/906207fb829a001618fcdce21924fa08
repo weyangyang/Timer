@@ -28,8 +28,8 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private static final int WHEELVIEW1_TAG = 85;
 	private static final int WHEELVIEW2_TAG = 86;
 	private static final int WHEELVIEW3_TAG = 87;
-	private static final Uri BTN_PRO_LIB_URL = Uri.parse("https://www.baidu.com");//产品知识库url
-	private static final Uri BTN_PRO_BUY_URL = Uri.parse("https://www.jd.com");//产品优惠购url
+	private static final Uri BTN_PRO_LIB_URL = Uri.parse("https://www.baidu.com");
+	private static final Uri BTN_PRO_BUY_URL = Uri.parse("https://www.jd.com");
 	private WheelView mWheelView1;
 	private WheelView mWheelView2;
 	private WheelView mWheelView3;
@@ -146,7 +146,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Intent intent;
 		switch ((Integer)v.getTag()) {
 		case BTN_START1_TAG:
 			Toast.makeText(SplashActivity.this, "第1个card start", 0).show();
@@ -177,13 +176,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 			break;
 		case BTN_PRO_LIB_TAG://产品知识库
 			Toast.makeText(SplashActivity.this, "产品知识库", 0).show();
-			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_LIB_URL);
-			this.startActivity(intent);
+			Intent intent = new Intent("android.intent.action.VIEW", INFO_BUTTON_URL);
 			break;
 		case BTN_PRO_BUY_TAG://产品优惠购
 			Toast.makeText(SplashActivity.this, "产品优惠购", 0).show();
-			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_BUY_URL);
-			this.startActivity(intent);
+			
 			break;
 
 		default:

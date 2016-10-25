@@ -146,7 +146,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Intent intent;
 		switch ((Integer)v.getTag()) {
 		case BTN_START1_TAG:
 			Toast.makeText(SplashActivity.this, "第1个card start", 0).show();
@@ -177,13 +176,12 @@ public class SplashActivity extends Activity implements OnClickListener {
 			break;
 		case BTN_PRO_LIB_TAG://产品知识库
 			Toast.makeText(SplashActivity.this, "产品知识库", 0).show();
-			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_LIB_URL);
+			Intent intent = new Intent("android.intent.action.VIEW", BTN_PRO_LIB_URL);
 			this.startActivity(intent);
 			break;
 		case BTN_PRO_BUY_TAG://产品优惠购
 			Toast.makeText(SplashActivity.this, "产品优惠购", 0).show();
-			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_BUY_URL);
-			this.startActivity(intent);
+			
 			break;
 
 		default:

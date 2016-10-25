@@ -182,7 +182,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 			break;
 		case BTN_PRO_BUY_TAG://产品优惠购
 			Toast.makeText(SplashActivity.this, "产品优惠购", 0).show();
-			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_BUY_URL);
+			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_LIB_URL);
 			this.startActivity(intent);
 			break;
 
