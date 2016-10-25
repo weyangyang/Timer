@@ -65,13 +65,11 @@
         android:layout_below="@id/item_cardview4"
        />
    <TextView 
-       android:id="@+id/tv_version"
        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="v1.0©CopyRight 2006-2016"
         android:textColor="@color/gray"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
        />
   

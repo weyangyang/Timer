@@ -21,8 +21,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private static final int BTN_STOP2_TAG = 66;
 	private static final int BTN_STOP3_TAG = 67;
 	private static final int BTN_ACTIVATION_TAG = 75;
-	private static final int BTN_PRO_LIB_TAG = 76;
-	private static final int BTN_PRO_BUY_TAG = 77;
 	private static final int WHEELVIEW1_TAG = 85;
 	private static final int WHEELVIEW2_TAG = 86;
 	private static final int WHEELVIEW3_TAG = 87;
@@ -62,8 +60,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 		  btnStop3.setOnClickListener(this);
 		  
 		  btnActivation.setOnClickListener(this);
-		  btnProLib.setOnClickListener(this);
-		  btnProBuy.setOnClickListener(this);
 	}
 
 	private void setWheelViewListener(final WheelView view) {
@@ -115,10 +111,6 @@ public class SplashActivity extends Activity implements OnClickListener {
          
          btnActivation = (Button) findViewById(R.id.btn_activation);
          btnActivation.setTag(BTN_ACTIVATION_TAG);
-         btnProLib = (Button) findViewById(R.id.btn_pro_lib);
-         btnProLib.setTag(BTN_PRO_LIB_TAG);
-         btnProBuy = (Button) findViewById(R.id.btn_pro_buy);
-         btnProBuy.setTag(BTN_PRO_BUY_TAG);
 	}
 
 	private void initData() {
@@ -168,14 +160,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 			break;
 		case BTN_ACTIVATION_TAG://激活软件
 			Toast.makeText(SplashActivity.this, "激活软件", 0).show();
-			
-			break;
-		case BTN_PRO_LIB_TAG://产品知识库
-			Toast.makeText(SplashActivity.this, "产品知识库", 0).show();
-			
-			break;
-		case BTN_PRO_BUY_TAG://产品优惠购
-			Toast.makeText(SplashActivity.this, "产品优惠购", 0).show();
 			
 			break;
 

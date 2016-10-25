@@ -115,10 +115,6 @@ public class SplashActivity extends Activity implements OnClickListener {
          
          btnActivation = (Button) findViewById(R.id.btn_activation);
          btnActivation.setTag(BTN_ACTIVATION_TAG);
-         btnProLib = (Button) findViewById(R.id.btn_pro_lib);
-         btnProLib.setTag(BTN_PRO_LIB_TAG);
-         btnProBuy = (Button) findViewById(R.id.btn_pro_buy);
-         btnProBuy.setTag(BTN_PRO_BUY_TAG);
 	}
 
 	private void initData() {
@@ -171,11 +167,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 			
 			break;
 		case BTN_PRO_LIB_TAG://产品知识库
-			Toast.makeText(SplashActivity.this, "产品知识库", 0).show();
+			Toast.makeText(SplashActivity.this, "激活软件", 0).show();
 			
 			break;
 		case BTN_PRO_BUY_TAG://产品优惠购
-			Toast.makeText(SplashActivity.this, "产品优惠购", 0).show();
+			Toast.makeText(SplashActivity.this, "激活软件", 0).show();
 			
 			break;
 

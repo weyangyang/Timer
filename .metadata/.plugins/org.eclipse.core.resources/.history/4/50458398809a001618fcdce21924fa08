@@ -47,8 +47,6 @@
         android:background="@drawable/btn_pro_bg"
         android:text="产品\n知识库"
         android:textSize="24sp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="36dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/item_cardview3"
        />
@@ -59,20 +57,16 @@
         android:background="@drawable/btn_pro_bg"
         android:text="产品\n优惠购"
         android:textSize="24sp"
-         android:layout_marginRight="50dp"
-        android:layout_marginTop="36dp"
         android:layout_alignParentRight="true"
         android:layout_below="@id/item_cardview4"
        />
    <TextView 
-       android:id="@+id/tv_version"
        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="v1.0©CopyRight 2006-2016"
         android:textColor="@color/gray"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center"
        />
   
 

@@ -116,9 +116,9 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnActivation = (Button) findViewById(R.id.btn_activation);
          btnActivation.setTag(BTN_ACTIVATION_TAG);
          btnProLib = (Button) findViewById(R.id.btn_pro_lib);
-         btnProLib.setTag(BTN_PRO_LIB_TAG);
+         btnProLib.setTag(BTN_ACTIVATION_TAG);
          btnProBuy = (Button) findViewById(R.id.btn_pro_buy);
-         btnProBuy.setTag(BTN_PRO_BUY_TAG);
+         btnProBuy.setTag(BTN_ACTIVATION_TAG);
 	}
 
 	private void initData() {
