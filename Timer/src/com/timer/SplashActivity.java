@@ -3,6 +3,7 @@ package com.timer;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,7 +14,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.timer.view.TimerTextView;
+import com.timer.view.TimerTextView.TimerTextViewListener;
 import com.timer.view.WheelView;
+@SuppressLint("NewApi")
 public class SplashActivity extends Activity implements OnClickListener {
 	
 	private static final int BTN_START1_TAG = 55;
@@ -28,11 +32,19 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private static final int WHEELVIEW1_TAG = 85;
 	private static final int WHEELVIEW2_TAG = 86;
 	private static final int WHEELVIEW3_TAG = 87;
+	private static final int TIMERTEXTVIEW1_TAG = 95;
+	private static final int TIMERTEXTVIEW2_TAG = 96;
+	private static final int TIMERTEXTVIEW3_TAG = 97;
+	private static final int WHEELVIEW_SELECT_TIME = 14;
+	private static final int WHEELVIEW_OFFSET = 1;
 	private static final Uri BTN_PRO_LIB_URL = Uri.parse("https://www.baidu.com");//产品知识库url
 	private static final Uri BTN_PRO_BUY_URL = Uri.parse("https://www.jd.com");//产品优惠购url
 	private WheelView mWheelView1;
 	private WheelView mWheelView2;
 	private WheelView mWheelView3;
+	private TimerTextView mTimerTextView1;
+	private TimerTextView mTimerTextView2;
+	private TimerTextView mTimerTextView3;
 	private Button btnStart1;
 	private Button btnStart2;
 	private Button btnStart3;
@@ -42,7 +54,10 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private Button btnActivation;
 	private Button btnProLib;
 	private Button btnProBuy;
-	
+
+	private int timeNum1 = 15;
+	private int timeNum2 = 15;
+	private int timeNum3 = 15;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +83,51 @@ public class SplashActivity extends Activity implements OnClickListener {
 		  btnActivation.setOnClickListener(this);
 		  btnProLib.setOnClickListener(this);
 		  btnProBuy.setOnClickListener(this);
+		  setTimerTextViewListener(mTimerTextView1);
+		  setTimerTextViewListener(mTimerTextView2);
+		  setTimerTextViewListener(mTimerTextView3);
+	}
+
+	private void setTimerTextViewListener(final TimerTextView view) {
+		view.setOnTimerTextViewListener(new TimerTextViewListener() {
+			
+			@Override
+			public void onCompleted() {
+				switch ((Integer)view.getTag()) {
+				case TIMERTEXTVIEW1_TAG:
+					btnStart1.setText("重来");
+					btnStop1.setText("返回");
+					mTimerTextView1.setText("计时结束："+timeNum1+"小时");
+					mTimerTextView1.setBackground(null);
+					if(mTimerTextView1.isRun()){  
+						 mTimerTextView1.stopRun();
+			            } 
+					break;
+				case TIMERTEXTVIEW2_TAG:
+					btnStart2.setText("重来");
+					btnStop2.setText("返回");
+					mTimerTextView2.setText("计时结束："+timeNum1+"小时");
+					mTimerTextView2.setBackground(null);
+					if(mTimerTextView2.isRun()){  
+						 mTimerTextView2.stopRun();
+			            } 
+					break;
+				case TIMERTEXTVIEW3_TAG:
+					btnStart3.setText("重来");
+					btnStop3.setText("返回");
+					mTimerTextView3.setText("计时结束："+timeNum1+"小时");
+					mTimerTextView3.setBackground(null);
+					if(mTimerTextView3.isRun()){  
+						 mTimerTextView3.stopRun();
+			            } 
+					break;
+
+				default:
+					break;
+				}
+				
+			}
+		});
 	}
 
 	private void setWheelViewListener(final WheelView view) {
@@ -77,12 +137,15 @@ public class SplashActivity extends Activity implements OnClickListener {
 	                Log.d("sge", "selectedIndex: " + selectedIndex + ", item: " + item);
 	                switch((Integer)view.getTag()){
 	                case WHEELVIEW1_TAG:
+	                	timeNum1 = selectedIndex;
 	                	Toast.makeText(SplashActivity.this, "第1个selectedIndex: " + selectedIndex + ", item: " + item, Toast.LENGTH_SHORT).show();
 	                	break;
 	                case WHEELVIEW2_TAG:
+	                	timeNum2 = selectedIndex;
 	                	Toast.makeText(SplashActivity.this, "第2个selectedIndex: " + selectedIndex + ", item: " + item, Toast.LENGTH_SHORT).show();
 	                	break;
 	                case WHEELVIEW3_TAG:
+	                	timeNum3 = selectedIndex;
 	                	Toast.makeText(SplashActivity.this, "第3个selectedIndex: " + selectedIndex + ", item: " + item, Toast.LENGTH_SHORT).show();
 	                	break;
 	                	
@@ -100,6 +163,8 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStart1.setTag(BTN_START1_TAG);
          btnStop1 = (Button) cardView1.findViewById(R.id.btn_stop);
          btnStop1.setTag(BTN_STOP1_TAG);
+         btnStop1.setEnabled(false);
+         mTimerTextView1 = (TimerTextView) cardView1.findViewById(R.id.timer_text_view);
          
          View cardView2 =  findViewById(R.id.item_cardview2);
          mWheelView2 = (WheelView)cardView2.findViewById(R.id.main_wv);
@@ -108,6 +173,8 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStart2.setTag(BTN_START2_TAG);
          btnStop2 = (Button) cardView2.findViewById(R.id.btn_stop);
          btnStop2.setTag(BTN_STOP2_TAG);
+         btnStop2.setEnabled(false);
+         mTimerTextView2 = (TimerTextView) cardView2.findViewById(R.id.timer_text_view);
          
          View cardView3 =  findViewById(R.id.item_cardview3);
          mWheelView3 = (WheelView)cardView3.findViewById(R.id.main_wv);
@@ -116,6 +183,8 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStart3.setTag(BTN_START3_TAG);
          btnStop3 = (Button) cardView3.findViewById(R.id.btn_stop);
          btnStop3.setTag(BTN_STOP3_TAG);
+         btnStop3.setEnabled(false);
+         mTimerTextView3 = (TimerTextView) cardView3.findViewById(R.id.timer_text_view);
          
          btnActivation = (Button) findViewById(R.id.btn_activation);
          btnActivation.setTag(BTN_ACTIVATION_TAG);
@@ -131,16 +200,16 @@ public class SplashActivity extends Activity implements OnClickListener {
         for(int i =0;i<100;i++){
         	numList.add(i+1+" ");
         }
-        mWheelView1.setOffset(1);
-        mWheelView1.setSeletion(10);
+        mWheelView1.setOffset(WHEELVIEW_OFFSET);
+        mWheelView1.setSeletion(WHEELVIEW_SELECT_TIME);
         mWheelView1.setItems(numList);
         
-        mWheelView2.setOffset(1);
-        mWheelView2.setSeletion(10);
+        mWheelView2.setOffset(WHEELVIEW_OFFSET);
+        mWheelView2.setSeletion(WHEELVIEW_SELECT_TIME);
         mWheelView2.setItems(numList);
         
-        mWheelView3.setOffset(1);
-        mWheelView3.setSeletion(10);
+        mWheelView3.setOffset(WHEELVIEW_OFFSET);
+        mWheelView3.setSeletion(WHEELVIEW_SELECT_TIME);
         mWheelView3.setItems(numList);
 	}
 
@@ -149,19 +218,72 @@ public class SplashActivity extends Activity implements OnClickListener {
 		Intent intent;
 		switch ((Integer)v.getTag()) {
 		case BTN_START1_TAG:
-			Toast.makeText(SplashActivity.this, "第1个card start", 0).show();
+			btnStop1.setEnabled(true);
+			long[] times = new long[4]; 
+			times[0]=0;
+			times[1]=timeNum1;
+			times[2]=0;
+			times[3]=0;
+			if("开始".equals(btnStart1.getText())){
+				btnStop1.setText("暂停");
+				//设置不可点击颜色
+				mWheelView1.setVisibility(View.GONE);
+				mTimerTextView1.setVisibility(View.VISIBLE);
+				mTimerTextView1.setTimes(times);  
+				btnStart1.setText("归零");
+				if(!mTimerTextView1.isRun()){  
+					mTimerTextView1.beginRun();  
+				} 
+			}else if("归零".equals(btnStart1.getText())){
+				btnStop1.setText("继续");
+				//设置不可点击颜色
+				mWheelView1.setVisibility(View.GONE);
+				mTimerTextView1.setVisibility(View.VISIBLE);
+				mTimerTextView1.setTimes(times); 
+				 String strTime=  timeNum1+":"+ 0+":"+0+"";  
+				 mTimerTextView1.setText(strTime);  
+				if(mTimerTextView1.isRun()){  
+					mTimerTextView1.stopRun(); 
+				} 
+			}else if("重来".equals(btnStart1.getText())){
+				btnStop1.setText("返回");
+				//设置不可点击颜色
+				mWheelView1.setVisibility(View.VISIBLE);
+				mTimerTextView1.setVisibility(View.GONE);
+				btnStart1.setText("开始");
+				
+			}
+			
+			
 			break;
 		case BTN_START2_TAG:
-			Toast.makeText(SplashActivity.this, "第2个card start", 0).show();
-			
+			btnStop2.setEnabled(true);
+			Toast.makeText(SplashActivity.this, "第2个selectedIndex: " + timeNum2, Toast.LENGTH_SHORT).show();
 			break;
 		case BTN_START3_TAG:
-			Toast.makeText(SplashActivity.this, "第3个card start", 0).show();
-			
+			btnStop3.setEnabled(true);
+			Toast.makeText(SplashActivity.this, "第3个selectedIndex: " + timeNum3, Toast.LENGTH_SHORT).show();
 			break;
 		case BTN_STOP1_TAG:
-			Toast.makeText(SplashActivity.this, "第1个card stop", 0).show();
-			
+			if("暂停".equals(btnStop1.getText())){
+				if(mTimerTextView1.isRun()){  
+					 mTimerTextView1.stopRun(); 
+		            } 
+				btnStop1.setText("继续");
+			}else if("继续".equals(btnStop1.getText())){
+				if(!mTimerTextView1.isRun()){  
+					 mTimerTextView1.beginRun();
+		            } 
+				btnStop1.setText("暂停");
+			}else if("返回".equals(btnStop1.getText())){
+				btnStop1.setText("暂停");
+				btnStop1.setEnabled(false);
+				//设置不可点击颜色
+				mWheelView1.setVisibility(View.VISIBLE);
+				mTimerTextView1.setVisibility(View.GONE);
+			}
+			 
+			 
 			break;
 		case BTN_STOP2_TAG:
 			Toast.makeText(SplashActivity.this, "第2个card stop", 0).show();
@@ -173,6 +295,8 @@ public class SplashActivity extends Activity implements OnClickListener {
 			break;
 		case BTN_ACTIVATION_TAG://激活软件
 			Toast.makeText(SplashActivity.this, "激活软件", 0).show();
+			intent = new Intent(this,ActivationActivity.class);
+			startActivity(intent);
 			
 			break;
 		case BTN_PRO_LIB_TAG://产品知识库
