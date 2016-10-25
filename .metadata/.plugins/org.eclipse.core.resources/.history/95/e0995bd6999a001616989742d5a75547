@@ -264,89 +264,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 			break;
 		case BTN_START2_TAG:
 			btnStop2.setEnabled(true);
-			long[] times2 = new long[4]; 
-			times2[0]=0;
-			times2[1]=timeNum1;
-			times2[2]=0;
-			times2[3]=0;
-			if("开始".equals(btnStart2.getText())){
-				btnStop2.setText("暂停");
-				//设置不可点击颜色
-				mWheelView2.setVisibility(View.GONE);
-				mTimerTextView2.setVisibility(View.VISIBLE);
-				mTimerTextView2.setTimes(times2);  
-				btnStart2.setText("归零");
-				if(!mTimerTextView2.isRun()){  
-					mTimerTextView2.beginRun();  
-				} 
-			}else if("归零".equals(btnStart2.getText())){
-				btnStop2.setText("继续");
-				//设置不可点击颜色
-				mWheelView2.setVisibility(View.GONE);
-				mTimerTextView2.setVisibility(View.VISIBLE);
-				mTimerTextView2.setTimes(times2);
-				String strTime;
-				if(timeNum2>9){
-					 strTime=  timeNum2+":"+"00"+":"+"00";  
-				}else{
-					strTime= "0"+timeNum2+":"+"00"+":"+"00";  
-					
-				}
-				 mTimerTextView2.setText(strTime);  
-				if(mTimerTextView2.isRun()){  
-					mTimerTextView2.stopRun(); 
-				} 
-			}else if("重来".equals(btnStart2.getText())){
-				btnStop2.setText("返回");
-				//设置不可点击颜色
-				mWheelView2.setVisibility(View.VISIBLE);
-				mTimerTextView2.setVisibility(View.GONE);
-				btnStart2.setText("开始");
-				
-			}
+			Toast.makeText(SplashActivity.this, "第2个selectedIndex: " + timeNum2, Toast.LENGTH_SHORT).show();
 			break;
 		case BTN_START3_TAG:
 			btnStop3.setEnabled(true);
-			long[] times3 = new long[4]; 
-			times3[0]=0;
-			times3[1]=timeNum3;
-			times3[2]=0;
-			times3[3]=0;
-			if("开始".equals(btnStart3.getText())){
-				btnStop3.setText("暂停");
-				//设置不可点击颜色
-				mWheelView3.setVisibility(View.GONE);
-				mTimerTextView3.setVisibility(View.VISIBLE);
-				mTimerTextView3.setTimes(times3);  
-				btnStart3.setText("归零");
-				if(!mTimerTextView3.isRun()){  
-					mTimerTextView3.beginRun();  
-				} 
-			}else if("归零".equals(btnStart3.getText())){
-				btnStop3.setText("继续");
-				//设置不可点击颜色
-				mWheelView3.setVisibility(View.GONE);
-				mTimerTextView3.setVisibility(View.VISIBLE);
-				mTimerTextView3.setTimes(times3);
-				String strTime;
-				if(timeNum3>9){
-					 strTime=  timeNum3+":"+"00"+":"+"00";  
-				}else{
-					strTime= "0"+timeNum3+":"+"00"+":"+"00";  
-					
-				}
-				 mTimerTextView3.setText(strTime);  
-				if(mTimerTextView3.isRun()){  
-					mTimerTextView3.stopRun(); 
-				} 
-			}else if("重来".equals(btnStart3.getText())){
-				btnStop3.setText("返回");
-				//设置不可点击颜色
-				mWheelView3.setVisibility(View.VISIBLE);
-				mTimerTextView3.setVisibility(View.GONE);
-				btnStart3.setText("开始");
-				
-			}
+			Toast.makeText(SplashActivity.this, "第3个selectedIndex: " + timeNum3, Toast.LENGTH_SHORT).show();
 			break;
 		case BTN_STOP1_TAG:
 			if("暂停".equals(btnStop1.getText())){
@@ -370,43 +292,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 			 
 			break;
 		case BTN_STOP2_TAG:
-			if("暂停".equals(btnStop2.getText())){
-				if(mTimerTextView2.isRun()){  
-					 mTimerTextView2.stopRun(); 
-		            } 
-				btnStop2.setText("继续");
-			}else if("继续".equals(btnStop2.getText())){
-				if(!mTimerTextView2.isRun()){  
-					 mTimerTextView2.beginRun();
-		            } 
-				btnStop2.setText("暂停");
-			}else if("返回".equals(btnStop2.getText())){
-				btnStop2.setText("暂停");
-				btnStop2.setEnabled(false);
-				//设置不可点击颜色
-				mWheelView2.setVisibility(View.VISIBLE);
-				mTimerTextView2.setVisibility(View.GONE);
-			}
+			Toast.makeText(SplashActivity.this, "第2个card stop", 0).show();
 			
 			break;
 		case BTN_STOP3_TAG:
-			if("暂停".equals(btnStop3.getText())){
-				if(mTimerTextView3.isRun()){  
-					 mTimerTextView3.stopRun(); 
-		            } 
-				btnStop3.setText("继续");
-			}else if("继续".equals(btnStop3.getText())){
-				if(!mTimerTextView3.isRun()){  
-					 mTimerTextView3.beginRun();
-		            } 
-				btnStop3.setText("暂停");
-			}else if("返回".equals(btnStop3.getText())){
-				btnStop3.setText("暂停");
-				btnStop3.setEnabled(false);
-				//设置不可点击颜色
-				mWheelView3.setVisibility(View.VISIBLE);
-				mTimerTextView3.setVisibility(View.GONE);
-			}
+			Toast.makeText(SplashActivity.this, "第3个card stop", 0).show();
 			
 			break;
 		case BTN_ACTIVATION_TAG://激活软件
