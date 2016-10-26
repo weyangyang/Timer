@@ -11,13 +11,11 @@
 <fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
 <fullyQualifiedTypeName name="android.util.TypedValue"/>
 <fullyQualifiedTypeName name="android.graphics.Color"/>
-<fullyQualifiedTypeName name="com.timer.R.color"/>
 <fullyQualifiedTypeName name="android.accounts.OnAccountsUpdateListener"/>
 <fullyQualifiedTypeName name="android.view.View.OnClickListener"/>
 <fullyQualifiedTypeName name="android.widget.Switch"/>
 <fullyQualifiedTypeName name="android.content.Intent"/>
 <fullyQualifiedTypeName name="android.net.Uri"/>
-<fullyQualifiedTypeName name="com.timer.SplashActivity"/>
 <fullyQualifiedTypeName name="android.util.AttributeSet"/>
 <fullyQualifiedTypeName name="android.content.Context"/>
 <fullyQualifiedTypeName name="android.view.View"/>
@@ -35,6 +33,9 @@
 <fullyQualifiedTypeName name="android.text.TextUtils"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
-<fullyQualifiedTypeName name="com.timer.utils.PreferenceUtils"/>
 <fullyQualifiedTypeName name="com.timer.R.drawable"/>
+<fullyQualifiedTypeName name="com.timer.utils.PreferenceUtils"/>
+<fullyQualifiedTypeName name="com.timer.SplashActivity"/>
+<fullyQualifiedTypeName name="java.lang.Runnable"/>
+<fullyQualifiedTypeName name="com.timer.R.color"/>
 </qualifiedTypeNameHistroy>
