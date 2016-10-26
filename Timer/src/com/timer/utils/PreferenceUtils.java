@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 
 public class PreferenceUtils {
 	public static final String KEY_SOFT_ACTIVATION_SUCC = "key_soft_activation_succ";
+	public static final String KEY_ACTIVATION_NUM = "key_activation_num";
 	
     public static String getPrefString(Context context, String key, final String defaultValue) {
         final SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);

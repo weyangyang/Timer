@@ -8,14 +8,14 @@
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="Toast"/>
+			<item value="btnStop3"/>
 			<item value="point"/>
 			<item value="RelativeLayout"/>
 			<item value="Rel"/>
 			<item value="Relea"/>
 			<item value="views"/>
 			<item value="100"/>
-			<item value="inflate"/>
-			<item value="createView"/>
 		</list>
 		<list key="replacehistory">
 		</list>

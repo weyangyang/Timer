@@ -33,12 +33,18 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 private void initData() {
 	boolean isSucc = PreferenceUtils.getPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, false);
+	
 	if(isSucc){
 		btnActivationSoft.setText("激活成功");
 		btnActivationSoft.setEnabled(false);
 		btnActivationSoft.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+		btnCreateNum.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+		btnCreateNum.setEnabled(false);
 		//设置成灰色
 	}
+	String activationNum = PreferenceUtils.getPrefString(this, PreferenceUtils.KEY_ACTIVATION_NUM, "");
+	etInputNum.setText(activationNum);
+	tvActivationNum.setText(activationNum);
 	
 }
 
@@ -60,7 +66,9 @@ private String generateWord() {
     String[] beforeShuffle = new String[] { "1","2", "3", "4", "5", "6", "7",    
             "8", "9", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J",    
             "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",    
-            "W", "X", "Y", "Z" };    
+            "W", "X", "Y", "Z" ,"a", "b", "c", "d", "e", "f", "g", "h", "i", "j",    
+            "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v",    
+            "w", "x", "y", "z"};    
     List list = Arrays.asList(beforeShuffle);    
     Collections.shuffle(list);    
     StringBuilder sb = new StringBuilder();    
@@ -104,15 +112,6 @@ private String generateWord() {
 		}
 		return result;
 	}
-//	private List<String> getStringNumList(String str) {
-//		List<String> result = new ArrayList<String>();
-//		for (String temp : str.replaceAll("[^0-9]", ",").split(",")) {
-//			if (temp.length() > 0)
-//				result.add(temp);
-//		}
-//		return result;
-//
-//	}
 @Override
 public void onClick(View v) {
 	switch (v.getId()) {
@@ -141,7 +140,10 @@ public void onClick(View v) {
 				btnActivationSoft.setEnabled(false);
 				btnActivationSoft.setBackgroundResource(R.drawable.btn_other_pressed_bg);
 				//设置成灰色
+				btnCreateNum.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+				btnCreateNum.setEnabled(false);
 				PreferenceUtils.setPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, true);
+				PreferenceUtils.setPrefString(this, PreferenceUtils.KEY_ACTIVATION_NUM, systemNum);
 			}else{
 				Toast.makeText(this, "激活失败，请重新生成序列号！", Toast.LENGTH_SHORT).show();
 			}

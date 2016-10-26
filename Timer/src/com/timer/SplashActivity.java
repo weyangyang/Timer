@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -77,7 +78,6 @@ public class SplashActivity extends Activity implements OnClickListener {
     }
 
 	private void setListener() {
-		// TODO Auto-generated method stub
 		  setWheelViewListener(mWheelView1);
 		  setWheelViewListener(mWheelView2);
 		  setWheelViewListener(mWheelView3);
@@ -96,7 +96,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 		  setTimerTextViewListener(mTimerTextView2);
 		  setTimerTextViewListener(mTimerTextView3);
 	}
-
 	private void setTimerTextViewListener(final TimerTextView view) {
 		view.setOnTimerTextViewListener(new TimerTextViewListener() {
 			
@@ -106,17 +105,19 @@ public class SplashActivity extends Activity implements OnClickListener {
 				case TIMERTEXTVIEW1_TAG:
 					btnStart1.setText("重来");
 					btnStop1.setText("返回");
-					mTimerTextView1.setText("计时结束："+timeNum1+"小时");
-					mTimerTextView1.setBackground(null);
+					mTimerTextView1.setText("计时结束：\n"+timeNum1+"小时");
+					mTimerTextView1.setTextSize(TypedValue.COMPLEX_UNIT_SP,15.0f);
+					mTimerTextView1.setTextColor(R.color.gray);
 					if(mTimerTextView1.isRun()){  
-						 mTimerTextView1.stopRun();
-			            } 
+						mTimerTextView1.stopRun();
+					}
 					break;
 				case TIMERTEXTVIEW2_TAG:
 					btnStart2.setText("重来");
 					btnStop2.setText("返回");
-					mTimerTextView2.setText("计时结束："+timeNum1+"小时");
-					mTimerTextView2.setBackground(null);
+					mTimerTextView1.setText("计时结束：\n"+timeNum2+"小时");
+					mTimerTextView1.setTextSize(TypedValue.COMPLEX_UNIT_SP,15.0f);
+					mTimerTextView1.setTextColor(R.color.gray);
 					if(mTimerTextView2.isRun()){  
 						 mTimerTextView2.stopRun();
 			            } 
@@ -124,8 +125,9 @@ public class SplashActivity extends Activity implements OnClickListener {
 				case TIMERTEXTVIEW3_TAG:
 					btnStart3.setText("重来");
 					btnStop3.setText("返回");
-					mTimerTextView3.setText("计时结束："+timeNum1+"小时");
-					mTimerTextView3.setBackground(null);
+					mTimerTextView1.setText("计时结束：\n"+timeNum3+"小时");
+					mTimerTextView1.setTextSize(TypedValue.COMPLEX_UNIT_SP,15.0f);
+					mTimerTextView1.setTextColor(R.color.gray);
 					if(mTimerTextView3.isRun()){  
 						 mTimerTextView3.stopRun();
 			            } 
@@ -161,7 +163,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 	}
 
 	private void initView() {
-		// TODO Auto-generated method stub
 		 View cardView1 =  findViewById(R.id.item_cardview);
          mWheelView1 = (WheelView)cardView1.findViewById(R.id.main_wv);
          mWheelView1.setTag(WHEELVIEW1_TAG);
@@ -172,6 +173,7 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop1.setEnabled(false);
          btnStop1.setBackgroundResource(R.drawable.btn_other_pressed_bg);
          mTimerTextView1 = (TimerTextView) cardView1.findViewById(R.id.timer_text_view);
+         mTimerTextView1.setTag(TIMERTEXTVIEW1_TAG);
          coverView1  = cardView1.findViewById(R.id.iv_cover);
          coverView1.setVisibility(View.GONE);
          
@@ -185,6 +187,7 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop2.setEnabled(false);
          btnStop2.setBackgroundResource(R.drawable.btn_other_pressed_bg);
          mTimerTextView2 = (TimerTextView) cardView2.findViewById(R.id.timer_text_view);
+         mTimerTextView2.setTag(TIMERTEXTVIEW2_TAG);
          coverView2  = cardView2.findViewById(R.id.iv_cover);
          
          View cardView3 =  findViewById(R.id.item_cardview3);
@@ -197,6 +200,7 @@ public class SplashActivity extends Activity implements OnClickListener {
          btnStop3.setEnabled(false);
          btnStop3.setBackgroundResource(R.drawable.btn_other_pressed_bg);
          mTimerTextView3 = (TimerTextView) cardView3.findViewById(R.id.timer_text_view);
+         mTimerTextView3.setTag(TIMERTEXTVIEW3_TAG);
          coverView3  = cardView3.findViewById(R.id.iv_cover);
          btnActivation = (Button) findViewById(R.id.btn_activation);
          btnActivation.setTag(BTN_ACTIVATION_TAG);
@@ -207,7 +211,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 	}
 
 	private void initData() {
-		// TODO Auto-generated method stub
 		List<String> numList = new ArrayList<String>();
         for(int i =0;i<100;i++){
         	numList.add(i+1+" ");
@@ -250,14 +253,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			times[2]=0;
 			times[3]=0;
 			if("开始".equals(btnStart1.getText())){
-				btnStop1.setText("暂停");
-				mWheelView1.setVisibility(View.GONE);
-				mTimerTextView1.setVisibility(View.VISIBLE);
-				mTimerTextView1.setTimes(times);  
-				btnStart1.setText("归零");
-				if(!mTimerTextView1.isRun()){  
-					mTimerTextView1.beginRun();  
-				} 
+				setBtnStart1Program(times); 
 			}else if("归零".equals(btnStart1.getText())){
 				btnStop1.setText("继续");
 				mWheelView1.setVisibility(View.GONE);
@@ -275,15 +271,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 					mTimerTextView1.stopRun(); 
 				} 
 			}else if("重来".equals(btnStart1.getText())){
-				btnStop1.setText("返回");
-				//设置不可点击颜色
-				mWheelView1.setVisibility(View.VISIBLE);
-				mTimerTextView1.setVisibility(View.GONE);
-				btnStart1.setText("开始");
+				setBtnStart1Program(times); 
 				
 			}
-			
-			
+
 			break;
 		case BTN_START2_TAG:
 			btnStop2.setEnabled(true);
@@ -294,18 +285,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			times2[2]=0;
 			times2[3]=0;
 			if("开始".equals(btnStart2.getText())){
-				btnStop2.setText("暂停");
-				//设置不可点击颜色
-				mWheelView2.setVisibility(View.GONE);
-				mTimerTextView2.setVisibility(View.VISIBLE);
-				mTimerTextView2.setTimes(times2);  
-				btnStart2.setText("归零");
-				if(!mTimerTextView2.isRun()){  
-					mTimerTextView2.beginRun();  
-				} 
+				setBtnStart2Program(times2); 
 			}else if("归零".equals(btnStart2.getText())){
 				btnStop2.setText("继续");
-				//设置不可点击颜色
 				mWheelView2.setVisibility(View.GONE);
 				mTimerTextView2.setVisibility(View.VISIBLE);
 				mTimerTextView2.setTimes(times2);
@@ -321,11 +303,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 					mTimerTextView2.stopRun(); 
 				} 
 			}else if("重来".equals(btnStart2.getText())){
-				btnStop2.setText("返回");
-				//设置不可点击颜色
-				mWheelView2.setVisibility(View.VISIBLE);
-				mTimerTextView2.setVisibility(View.GONE);
-				btnStart2.setText("开始");
+				setBtnStart2Program(times2); 
 				
 			}
 			break;
@@ -338,18 +316,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			times3[2]=0;
 			times3[3]=0;
 			if("开始".equals(btnStart3.getText())){
-				btnStop3.setText("暂停");
-				//设置不可点击颜色
-				mWheelView3.setVisibility(View.GONE);
-				mTimerTextView3.setVisibility(View.VISIBLE);
-				mTimerTextView3.setTimes(times3);  
-				btnStart3.setText("归零");
-				if(!mTimerTextView3.isRun()){  
-					mTimerTextView3.beginRun();  
-				} 
+				setBtnStart3Program(times3); 
 			}else if("归零".equals(btnStart3.getText())){
 				btnStop3.setText("继续");
-				//设置不可点击颜色
 				mWheelView3.setVisibility(View.GONE);
 				mTimerTextView3.setVisibility(View.VISIBLE);
 				mTimerTextView3.setTimes(times3);
@@ -365,11 +334,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 					mTimerTextView3.stopRun(); 
 				} 
 			}else if("重来".equals(btnStart3.getText())){
-				btnStop3.setText("返回");
-				//设置不可点击颜色
-				mWheelView3.setVisibility(View.VISIBLE);
-				mTimerTextView3.setVisibility(View.GONE);
-				btnStart3.setText("开始");
+				setBtnStart3Program(times3); 
 				
 			}
 			break;
@@ -387,7 +352,8 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			}else if("返回".equals(btnStop1.getText())){
 				btnStop1.setText("暂停");
 				btnStop1.setEnabled(false);
-				//设置不可点击颜色
+				btnStop1.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+				btnStart1.setText("开始");
 				mWheelView1.setVisibility(View.VISIBLE);
 				mTimerTextView1.setVisibility(View.GONE);
 			}
@@ -408,7 +374,8 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			}else if("返回".equals(btnStop2.getText())){
 				btnStop2.setText("暂停");
 				btnStop2.setEnabled(false);
-				//设置不可点击颜色
+				btnStop2.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+				btnStart2.setText("开始");
 				mWheelView2.setVisibility(View.VISIBLE);
 				mTimerTextView2.setVisibility(View.GONE);
 			}
@@ -428,7 +395,8 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			}else if("返回".equals(btnStop3.getText())){
 				btnStop3.setText("暂停");
 				btnStop3.setEnabled(false);
-				//设置不可点击颜色
+				btnStop3.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+				btnStart3.setText("开始");
 				mWheelView3.setVisibility(View.VISIBLE);
 				mTimerTextView3.setVisibility(View.GONE);
 			}
@@ -450,6 +418,48 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		default:
 			break;
+		}
+	}
+
+	private void setBtnStart3Program(long[] times3) {
+		btnStop3.setText("暂停");
+		mWheelView3.setVisibility(View.GONE);
+		mTimerTextView3.setTextColor(R.color.red);
+		mTimerTextView3.setVisibility(View.VISIBLE);
+		mTimerTextView3.setTimes(times3);  
+		mTimerTextView3.setTextSize(TypedValue.COMPLEX_UNIT_SP,22.0f);
+		//mTimerTextView3.setBackgroundColor(R.color.white);
+		btnStart3.setText("归零");
+		if(!mTimerTextView3.isRun()){  
+			mTimerTextView3.beginRun();  
+		}
+	}
+
+	private void setBtnStart2Program(long[] times2) {
+		btnStop2.setText("暂停");
+		mWheelView2.setVisibility(View.GONE);
+		mTimerTextView2.setTextColor(R.color.red);
+		mTimerTextView2.setVisibility(View.VISIBLE);
+		mTimerTextView2.setTimes(times2);  
+		mTimerTextView2.setTextSize(TypedValue.COMPLEX_UNIT_SP,22.0f);
+		//mTimerTextView2.setBackgroundColor(R.color.white);
+		btnStart2.setText("归零");
+		if(!mTimerTextView2.isRun()){  
+			mTimerTextView2.beginRun();  
+		}
+	}
+
+	private void setBtnStart1Program(long[] times) {
+		btnStop1.setText("暂停");
+		mWheelView1.setVisibility(View.GONE);
+		mTimerTextView1.setTextColor(R.color.red);
+		mTimerTextView1.setVisibility(View.VISIBLE);
+		mTimerTextView1.setTimes(times); 
+		mTimerTextView1.setTextSize(TypedValue.COMPLEX_UNIT_SP,22.0f);
+		//mTimerTextView1.setBackgroundColor(R.color.white);
+		btnStart1.setText("归零");
+		if(!mTimerTextView1.isRun()){  
+			mTimerTextView1.beginRun();  
 		}
 	}
 

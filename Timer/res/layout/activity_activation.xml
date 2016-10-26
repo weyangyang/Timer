@@ -72,6 +72,19 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@id/tv_activation_num"
          />
+     <TextView 
+         android:id="@+id/tv_tips2"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:text="序列号数字加总个位为6即可激活软件"
+        android:gravity="center_vertical"
+        android:textColor="@color/gray"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tv_tips"
+         />
      <EditText 
          android:id="@+id/et_input_num"
          android:layout_width="match_parent"
@@ -84,15 +97,15 @@
         android:textColorHint="@color/gray"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="24dp"
-        android:layout_below="@id/tv_tips"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/tv_tips2"
         android:background="@drawable/bg_edit"
         android:maxLength="6"
          />
        <Button 
          android:id="@+id/btn_activation_soft"
           android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_below="@id/et_input_num"
         android:text="激活软件"
         android:textColor="@color/white"
@@ -101,7 +114,7 @@
         android:padding="5dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
          />
 </RelativeLayout>
     

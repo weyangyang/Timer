@@ -33,7 +33,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:background="@color/white"
-        android:textColor="#ff0000"
+        android:textColor="@color/red"
         android:visibility="gone"
         android:textSize="22sp" />
 <LinearLayout 
