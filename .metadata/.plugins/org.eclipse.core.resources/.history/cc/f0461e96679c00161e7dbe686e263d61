@@ -145,7 +145,7 @@ public void onClick(View v) {
 				PreferenceUtils.setPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, true);
 				PreferenceUtils.setPrefString(this, PreferenceUtils.KEY_ACTIVATION_NUM, userInputNum);
 			}else{
-				Toast.makeText(this, "激活失败，请重新输入序列号！", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "激活失败，请重新生成序列号！", Toast.LENGTH_SHORT).show();
 			}
 		}else{
 			Toast.makeText(this, "您输入的序列号不存在，请重新输入！", Toast.LENGTH_SHORT).show();
