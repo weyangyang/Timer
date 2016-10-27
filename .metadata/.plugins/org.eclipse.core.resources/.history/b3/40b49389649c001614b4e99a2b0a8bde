@@ -42,7 +42,7 @@
        />
    <Button 
        android:id="@+id/btn_pro_lib"
-        android:text="口罩\n知识库"
+        android:text="产品\n知识库"
         android:textSize="24sp"
        android:layout_width="160dp"
         android:layout_height="160dp"
@@ -55,7 +55,7 @@
    <Button 
        android:id="@+id/btn_pro_buy"
         android:background="@drawable/btn_pro_bg"
-        android:text="口罩\n优惠购"
+        android:text="产品\n优惠购"
         android:textSize="24sp"
          android:layout_alignParentRight="true"
        android:layout_width="160dp"

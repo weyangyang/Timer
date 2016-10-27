@@ -75,7 +75,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 			coverView2.setVisibility(View.GONE);
 			coverView3.setVisibility(View.GONE);
 			btnActivation.setEnabled(false);
-			btnActivation.setText("已激活");
 			btnActivation.setBackgroundResource(R.drawable.btn_other_pressed_bg);
 		}
     }
@@ -240,7 +239,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			coverView2.setVisibility(View.GONE);
 			coverView3.setVisibility(View.GONE);
 			btnActivation.setEnabled(false);
-			btnActivation.setText("已激活");
 			btnActivation.setBackgroundResource(R.drawable.btn_other_pressed_bg);
 			
 		}
