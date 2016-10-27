@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="BTN_ACTIVATION_TAG" key="selection"/>
+		<item value="getStringNumList" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="getStringNumList"/>
 			<item value="BTN_ACTIVATION_TAG"/>
 			<item value="onActi"/>
 			<item value="BG_ITEM_CARDVIEW"/>
@@ -15,7 +16,6 @@
 			<item value="setTextS"/>
 			<item value="dip2"/>
 			<item value="dip"/>
-			<item value="mTimerTextView1"/>
 		</list>
 		<list key="replacehistory">
 		</list>
