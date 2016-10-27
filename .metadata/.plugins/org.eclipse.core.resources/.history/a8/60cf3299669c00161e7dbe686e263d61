@@ -104,23 +104,6 @@ private String generateWord() {
 		}
 		return result;
 	}
-	private boolean  isSuccActivationNum(String str) {
-		str = str.trim();
-		boolean isSucc =false;
-		int count=0;
-		
-		if (!TextUtils.isEmpty(str)) {
-			for (int i = 0; i < str.length(); i++) {
-				if (str.charAt(i) >= 48 && str.charAt(i) <= 57) {
-					count++;
-				}
-			}
-		}
-		if(str.length()==6 &&count==3){
-			isSucc = true;
-		}
-		return isSucc;
-	}
 @Override
 public void onClick(View v) {
 	switch (v.getId()) {
@@ -137,7 +120,7 @@ public void onClick(View v) {
 			}
 			String sTemp = String.valueOf(temp);
 			sTemp = sTemp.substring(sTemp.length()-1);
-			if(isSuccActivationNum(userInputNum)&&"6".equals(sTemp)){
+			if("6".equals(sTemp)){
 				Toast.makeText(this, "激活成功", Toast.LENGTH_LONG).show();
 				btnActivationSoft.setText("激活成功");
 				btnActivationSoft.setEnabled(false);
