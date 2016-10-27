@@ -18,8 +18,7 @@ import android.widget.Toast;
 import com.timer.utils.PreferenceUtils;
 
 public class ActivationActivity extends Activity implements OnClickListener {
-	private TextView btnBack,tvActivationNum;
-	private Button btnCreateNum;
+	private TextView btnBack;
 	private Button btnActivationSoft;
 	private EditText etInputNum;
 @Override
@@ -38,28 +37,21 @@ private void initData() {
 		btnActivationSoft.setText("激活成功");
 		btnActivationSoft.setEnabled(false);
 		btnActivationSoft.setBackgroundResource(R.drawable.btn_other_pressed_bg);
-		btnCreateNum.setBackgroundResource(R.drawable.btn_other_pressed_bg);
-		btnCreateNum.setEnabled(false);
-		//设置成灰色
 	}
 	String activationNum = PreferenceUtils.getPrefString(this, PreferenceUtils.KEY_ACTIVATION_NUM, "");
 	etInputNum.setText(activationNum);
-	tvActivationNum.setText(activationNum);
 	
 }
 
 private void initLinstener() {
 	btnActivationSoft.setOnClickListener(this);
-	btnCreateNum.setOnClickListener(this);
 	btnBack.setOnClickListener(this);
 	
 }
 private void initView() {
 	btnActivationSoft = (Button) findViewById(R.id.btn_activation_soft);
-	btnCreateNum = (Button) findViewById(R.id.btn_create_num);
 	btnBack = (TextView) findViewById(R.id.btn_back);
 	etInputNum = (EditText) findViewById(R.id.et_input_num);
-	tvActivationNum = (TextView) findViewById(R.id.tv_activation_num);
 	
 }
 private String generateWord() {    
@@ -118,15 +110,9 @@ public void onClick(View v) {
 	case R.id.btn_back://返回
 		this.finish();
 		break;
-	case R.id.btn_create_num://生成序列号
-		tvActivationNum.setText(generateWord());
-		break;
 	case R.id.btn_activation_soft://激活软件
 		String userInputNum = etInputNum.getText().toString().trim();
-		String systemNum = tvActivationNum.getText().toString().trim();
-		
-		if(!TextUtils.isEmpty(userInputNum)&& !TextUtils.isEmpty(systemNum) 
-				&& userInputNum.equals(systemNum)){
+		if(!TextUtils.isEmpty(userInputNum)){
 			List<String> numList = getStringNumList(userInputNum);
 			int temp = 0;
 			for(String str :numList){
@@ -139,11 +125,8 @@ public void onClick(View v) {
 				btnActivationSoft.setText("激活成功");
 				btnActivationSoft.setEnabled(false);
 				btnActivationSoft.setBackgroundResource(R.drawable.btn_other_pressed_bg);
-				//设置成灰色
-				btnCreateNum.setBackgroundResource(R.drawable.btn_other_pressed_bg);
-				btnCreateNum.setEnabled(false);
 				PreferenceUtils.setPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, true);
-				PreferenceUtils.setPrefString(this, PreferenceUtils.KEY_ACTIVATION_NUM, systemNum);
+				PreferenceUtils.setPrefString(this, PreferenceUtils.KEY_ACTIVATION_NUM, userInputNum);
 			}else{
 				Toast.makeText(this, "激活失败，请重新生成序列号！", Toast.LENGTH_SHORT).show();
 			}

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
     android:layout_height="48dp"
     android:layout_alignParentTop="true"
-    android:background="@color/bg_cardview"
+    android:background="@color/bg_activation_nav"
     android:gravity="center_vertical"
         >
     <TextView
@@ -30,7 +30,7 @@
         android:layout_centerHorizontal="true"
         android:text="激活软件" />
      </RelativeLayout>
-     <Button 
+<!--      <Button 
          android:id="@+id/btn_create_num"
           android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,8 +43,8 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="36dp"
         android:layout_alignParentLeft="true"
-         />
-     <TextView 
+         /> -->
+  <!--    <TextView 
          android:id="@+id/tv_activation_num"
          android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
          android:paddingLeft="10dp"
          android:paddingRight="10dp"
         android:layout_below="@id/rl_nav"
-         />
+         /> -->
      <TextView 
          android:id="@+id/tv_tips"
          android:layout_width="wrap_content"
@@ -70,9 +70,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/tv_activation_num"
+        android:layout_below="@id/rl_nav"
          />
-     <TextView 
+  <!--    <TextView 
          android:id="@+id/tv_tips2"
          android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,13 +84,13 @@
         android:layout_marginTop="5dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/tv_tips"
-         />
+         /> -->
      <EditText 
          android:id="@+id/et_input_num"
          android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:textColor="@color/bg_cardview"
+        android:textColor="@color/bg_edit_text"
         android:padding="5dp"
         android:hint="输入序列号"
         android:singleLine="true"
@@ -98,7 +98,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="8dp"
-        android:layout_below="@id/tv_tips2"
+        android:layout_below="@id/tv_tips"
         android:background="@drawable/bg_edit"
         android:maxLength="6"
          />

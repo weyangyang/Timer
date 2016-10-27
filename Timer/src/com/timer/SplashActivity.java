@@ -74,6 +74,8 @@ public class SplashActivity extends Activity implements OnClickListener {
 		if(isSucc){
 			coverView2.setVisibility(View.GONE);
 			coverView3.setVisibility(View.GONE);
+			btnActivation.setEnabled(false);
+			btnActivation.setBackgroundResource(R.drawable.btn_other_pressed_bg);
 		}
     }
 
@@ -236,6 +238,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(isSucc){
 			coverView2.setVisibility(View.GONE);
 			coverView3.setVisibility(View.GONE);
+			btnActivation.setEnabled(false);
+			btnActivation.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+			
 		}
 	}
 	
@@ -255,21 +260,15 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			if("开始".equals(btnStart1.getText())){
 				setBtnStart1Program(times); 
 			}else if("归零".equals(btnStart1.getText())){
-				btnStop1.setText("继续");
-				mWheelView1.setVisibility(View.GONE);
-				mTimerTextView1.setVisibility(View.VISIBLE);
-				mTimerTextView1.setTimes(times);
-				String strTime;
-				if(timeNum1>9){
-					 strTime=  timeNum1+":"+"00"+":"+"00";  
-				}else{
-					strTime= "0"+timeNum1+":"+"00"+":"+"00";  
-					
-				}
-				 mTimerTextView1.setText(strTime);  
+				btnStop1.setText("暂停");
+				btnStop1.setEnabled(false);
+				btnStop1.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+				mWheelView1.setVisibility(View.VISIBLE);
+				mTimerTextView1.setVisibility(View.GONE);
+				btnStart1.setText("开始");
 				if(mTimerTextView1.isRun()){  
-					mTimerTextView1.stopRun(); 
-				} 
+					mTimerTextView1.stopRun();
+				}
 			}else if("重来".equals(btnStart1.getText())){
 				setBtnStart1Program(times); 
 				
@@ -287,21 +286,15 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			if("开始".equals(btnStart2.getText())){
 				setBtnStart2Program(times2); 
 			}else if("归零".equals(btnStart2.getText())){
-				btnStop2.setText("继续");
-				mWheelView2.setVisibility(View.GONE);
-				mTimerTextView2.setVisibility(View.VISIBLE);
-				mTimerTextView2.setTimes(times2);
-				String strTime;
-				if(timeNum2>9){
-					 strTime=  timeNum2+":"+"00"+":"+"00";  
-				}else{
-					strTime= "0"+timeNum2+":"+"00"+":"+"00";  
-					
-				}
-				 mTimerTextView2.setText(strTime);  
+				btnStop2.setText("暂停");
+				btnStop2.setEnabled(false);
+				btnStop2.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+				mWheelView2.setVisibility(View.VISIBLE);
+				mTimerTextView2.setVisibility(View.GONE);
+				btnStart2.setText("开始");
 				if(mTimerTextView2.isRun()){  
-					mTimerTextView2.stopRun(); 
-				} 
+					mTimerTextView2.stopRun();
+				}
 			}else if("重来".equals(btnStart2.getText())){
 				setBtnStart2Program(times2); 
 				
@@ -318,21 +311,15 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			if("开始".equals(btnStart3.getText())){
 				setBtnStart3Program(times3); 
 			}else if("归零".equals(btnStart3.getText())){
-				btnStop3.setText("继续");
-				mWheelView3.setVisibility(View.GONE);
-				mTimerTextView3.setVisibility(View.VISIBLE);
-				mTimerTextView3.setTimes(times3);
-				String strTime;
-				if(timeNum3>9){
-					 strTime=  timeNum3+":"+"00"+":"+"00";  
-				}else{
-					strTime= "0"+timeNum3+":"+"00"+":"+"00";  
-					
-				}
-				 mTimerTextView3.setText(strTime);  
+				btnStop3.setText("暂停");
+				btnStop3.setEnabled(false);
+				btnStop3.setBackgroundResource(R.drawable.btn_other_pressed_bg);
+				mWheelView3.setVisibility(View.VISIBLE);
+				mTimerTextView3.setVisibility(View.GONE);
+				btnStart3.setText("开始");
 				if(mTimerTextView3.isRun()){  
-					mTimerTextView3.stopRun(); 
-				} 
+					mTimerTextView3.stopRun();
+				}
 			}else if("重来".equals(btnStart3.getText())){
 				setBtnStart3Program(times3); 
 				

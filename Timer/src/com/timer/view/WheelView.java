@@ -22,7 +22,7 @@ import com.timer.R;
 
 public class WheelView extends ScrollView {
     public static final String TAG = WheelView.class.getSimpleName();
-    private static final String BG_ITEM_CARDVIEW = "#00d0bf";
+    private static final String BG_ITEM_CARDVIEW = "#00b962";
     private static final String GRAY = "#cccccc";
     private static final String WHITE = "#ffffff";
     public static class OnWheelViewListener {

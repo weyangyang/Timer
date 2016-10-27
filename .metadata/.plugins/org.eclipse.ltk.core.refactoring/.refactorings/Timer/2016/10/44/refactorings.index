@@ -23,3 +23,5 @@
 1477450303080	Extract method 'setBtnStart1Program'
 1477450388819	Extract method 'setBtnStart2Program'
 1477450420876	Extract method 'setBtnStart3Program'
+1477579134814	Extracts string 'V1.0 © 2016北京科利爱尔科技有限公司' into R.string.copyright
+1477583741882	Copy file
