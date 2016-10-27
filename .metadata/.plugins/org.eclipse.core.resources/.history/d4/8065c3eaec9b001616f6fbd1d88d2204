@@ -281,7 +281,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			btnStop2.setBackgroundResource(R.drawable.btn_other_bg);
 			long[] times2 = new long[4]; 
 			times2[0]=0;
-			times2[1]=timeNum2;
+			times2[1]=timeNum1;
 			times2[2]=0;
 			times2[3]=0;
 			if("开始".equals(btnStart2.getText())){
