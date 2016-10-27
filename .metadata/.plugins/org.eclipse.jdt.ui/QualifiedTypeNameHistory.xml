@@ -33,9 +33,12 @@
 <fullyQualifiedTypeName name="android.text.TextUtils"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="android.widget.Toast"/>
-<fullyQualifiedTypeName name="com.timer.R.drawable"/>
 <fullyQualifiedTypeName name="com.timer.utils.PreferenceUtils"/>
 <fullyQualifiedTypeName name="com.timer.SplashActivity"/>
 <fullyQualifiedTypeName name="java.lang.Runnable"/>
 <fullyQualifiedTypeName name="com.timer.R.color"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="com.timer.R.drawable"/>
 </qualifiedTypeNameHistroy>

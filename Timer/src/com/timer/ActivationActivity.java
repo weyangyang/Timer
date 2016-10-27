@@ -112,7 +112,7 @@ public void onClick(View v) {
 		break;
 	case R.id.btn_activation_soft://激活软件
 		String userInputNum = etInputNum.getText().toString().trim();
-		if(!TextUtils.isEmpty(userInputNum)){
+		if(!TextUtils.isEmpty(userInputNum)&& userInputNum.length()==6){
 			List<String> numList = getStringNumList(userInputNum);
 			int temp = 0;
 			for(String str :numList){
