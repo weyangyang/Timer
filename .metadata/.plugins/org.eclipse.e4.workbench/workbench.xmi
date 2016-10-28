@@ -3,7 +3,7 @@
   <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workbench>&#xA;&lt;mruList>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SplashActivity.java&quot; tooltip=&quot;Timer/src/com/timer/SplashActivity.java&quot;>&#xA;&lt;persistable path=&quot;/Timer/src/com/timer/SplashActivity.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;activity_xtvr_video.xml&quot; tooltip=&quot;XTGoogleVR/res/layout/activity_xtvr_video.xml&quot;>&#xA;&lt;persistable path=&quot;/XTGoogleVR/res/layout/activity_xtvr_video.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;R.java&quot; tooltip=&quot;XTGoogleVR/gen/com/xt/google/vr/R.java&quot;>&#xA;&lt;persistable path=&quot;/XTGoogleVR/gen/com/xt/google/vr/R.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.manifest.ManifestEditor&quot; name=&quot;AndroidManifest.xml&quot; tooltip=&quot;XTGoogleVR/AndroidManifest.xml&quot;>&#xA;&lt;persistable path=&quot;/XTGoogleVR/AndroidManifest.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;XTVrVideoActivity.java&quot; tooltip=&quot;XTGoogleVR/src/com/xt/google/vr/XTVrVideoActivity.java&quot;>&#xA;&lt;persistable path=&quot;/XTGoogleVR/src/com/xt/google/vr/XTVrVideoActivity.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;ActivationActivity.java&quot; tooltip=&quot;Timer/src/com/timer/ActivationActivity.java&quot;>&#xA;&lt;persistable path=&quot;/Timer/src/com/timer/ActivationActivity.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;activity_splash.xml&quot; tooltip=&quot;Timer/res/layout/activity_splash.xml&quot;>&#xA;&lt;persistable path=&quot;/Timer/res/layout/activity_splash.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;activity_activation.xml&quot; tooltip=&quot;Timer/res/layout/activity_activation.xml&quot;>&#xA;&lt;persistable path=&quot;/Timer/res/layout/activity_activation.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;R.java&quot; tooltip=&quot;Timer/gen/com/timer/R.java&quot;>&#xA;&lt;persistable path=&quot;/Timer/gen/com/timer/R.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;color.xml&quot; tooltip=&quot;Timer/res/values/color.xml&quot;>&#xA;&lt;persistable path=&quot;/Timer/res/values/color.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;item_activation_view.xml&quot; tooltip=&quot;Timer/res/layout/item_activation_view.xml&quot;>&#xA;&lt;persistable path=&quot;/Timer/res/layout/item_activation_view.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;WheelView.java&quot; tooltip=&quot;Timer/src/com/timer/view/WheelView.java&quot;>&#xA;&lt;persistable path=&quot;/Timer/src/com/timer/view/WheelView.java&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;item_cardview2.xml&quot; tooltip=&quot;Timer/res/layout/item_cardview2.xml&quot;>&#xA;&lt;persistable path=&quot;/Timer/res/layout/item_cardview2.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;item_cardview.xml&quot; tooltip=&quot;Timer/res/layout/item_cardview.xml&quot;>&#xA;&lt;persistable path=&quot;/Timer/res/layout/item_cardview.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;file factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; id=&quot;com.android.ide.eclipse.editors.CommonXmlEditor&quot; name=&quot;strings.xml&quot; tooltip=&quot;Timer/res/values/strings.xml&quot;>&#xA;&lt;persistable path=&quot;/Timer/res/values/strings.xml&quot;/>&#xA;&lt;/file>&#xA;&lt;/mruList>&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <tags>ModelMigrationProcessor.001</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_m6V3spniEeawKLAdkPHChA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_nJRrkpniEeawKLAdkPHChA" label="%trimmedwindow.label.eclipseSDK" x="68" y="23" width="1372" height="849">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_m6V3spniEeawKLAdkPHChA" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_nJRrkpniEeawKLAdkPHChA" label="%trimmedwindow.label.eclipseSDK" x="88" y="262" width="1372" height="849">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="workingSets" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;workingSets/>"/>
@@ -98,7 +98,7 @@
                 <children xsi:type="advanced:Placeholder" xmi:id="_nT5nPJniEeawKLAdkPHChA" elementId="org.eclipse.egit.ui.RepositoriesView" toBeRendered="false" ref="_nT4ZEJniEeawKLAdkPHChA"/>
               </children>
             </children>
-            <children xsi:type="basic:PartSashContainer" xmi:id="_nT5nPZniEeawKLAdkPHChA" containerData="7162" selectedElement="_nT5nR5niEeawKLAdkPHChA">
+            <children xsi:type="basic:PartSashContainer" xmi:id="_nT5nPZniEeawKLAdkPHChA" containerData="7162" selectedElement="_nT5nPpniEeawKLAdkPHChA">
               <children xsi:type="basic:PartSashContainer" xmi:id="_nT5nPpniEeawKLAdkPHChA" containerData="1000" selectedElement="_nT5nP5niEeawKLAdkPHChA" horizontal="true">
                 <children xsi:type="advanced:Placeholder" xmi:id="_nT5nP5niEeawKLAdkPHChA" elementId="org.eclipse.ui.editorss" containerData="7500" ref="_nTleIJniEeawKLAdkPHChA"/>
                 <children xsi:type="basic:PartSashContainer" xmi:id="_nT5nQJniEeawKLAdkPHChA" visible="false" containerData="2500" selectedElement="_nT5nQ5niEeawKLAdkPHChA">
@@ -265,7 +265,7 @@
         <tags>EditorStack</tags>
         <tags>noFocus</tags>
         <children xsi:type="basic:Part" xmi:id="_5zy3QJzSEea4M8UbRvhIIA" elementId="org.eclipse.e4.ui.compatibility.editor" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor" label="SplashActivity.java" iconURI="platform:/plugin/org.eclipse.jdt.ui/icons/full/obj16/jcu_obj.gif" closeable="true">
-          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SplashActivity.java&quot; partName=&quot;SplashActivity.java&quot; title=&quot;SplashActivity.java&quot; tooltip=&quot;Timer/src/com/timer/SplashActivity.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Timer/src/com/timer/SplashActivity.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;2369&quot; selectionTopPixel=&quot;981&quot;/>&#xA;&lt;/editor>"/>
+          <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xA;&lt;editor id=&quot;org.eclipse.jdt.ui.CompilationUnitEditor&quot; name=&quot;SplashActivity.java&quot; partName=&quot;SplashActivity.java&quot; title=&quot;SplashActivity.java&quot; tooltip=&quot;Timer/src/com/timer/SplashActivity.java&quot;>&#xA;&lt;input factoryID=&quot;org.eclipse.ui.part.FileEditorInputFactory&quot; path=&quot;/Timer/src/com/timer/SplashActivity.java&quot;/>&#xA;&lt;editorState selectionHorizontalPixel=&quot;0&quot; selectionLength=&quot;0&quot; selectionOffset=&quot;4572&quot; selectionTopPixel=&quot;1056&quot;/>&#xA;&lt;/editor>"/>
           <tags>Editor</tags>
           <tags>org.eclipse.jdt.ui.CompilationUnitEditor</tags>
           <tags>removeOnHide</tags>
@@ -492,7 +492,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_nK8fgJniEeawKLAdkPHChA" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_6Acr05zVEea9Y7D4sCgwgA" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_m61nIZniEeawKLAdkPHChA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_sE-aAJzWEeaa9OKNDQqg8Q" elementId="print" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.png" tooltip="Print" enabled="false" command="_m61nIZniEeawKLAdkPHChA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_nK8fgZniEeawKLAdkPHChA" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -525,7 +525,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_nK9GkJniEeawKLAdkPHChA" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_6Ag9RJzVEea9Y7D4sCgwgA" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_m61AE5niEeawKLAdkPHChA"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_sFBdVJzWEeaa9OKNDQqg8Q" elementId="org.eclipse.ui.window.pinEditor" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.png" tooltip="Pin Editor" type="Check" command="_m61AE5niEeawKLAdkPHChA"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_nK9GkZniEeawKLAdkPHChA" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -1112,7 +1112,7 @@
       <tags>platform:cocoa</tags>
       <parameters xmi:id="_m7nqG5niEeawKLAdkPHChA" elementId="org.eclipse.ui.views.showView.viewId" name="org.eclipse.ui.views.showView.viewId" value="org.eclipse.jdt.ui.JavadocView"/>
     </bindings>
-    <bindings xmi:id="_5zpl8ZzVEea9Y7D4sCgwgA" keySequence="COMMAND+CTRL+F" command="_m7w0A5niEeawKLAdkPHChA"/>
+    <bindings xmi:id="_r4-lYZzWEeaa9OKNDQqg8Q" keySequence="COMMAND+CTRL+F" command="_m7w0A5niEeawKLAdkPHChA"/>
   </bindingTables>
   <bindingTables xmi:id="_m7UvIpniEeawKLAdkPHChA" elementId="org.eclipse.cdt.ui.macroExpansionHoverScope" bindingContext="_m65RWZniEeawKLAdkPHChA">
     <bindings xmi:id="_m7UvI5niEeawKLAdkPHChA" keySequence="ALT+ARROW_RIGHT" command="_m61ACpniEeawKLAdkPHChA"/>
@@ -1254,7 +1254,7 @@
     <bindings xmi:id="_m7l045niEeawKLAdkPHChA" keySequence="CTRL+\" command="_m6wum5niEeawKLAdkPHChA"/>
   </bindingTables>
   <bindingTables xmi:id="_m7xbEpniEeawKLAdkPHChA" contributorURI="platform:/fragment/org.eclipse.e4.ui.workbench.renderers.swt.cocoa" bindingContext="_m6V3t5niEeawKLAdkPHChA">
-    <bindings xmi:id="_5zpl8pzVEea9Y7D4sCgwgA" keySequence="M1+W" command="_m7xbEJniEeawKLAdkPHChA"/>
+    <bindings xmi:id="_r4_McJzWEeaa9OKNDQqg8Q" keySequence="M1+W" command="_m7xbEJniEeawKLAdkPHChA"/>
   </bindingTables>
   <bindingTables xmi:id="_nTmsQZniEeawKLAdkPHChA" bindingContext="_nTmsQJniEeawKLAdkPHChA"/>
   <bindingTables xmi:id="_nTnTUZniEeawKLAdkPHChA" bindingContext="_nTnTUJniEeawKLAdkPHChA"/>

@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/layout/activity_activation.xml",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/layout/activity_activation.xml"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/layout/item_cardview.xml",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/layout/item_cardview.xml"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/layout/item_activation_view.xml",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/layout/item_activation_view.xml"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/layout/item_cardview2.xml",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/layout/item_cardview2.xml"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/layout/activity_splash.xml",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/layout/activity_splash.xml"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/layout/item_wheelview.xml",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/layout/item_wheelview.xml"
+    }
+]

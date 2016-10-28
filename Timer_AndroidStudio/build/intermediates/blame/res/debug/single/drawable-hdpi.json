@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-hdpi/ic_launcher.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-hdpi/bg_itemcard_cover.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-hdpi/bg_itemcard_cover.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-hdpi/bg_item_cardview_timer.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-hdpi/bg_item_cardview_timer.png"
+    }
+]
