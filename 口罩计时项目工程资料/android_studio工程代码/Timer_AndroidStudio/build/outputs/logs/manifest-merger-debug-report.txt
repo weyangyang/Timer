@@ -1,0 +1,59 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:2:1-33:12
+	package
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:3:5-24
+	android:versionName
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:5:5-30
+		INJECTED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml
+		INJECTED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml
+	android:versionCode
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:4:5-28
+		INJECTED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml
+		INJECTED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:9:9-38
+	android:minSdkVersion
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:8:9-35
+application
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:11:5-31:19
+	android:label
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:14:9-41
+	android:allowBackup
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:12:9-35
+	android:icon
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:13:9-45
+	android:theme
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:15:9-40
+activity#com.timer.SplashActivity
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:16:9-26:20
+	android:screenOrientation
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:19:13-49
+	android:label
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:18:13-45
+	android:theme
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:20:13-66
+	android:name
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:17:13-43
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:21:13-25:29
+action#android.intent.action.MAIN
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:22:17-69
+	android:name
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:24:17-77
+	android:name
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:24:27-74
+activity#com.timer.ActivationActivity
+ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:27:9-30:68
+	android:screenOrientation
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:29:13-49
+	android:theme
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:30:13-66
+	android:name
+		ADDED from /Users/liyusheng/Timer/Timer_AndroidStudio/AndroidManifest.xml:28:13-56

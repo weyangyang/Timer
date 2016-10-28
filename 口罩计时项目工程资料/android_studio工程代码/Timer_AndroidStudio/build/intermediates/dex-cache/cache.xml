@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/liyusheng/Timer/Timer_AndroidStudio/libs/android-support-v4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1dc1f63cee098b27db60b9a2833fd7ca58f89636">
+        <dex dex="/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/pre-dexed/debug/android-support-v4_cc485859226fb8a5ed5b43e2f74cf0899459af0e.jar" />
+    </item>
+
+</items>

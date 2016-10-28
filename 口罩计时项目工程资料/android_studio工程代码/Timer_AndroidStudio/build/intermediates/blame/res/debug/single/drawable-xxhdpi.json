@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xxhdpi/ic_launcher.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xxhdpi/bg_item_cardview_timer.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xxhdpi/bg_item_cardview_timer.png"
+    }
+]

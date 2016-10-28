@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/bg_item_cardview"
+    android:gravity="center"
+    
+   >
+  
+	<ImageView 
+	    android:id="@+id/ivAlarmClock"
+	    android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_alarm_clock"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="16dp"
+	    />
+     <TextView 
+         android:id="@+id/tvPro"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="产品"
+        android:textColor="@color/white"
+        android:layout_marginRight="18dp"
+        android:textSize="25sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+         />
+     <TextView 
+         android:id="@+id/tvPro2"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="计时器"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+       android:layout_below="@id/tvPro"
+         />
+      <Button 
+          android:id="@+id/btn_start"
+          android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="激活软件"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_other_bg"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+         android:layout_gravity="center"
+          />
+
+  
+
+</RelativeLayout>

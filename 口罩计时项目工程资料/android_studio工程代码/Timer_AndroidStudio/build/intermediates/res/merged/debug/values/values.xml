@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_activation_nav">#91cf50</color>
+    <color name="bg_cardview">#00d0bf</color>
+    <color name="bg_edit_text">#00bef3</color>
+    <color name="bg_main_gray">#eaeaea</color>
+    <color name="black">#000000</color>
+    <color name="gray">#cccccc</color>
+    <color name="red">#ff0000</color>
+    <color name="white">#ffffff</color>
+    <color name="yellow">#f5963d</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">口罩计时</string>
+    <string name="copyright">V1.0 © 2016北京科利爱尔科技有限公司</string>
+    <string name="hello_world">Hello world!</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

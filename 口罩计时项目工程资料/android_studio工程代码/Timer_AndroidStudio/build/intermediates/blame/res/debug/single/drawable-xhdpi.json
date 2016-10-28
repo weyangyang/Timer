@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/btn_pro_bg.9.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/btn_pro_bg.9.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/bg_item_cardview.9.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/bg_item_cardview.9.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/btn_other_bg.9.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/btn_other_bg.9.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/bg_edit.9.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/bg_edit.9.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/bg_item_cardview_timer.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/bg_item_cardview_timer.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/btn_other_pressed_bg.9.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/btn_other_pressed_bg.9.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/ic_alarm_clock.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/ic_alarm_clock.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/bg_btn_green.9.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/bg_btn_green.9.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/bg_main.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/bg_main.png"
+    },
+    {
+        "merged": "/Users/liyusheng/Timer/Timer_AndroidStudio/build/intermediates/res/merged/debug/drawable-xhdpi/bg_itemcard_cover.png",
+        "source": "/Users/liyusheng/Timer/Timer_AndroidStudio/res/drawable-xhdpi/bg_itemcard_cover.png"
+    }
+]
