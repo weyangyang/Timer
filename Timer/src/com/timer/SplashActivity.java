@@ -39,8 +39,8 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private static final int WHEELVIEW_SELECT_TIME = 14;
 	private static final int WHEELVIEW_OFFSET = 1;
 	private static final int REQUEST_CODE_ACTIVATION_SOFT = 898;
-	private static final Uri BTN_PRO_LIB_URL = Uri.parse("https://www.baidu.com");//产品知识库url
-	private static final Uri BTN_PRO_BUY_URL = Uri.parse("https://www.jd.com");//产品优惠购url
+	private static final Uri BTN_PRO_LIB_URL = Uri.parse("https://h5.koudaitong.com/v2/feature/f78g8khm");//产品知识库url
+	private static final Uri BTN_PRO_BUY_URL = Uri.parse("https://h5.koudaitong.com/v2/showcase/homepage?alias=e6n5fhc1");//产品优惠购url
 	private WheelView mWheelView1;
 	private WheelView mWheelView2;
 	private WheelView mWheelView3;

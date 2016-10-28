@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;videowidget/libs/classes.jar&apos; to &apos;videowidget.jar&apos;" description="Rename resource &apos;classes.jar&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="libs/classes.jar" name="videowidget.jar" stamp="1477632402350" updateReferences="true"/>
+</session>
