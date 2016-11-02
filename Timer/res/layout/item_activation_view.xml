@@ -53,6 +53,18 @@
         android:layout_alignParentRight="true"
        android:layout_below="@id/tvPro"
          />
+     <TextView 
+         android:id="@+id/tvPmShow"
+         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="2dp"
+        android:gravity="center_horizontal"
+        android:textSize="13sp"
+       android:layout_below="@id/tvPro2"
+         />
       <Button 
           android:id="@+id/btn_activation"
           android:layout_width="110dp"
