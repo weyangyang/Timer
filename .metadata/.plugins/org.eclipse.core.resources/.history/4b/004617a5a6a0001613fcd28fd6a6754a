@@ -1,0 +1,104 @@
+package com.cowboyg.weather;
+
+import java.util.ArrayList;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.cowboyg.BaseActivity;
+import com.cowboyg.R;
+
+public class WeatherOtherDetailActivity extends BaseActivity implements OnClickListener {
+	private ListView lv_weatherOther;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	setContentView(R.layout.activity_weather_other_detail);
+	tvTitle.setText("天气详情");
+	ivTitleLeft.setOnClickListener(this);
+	lv_weatherOther = (ListView) findViewById(R.id.lv_weatherOther);
+	WeatherBean mWeatherBean = (WeatherBean) getIntent().getSerializableExtra("acb");
+	WeatherOtherListViewAdapter mlistViewAdapter = new WeatherOtherListViewAdapter(this, mWeatherBean.getOtherBeanList());
+	lv_weatherOther.setAdapter(mlistViewAdapter);
+	lv_weatherOther.setVerticalScrollBarEnabled(true);//隐藏滚动条
+}
+@Override
+public void onClick(View v) {
+	switch (v.getId()) {
+	case R.id.ivTitleLeft:// 返回
+		this.finish();
+		break;
+
+	default:
+		break;
+	}
+}
+class WeatherOtherListViewAdapter extends BaseAdapter {
+	private LayoutInflater inflater;
+	ArrayList<WeatherOtherBean> arrayList;
+
+	public WeatherOtherListViewAdapter( Context mContext,ArrayList<WeatherOtherBean> arrayList) {
+		this.arrayList = arrayList;
+		
+		inflater = LayoutInflater.from(mContext);
+	}
+
+	@Override
+	public int getCount() {
+		return arrayList.size();
+	}
+
+	@Override
+	public String getItem(int position) {
+		return arrayList.get(position).toString();
+	}
+	
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+	
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder = null;
+		if (convertView == null) {
+			convertView = inflater.inflate(R.layout.item_weather_other_listview, null);
+			holder = new ViewHolder();
+			holder.tvAdvice = (TextView) convertView.findViewById(R.id.tv_advice_listview);
+			holder.tvDescription = (TextView) convertView.findViewById(R.id.tv_description_listview);
+			holder.tvSubTitle = (TextView) convertView.findViewById(R.id.tv_subtitle_listview);
+			holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_title_listview);
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		WeatherOtherBean mWeatherOtherBean = arrayList.get(position);
+		holder.tvAdvice.setText(mWeatherOtherBean.getStrAdvice());
+		holder.tvDescription.setText(mWeatherOtherBean.getStrDescription());
+		holder.tvSubTitle.setText(mWeatherOtherBean.getStrSubTitle());
+		holder.tvTitle.setText(mWeatherOtherBean.getStrTitle());
+		convertView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
+		return convertView;
+	}
+	
+	class ViewHolder {
+		private TextView tvTitle;
+		private TextView tvSubTitle;
+		private TextView tvAdvice;
+		private TextView tvDescription;
+	}
+}
+}

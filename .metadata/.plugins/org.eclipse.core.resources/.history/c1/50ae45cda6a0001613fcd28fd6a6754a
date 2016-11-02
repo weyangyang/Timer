@@ -1,0 +1,330 @@
+package com.timer.weather;
+
+import java.util.regex.Pattern;
+
+import android.app.Activity;
+import android.text.format.Time;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AbsoluteLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+public class ForecastUtil {
+	/**
+     * 定义每天白天的开始时间
+     */
+    private static final int DAYTIME_BEGIN_HOUR = 8;
+
+    /**
+     * 定义每天白天的结束时间
+     */
+    private static final int DAYTIME_END_HOUR = 18;
+    
+	/**
+	 * 判断当前时间是否属于白天
+     */
+    public static boolean isDaytime() {
+        Time time = new Time();
+        time.setToNow();
+        return (time.hour >= DAYTIME_BEGIN_HOUR && time.hour <= DAYTIME_END_HOUR);
+    }
+    
+    private static final Pattern sIconStorm = Pattern.compile("(雷|雷阵雨)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconSnow = Pattern.compile("(雪|冰|霜|小雪|雨夹雪)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconShower = Pattern.compile("(阵雨)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconSun = Pattern.compile("(晴)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconClouds = Pattern.compile("(云|少云|阴)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconPartlyCloudy = Pattern.compile("(部分多云|晴转多云)", Pattern.CASE_INSENSITIVE);    
+    private static final Pattern sIconMostCloudy = Pattern.compile("(多云)", Pattern.CASE_INSENSITIVE);    
+    private static final Pattern sIconLightrain = Pattern.compile("(小雨)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconChanceOfRain = Pattern.compile("(可能下雨|阴间小雨)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconHeavyrain = Pattern.compile("(大雨)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconRain = Pattern.compile("(雨|小雨)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconHaze = Pattern.compile("(霾|阴霾)", Pattern.CASE_INSENSITIVE);
+    private static final Pattern sIconFog = Pattern.compile("(雾)", Pattern.CASE_INSENSITIVE);    
+    
+    
+    public static int getHomeRightImg(String iconDescription){
+    	int icon = 0;
+    	if (iconDescription == null){
+        	icon = R.drawable.ic_home_right_weather_sunny;
+        } else if (sIconSnow.matcher(iconDescription).find()) {
+            icon =R.drawable.ic_home_right_weather_snow;
+        } else if (sIconShower.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_weather_rain;
+        } else if (sIconPartlyCloudy.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_cloudy;
+        } else if (sIconMostCloudy.matcher(iconDescription).find()) {
+           icon = R.drawable.ic_home_right_cloudy;
+        } else if (sIconSun.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_weather_sunny;
+        } else if (sIconClouds.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_cloudy;
+        } else if (sIconHeavyrain.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_weather_rain;
+        } else if (sIconRain.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_weather_rain;
+        } else if (sIconHaze.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_cloudy;
+        } else if (sIconFog.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_cloudy;
+        } else if (sIconChanceOfRain.matcher(iconDescription).find()) {
+            icon = R.drawable.ic_home_right_weather_rain;
+        } else {
+        	icon = R.drawable.ic_home_right_weather_sunny;
+        }
+    	return icon;
+    }
+    /**
+     * 获取表示当前天气状态的图标
+     * @param iconDescription  天气状态图标的描述
+     * @return
+     */
+	public static int getForecastImage(String iconDescription){
+		int icon = 0;
+		boolean isDaytime = isDaytime();
+		if (iconDescription == null){
+        	icon = R.drawable.weather_sunny;
+		}else if (sIconStorm.matcher(iconDescription).find()) {
+            icon = isDaytime? R.drawable.weather_chancestorm : R.drawable.weather_chancestorm_n;
+        } else if (sIconSnow.matcher(iconDescription).find()) {
+            icon = isDaytime? R.drawable.weather_chancesnow : R.drawable.weather_chancesnow_n;
+        } else if (sIconLightrain.matcher(iconDescription).find()) {
+            icon = R.drawable.weather_lightrain;
+        } else if (sIconShower.matcher(iconDescription).find()) {
+            icon = R.drawable.weather_rain;
+        } else if (sIconPartlyCloudy.matcher(iconDescription).find()) {
+            icon = isDaytime ? R.drawable.weather_mostlysunny : R.drawable.weather_mostlysunny_n;
+        } else if (sIconMostCloudy.matcher(iconDescription).find()) {
+            icon = isDaytime ? R.drawable.weather_mostlycloudy : R.drawable.weather_mostlycloudy_n;
+        } else if (sIconSun.matcher(iconDescription).find()) {
+            icon = isDaytime ? R.drawable.weather_sunny : R.drawable.weather_sunny_n;
+        } else if (sIconClouds.matcher(iconDescription).find()) {
+            icon = R.drawable.weather_cloudy;
+        } else if (sIconHeavyrain.matcher(iconDescription).find()) {
+            icon = R.drawable.weather_rain;
+        } else if (sIconRain.matcher(iconDescription).find()) {
+            icon = R.drawable.weather_rain;
+        } else if (sIconHaze.matcher(iconDescription).find()) {
+            icon = R.drawable.weather_haze;
+        } else if (sIconFog.matcher(iconDescription).find()) {
+            icon = R.drawable.weather_fog;
+        } else if (sIconChanceOfRain.matcher(iconDescription).find()) {
+            icon = isDaytime ? R.drawable.weather_cloudyrain : R.drawable.weather_cloudyrain_n;
+        } else {
+        	icon = R.drawable.weather_sunny;
+        }
+		
+		return icon;
+	}
+	
+	/**
+	 * 获取表示天气状态的图标（用于判断是否显示动画）
+	 * @param iconDescription 天气状态图标的描述
+	 * @return
+	 */
+	public static int getCurrentForecastIcon(String iconDescription){
+		int icon = 0;
+		if (iconDescription == null){
+			icon = R.drawable.weather_sunny;
+		} else if (sIconClouds.matcher(iconDescription).find()){
+			icon = R.drawable.weather_cloudy;
+		} else if (sIconRain.matcher(iconDescription).find()){
+			icon = R.drawable.weather_rain;
+		}
+		
+		return icon;
+	}
+	
+	/**
+	 * 获取表示预报天气状态的图标
+	 * @param iconDescription 天气状态图标的描述
+	 * @return
+	 */
+	public static int getDetailForecastIcon(String iconDescription){
+		int icon = 0;
+		
+		if (iconDescription == null) {
+			icon = R.drawable.sun;
+		} else if (sIconPartlyCloudy.matcher(iconDescription).find()) {
+            icon = R.drawable.mostlysunny;
+        } else if (sIconSun.matcher(iconDescription).find()) {
+			icon = R.drawable.sun;
+		} else if (sIconClouds.matcher(iconDescription).find()) {
+			icon = R.drawable.cloudy;
+		} else if (sIconLightrain.matcher(iconDescription).find()) {
+			icon = R.drawable.lightrain;
+		} else if (sIconStorm.matcher(iconDescription).find()) {
+			icon = R.drawable.storm;
+		} else if (sIconChanceOfRain.matcher(iconDescription).find()) {
+            icon = R.drawable.cloudyrain;
+        } else if (sIconRain.matcher(iconDescription).find()) {
+			icon = R.drawable.rain;
+		} else if (sIconFog.matcher(iconDescription).find()) {
+			icon = R.drawable.fog;
+		} else if (sIconSnow.matcher(iconDescription).find()) {
+			icon = R.drawable.rain;
+		}
+		
+		return icon;
+	}
+
+	 public static String[] getFuture5Week(String week){
+	    	String []weeks = new String[]{"星期一","星期二","星期三","星期四","星期五","星期六","星期日"};
+	    	String [] future5Weeks = new String[5];
+	    	int position =0;
+	    		for(int i = 0;i<weeks.length;i++){
+	    			if(weeks[i].equals(week)){
+	    				position = i;
+	    				break;
+	    			}
+	    		}
+	    		int a = 0;
+	    		for(int j = (position==6)?(position-6):(position+1);j!=position;j =(j+1)%7){
+	    			future5Weeks[a]=weeks[j];
+	    			a++;
+	    			if(a==5){
+	    				break;
+	    			}
+	    		}
+	    	return future5Weeks;
+	    }
+    /**
+	 * 动画效果
+	 * @param iconDescription
+	 */
+	public static  void updateAnimtation(Activity activity,String iconDescription,int layoutID) {
+		
+		/**
+		 * 获取代表当前天气状况的图标的ID
+		 */
+		int icon = ForecastUtil.getCurrentForecastIcon(iconDescription);
+		/**
+		 * 获取图标显示控件
+		 */
+		ImageView currentIcon = (ImageView)activity.findViewById(R.id.ivWeather);
+		
+		/**
+		 * 加载透明控制动画
+		 */
+		Animation curIconAnim = AnimationUtils.loadAnimation(activity, R.anim.rotatecurrentweather);
+		currentIcon.setAnimation(curIconAnim);
+		
+		/**
+		 * 如果有云则执行如下动画
+		 */
+		if (icon == R.drawable.weather_cloudy){
+			RelativeLayout absLayout = (RelativeLayout)activity.findViewById(layoutID);
+			ImageView cloud01 = new ImageView(activity);
+			ImageView cloud02 = new ImageView(activity);
+			
+			/**
+			 * 设置为true，表示控件将适配图像资源的宽高比例
+			 */
+			cloud01.setAdjustViewBounds(true);
+			cloud02.setAdjustViewBounds(true);
+			cloud01.setImageResource(R.drawable.layer_cloud1);
+			cloud02.setImageResource(R.drawable.layer_cloud2);
+			
+			/**
+			 * 只有当设置setAdjustViewBounds(true)的时候：
+			 *  1) set adjustViewBounds to true 
+			 *  2) set maxWidth and maxHeight to 成比例 
+			 *  3) set the height and width layout params to WRAP_CONTENT.
+			 */
+			cloud01.setMaxHeight(70);
+			/**
+			 * 设置最小高度
+			 */
+			cloud01.setMinimumHeight(100);
+			cloud01.setMaxWidth(300);
+			/**
+			 * 设置最小宽度
+			 */
+			cloud01.setMinimumWidth(200);
+			
+			cloud02.setMaxHeight(380);
+			cloud02.setMinimumHeight(48);
+			cloud02.setMaxWidth(400);
+			cloud02.setMinimumWidth(300);
+			
+			/**
+			 * 左右动画
+			 */
+			Animation leftAnim = AnimationUtils.loadAnimation(activity, R.anim.translatecloudleft);
+			Animation rightAnim = AnimationUtils.loadAnimation(activity, R.anim.translatecloudright);
+			
+			//leftAnim.setRepeatCount(Animation.INFINITE);
+			//rightAnim.setRepeatCount(Animation.INFINITE);
+			
+			cloud01.setAnimation(leftAnim);
+			cloud02.setAnimation(rightAnim);
+			
+			absLayout.addView(cloud01);
+			absLayout.addView(cloud02);			
+			
+		}
+		
+		/**
+		 * 如果有雨则执行如下动画
+		 */
+		if (icon == R.drawable.weather_rain){
+			RelativeLayout absLayout = (RelativeLayout)activity.findViewById(layoutID);
+			ImageView rain01 = new ImageView(activity);
+			ImageView rain02 = new ImageView(activity);
+			ImageView rain03 = new ImageView(activity);
+			ImageView rain04 = new ImageView(activity);
+			ImageView rain05 = new ImageView(activity);
+			ImageView drop01 = new ImageView(activity);
+			ImageView drop02 = new ImageView(activity);
+			ImageView drop03 = new ImageView(activity);
+			rain01.setAdjustViewBounds(true);
+			rain02.setAdjustViewBounds(true);
+			rain03.setAdjustViewBounds(true);
+			rain04.setAdjustViewBounds(true);
+			rain05.setAdjustViewBounds(true);
+			drop01.setAdjustViewBounds(true);
+			drop02.setAdjustViewBounds(true);
+			drop03.setAdjustViewBounds(true);
+			rain01.setImageResource(R.drawable.layer_drop1);
+//			rain01.setImageResource(R.drawable.rain1);
+			rain02.setImageResource(R.drawable.layer_drop1);
+			rain03.setImageResource(R.drawable.layer_drop5);
+			rain04.setImageResource(R.drawable.layer_drop7);
+//			rain02.setImageResource(R.drawable.rain1);
+//			rain03.setImageResource(R.drawable.rain2);
+//			rain04.setImageResource(R.drawable.rain3);
+			rain05.setImageResource(R.drawable.layer_drop1);
+//			rain05.setImageResource(R.drawable.rain2);
+			drop01.setImageResource(R.drawable.layer_drop1);
+			drop02.setImageResource(R.drawable.layer_drop5);
+			drop03.setImageResource(R.drawable.layer_drop7);
+			
+			LayoutParams lp01 = new LayoutParams(18, 30, 400, 200);
+			LayoutParams lp02 = new LayoutParams(16, 33, 430, 180);
+			LayoutParams lp03 = new LayoutParams(19, 30, 480, 200);
+			
+			Animation rain01Anim = AnimationUtils.loadAnimation(activity, R.anim.translaterain01);
+			Animation rain02Anim = AnimationUtils.loadAnimation(activity, R.anim.translaterain02);
+			Animation rain03Anim = AnimationUtils.loadAnimation(activity, R.anim.translaterain03);
+			Animation rain04Anim = AnimationUtils.loadAnimation(activity, R.anim.translaterain04);
+			Animation rain05Anim = AnimationUtils.loadAnimation(activity, R.anim.translaterain05);
+						
+			rain01.setAnimation(rain01Anim);
+			rain02.setAnimation(rain02Anim);
+			rain03.setAnimation(rain03Anim);
+			rain04.setAnimation(rain04Anim);
+			rain05.setAnimation(rain05Anim);
+			
+			absLayout.addView(rain01);
+			absLayout.addView(rain02);
+			absLayout.addView(rain03);
+			absLayout.addView(rain04);
+			absLayout.addView(rain05);
+			absLayout.addView(drop01, lp01);
+			absLayout.addView(drop02, lp02);
+			absLayout.addView(drop03, lp03);		
+		}
+	}
+}

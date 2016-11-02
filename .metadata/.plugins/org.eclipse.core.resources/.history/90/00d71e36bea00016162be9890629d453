@@ -1,0 +1,6 @@
+/sge/
+/.gitignore
+/config/
+/db/
+/imageloader/
+/log/

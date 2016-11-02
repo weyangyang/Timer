@@ -8,16 +8,22 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.timer.utils.HConstants;
 import com.timer.utils.PreferenceUtils;
 import com.timer.view.TimerTextView;
 import com.timer.view.TimerTextView.TimerTextViewListener;
 import com.timer.view.WheelView;
+import com.timer.weather.WeatherBean;
+import com.timer.weather.WeatherManager;
 @SuppressLint("NewApi")
 public class SplashActivity extends Activity implements OnClickListener {
 	
@@ -59,10 +65,11 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private Button btnActivation;
 	private Button btnProLib;
 	private Button btnProBuy;
-
+	private WeatherBean mWeatherBean;
 	private int timeNum1 = 15;
 	private int timeNum2 = 15;
 	private int timeNum3 = 15;
+	private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,7 +236,42 @@ public class SplashActivity extends Activity implements OnClickListener {
         mWheelView3.setOffset(WHEELVIEW_OFFSET);
         mWheelView3.setSeletion(WHEELVIEW_SELECT_TIME);
         mWheelView3.setItems(numList);
+    	String strJson = PreferenceUtils.getPrefString(this, HConstants.SP_WEATHER_JSON, "");
+		if(!TextUtils.isEmpty(strJson)){
+			 mWeatherBean = WeatherManager.parserWeatherJson(strJson);
+			if(mWeatherBean!=null){
+				setWeatherData();
+				}
+			}else{
+				if(WeatherManager.isStartedLocation()){
+					notifyRefashWeatherData();
+				}else{
+					WeatherManager.InitLocation(0);
+					WeatherManager.startLocation();
+					notifyRefashWeatherData();
+				}
+			}
 	}
+private void setWeatherData() {
+		Toast.makeText(this, "空气污染指数 :"+mWeatherBean.getStrPm()+" "+mWeatherBean.getStrPmLevel(), Toast.LENGTH_LONG).show();
+		
+	}
+
+private void notifyRefashWeatherData() {
+	handler.postDelayed(new Runnable() {
+		@Override
+		public void run() {
+			String strJson = PreferenceUtils.getPrefString(SplashActivity.this,HConstants.SP_WEATHER_JSON, "");
+			if(!TextUtils.isEmpty(strJson)){
+				 mWeatherBean = WeatherManager.parserWeatherJson(strJson);
+				 if(mWeatherBean!=null){
+						setWeatherData();
+				}
+			}
+		}
+	}, 1500);
+}
+
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	super.onActivityResult(requestCode, resultCode, data);
@@ -397,8 +439,23 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 			
 			break;
 		case BTN_PRO_LIB_TAG://产品知识库
-			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_LIB_URL);
-			this.startActivity(intent);
+		 	String strJson = PreferenceUtils.getPrefString(this, HConstants.SP_WEATHER_JSON, "");
+			if(!TextUtils.isEmpty(strJson)){
+				 mWeatherBean = WeatherManager.parserWeatherJson(strJson);
+				if(mWeatherBean!=null){
+					setWeatherData();
+					}
+				}else{
+					if(WeatherManager.isStartedLocation()){
+						notifyRefashWeatherData();
+					}else{
+						WeatherManager.InitLocation(0);
+						WeatherManager.startLocation();
+						notifyRefashWeatherData();
+					}
+				}
+			// intent = new Intent("android.intent.action.VIEW", BTN_PRO_LIB_URL);
+			//this.startActivity(intent);
 			break;
 		case BTN_PRO_BUY_TAG://产品优惠购
 			 intent = new Intent("android.intent.action.VIEW", BTN_PRO_BUY_URL);

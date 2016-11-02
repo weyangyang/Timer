@@ -1,0 +1,27 @@
+package com.cowboyg.utils;
+
+import java.io.Serializable;
+
+public class HConstants implements Serializable {
+	private static final long serialVersionUID = -4616179124859923332L;
+	public static final String SP_CITY_CODE = "city_code";
+	public static final String SP_UPDATE_WEATHER_TIME = "update_weather_time";
+	public static final String SP_WEATHER_JSON = "weather_json";
+	public static final String SP_LAST_UPDATE_LOCATION_TIME = "last_update_location_time";
+	
+	public static final String SP_APP_VERSION_CODE = "app_version_code";
+	//Intent key
+	public static final String HOME_ACTIVITY_TO_WEATHERDETAIL_INTENT_KEY = "WeatherBean";
+	public static final String SP_USERNAME_KEY = "sp_user_name";
+	public static final String SP_LOGIN_PHONE_KEY = "sp_login_phone";
+	public static final String SP_PWD_KEY = "sp_pwd";
+	public static final String SP_ISREMEMBER_PWD_KEY = "isRememberPwd";
+	public static final String SP_TOKEN_KEY = "token";
+	
+	public static final String CAMERAHEAD = "cameraHead";
+	public static final String DEFAULT_SIZE = "default_size";
+	public static final String SP_TAKEPHOTOPATH = "takePhotoPath";
+	public static final String INTENT_KEY_HEART_NUM = "HeartrateNum";
+	public static final String INTENT_KEY_FROM_ACTIVITY = "fromActivity";
+	public static final String INTENT_KEY_HEART_DB_ARRAYLIST = "heart_db_arraylist";
+}

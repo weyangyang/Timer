@@ -1,0 +1,180 @@
+package com.timer.weather;
+
+import java.util.ArrayList;
+
+import sgecore.utils.PreferenceUtils;
+import sgecore.utils.SubstringUtils;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.cowboyg.BaseActivity;
+import com.cowboyg.R;
+import com.cowboyg.utils.HConstants;
+
+public class WeatherDetailActivity extends BaseActivity implements
+		OnClickListener {
+	private WeatherBean mWeatherBean;
+	private TextView tvTemperature,tvWeather,tvPm,tvDate,tvWeekDay,tvCityName,tvWind,tvDressing;
+	private ImageView ivWeather;
+	private GridView gvOtherWeather;
+	private Handler handler = new Handler();
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_weather_detail);
+		initView();
+		initData();
+	}
+	private void initData() {
+		mWeatherBean = (WeatherBean) getIntent().getExtras().getSerializable(HConstants.HOME_ACTIVITY_TO_WEATHERDETAIL_INTENT_KEY);
+		if(mWeatherBean!=null){
+			setWeatherData();
+		}else{
+			String strJson = PreferenceUtils.getPrefString(HConstants.SP_WEATHER_JSON, "");
+			if(!TextUtils.isEmpty(strJson)){
+				 mWeatherBean = WeatherManager.parserWeatherJson(strJson);
+				if(mWeatherBean!=null){
+					setWeatherData();
+					}
+				}else{
+					if(WeatherManager.isStartedLocation()){
+						notifyRefashWeatherData();
+					}else{
+						WeatherManager.InitLocation(0);
+						WeatherManager.startLocation();
+						notifyRefashWeatherData();
+					}
+				}
+			
+		}
+	}
+	private void setWeatherData() {
+		ivWeather.setImageResource(ForecastUtil.getForecastImage(mWeatherBean.getStrWeather1()));
+		tvTemperature.setText(mWeatherBean.getStrTemperature1());
+		tvWeather.setText(mWeatherBean.getStrWeather1());
+		tvPm.setText("空气污染指数 :"+mWeatherBean.getStrPm()+" "+mWeatherBean.getStrPmLevel());
+		tvDate.setText(mWeatherBean.getStrDate());
+		tvWeekDay.setText(mWeatherBean.getStrWeekDay());
+		tvCityName.setText(mWeatherBean.getStrCity());
+		tvWind.setText(mWeatherBean.getStrWind1()+" "+mWeatherBean.getStrWindLevel1());
+		String strSysUpdateTime = mWeatherBean.getSysUpdateTime();
+		strSysUpdateTime = SubstringUtils.substringAfterLast(strSysUpdateTime, " ");
+		tvDressing.setText("更新时间："+strSysUpdateTime);
+		ArrayList<Future5WeatherBean> arrayList =  mWeatherBean.getFuture5WeatherList();
+		
+		GridViewAdapter gridViewAdapter = new GridViewAdapter(this,arrayList);
+		gvOtherWeather.setAdapter(gridViewAdapter);
+		ForecastUtil.updateAnimtation(this,mWeatherBean.getStrWeather1(),R.id.home_weather_detail);
+	}
+	private void notifyRefashWeatherData() {
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				String strJson = PreferenceUtils.getPrefString(HConstants.SP_WEATHER_JSON, "");
+				if(!TextUtils.isEmpty(strJson)){
+					 mWeatherBean = WeatherManager.parserWeatherJson(strJson);
+					 if(mWeatherBean!=null){
+							setWeatherData();
+					}
+				}
+			}
+		}, 1500);
+	}
+	private void initView() {
+		tvTitle.setText("天气详情");
+		ivTitleLeft.setOnClickListener(this);
+		ivWeather = (ImageView) findViewById(R.id.ivWeather);
+		tvTemperature = (TextView) findViewById(R.id.tvTemperature);
+		tvWeather = (TextView) findViewById(R.id.tvWeather);
+		tvPm = (TextView) findViewById(R.id.tvPm);
+		tvDate = (TextView) findViewById(R.id.tvDate);
+		tvWeekDay = (TextView) findViewById(R.id.tvWeekDay);
+		tvCityName = (TextView) findViewById(R.id.tvCityName);
+		tvWind = (TextView) findViewById(R.id.tvWind);
+		tvDressing = (TextView) findViewById(R.id.tvDressing);
+		gvOtherWeather = (GridView) findViewById(R.id.gvOtherWeather);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.ivTitleLeft:// 返回
+			this.finish();
+			break;
+		}
+	}
+	
+	class GridViewAdapter extends BaseAdapter {
+		private LayoutInflater inflater;
+		ArrayList<Future5WeatherBean> arrayList;
+
+		public GridViewAdapter( Context mContext,ArrayList<Future5WeatherBean> arrayList) {
+			this.arrayList = arrayList;
+			
+			inflater = LayoutInflater.from(mContext);
+		}
+
+		@Override
+		public int getCount() {
+			return arrayList.size();
+		}
+
+		@Override
+		public String getItem(int position) {
+			return arrayList.get(position).toString();
+		}
+		
+		@Override
+		public long getItemId(int position) {
+			return position;
+		}
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			ViewHolder holder = null;
+			if (convertView == null) {
+				convertView = inflater.inflate(R.layout.item_other_weather_gridview, null);
+				holder = new ViewHolder();
+				holder.ivOtherWeather =(ImageView)convertView.findViewById(R.id.ivOtherWeather);
+				holder.tvOtherTemperature =(TextView) convertView.findViewById(R.id.tvOtherTemperature);
+				holder.tvOtherWeather = (TextView) convertView.findViewById(R.id.tvOtherWeather);
+				holder.tvOtherWeatherWeek =(TextView) convertView.findViewById(R.id.tvOtherWeatherWeek);
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
+			}
+			Future5WeatherBean mFuture5WeatherBean = arrayList.get(position);
+			int resourceID = ForecastUtil.getForecastImage(mFuture5WeatherBean.getStrWeather());
+			holder.ivOtherWeather.setImageResource(resourceID);
+			holder.tvOtherWeatherWeek.setText(mFuture5WeatherBean.getStrWeek());
+			holder.tvOtherTemperature.setText(mFuture5WeatherBean.getStrTemperature());
+			holder.tvOtherWeather.setText(mFuture5WeatherBean.getStrWeather());
+			convertView.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					
+				}
+			});
+			return convertView;
+		}
+		
+		class ViewHolder {
+			private ImageView ivOtherWeather;
+			private TextView tvOtherWeatherWeek;
+			private TextView tvOtherWeather;
+			private TextView tvOtherTemperature;
+		}
+	}
+	
+}

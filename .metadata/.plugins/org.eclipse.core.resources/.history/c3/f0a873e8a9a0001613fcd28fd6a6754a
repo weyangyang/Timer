@@ -1,0 +1,348 @@
+package com.timer.weather;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import netutils.http.HttpNetUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import sgecore.utils.PreferenceUtils;
+import sgecore.utils.SystemUtils;
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.location.LocationClientOption.LocationMode;
+
+public class WeatherManager {
+	static String  weatherServiceUrl = "http://weather.123.duba.net/static/weather_info/";
+	private static LocationClient mLocationClient  = BaseApplication.getInstance().mLocationClient;
+	
+	/**
+	 * 获取weather bean 数据
+	 * @param strResult 网络请求返回的weather json
+	 * @return  WeatherBean  解析失败则返回 null
+	 */
+	public static WeatherBean parserWeatherJson(String strResult) {
+		if(TextUtils.isEmpty(strResult)){
+			return null;
+		}
+		int start = strResult.indexOf("(");
+		int end = strResult.indexOf(")");
+		String jsonString = strResult.substring(start+1, end);
+		WeatherBean weatherBean  =new  WeatherBean();
+		try {
+			JSONObject jsonObject = new JSONObject(jsonString);
+			JSONObject weatherInfo = jsonObject.getJSONObject("weatherinfo");
+			String strCity = weatherInfo.getString("city");
+			weatherBean.setStrCity(strCity);
+			String strDate = weatherInfo.getString("date_y");
+			weatherBean.setStrDate(strDate);
+			String strWeekDay = weatherInfo.getString("week");
+			weatherBean.setStrWeekDay(strWeekDay);
+			String strPm = weatherInfo.getString("pm");
+			weatherBean.setStrPm(strPm);
+			String strPmLevel = weatherInfo.getString("pm-level");
+			weatherBean.setStrPmLevel(strPmLevel);
+			String sysUpdateTime = jsonObject.getString("update_time");
+			weatherBean.setSysUpdateTime(sysUpdateTime);
+			ArrayList<WeatherOtherBean> weatherOtherList = new ArrayList<WeatherOtherBean>();
+			ArrayList<Future5WeatherBean> future5WeatherList = new ArrayList<Future5WeatherBean>();
+			for(int i=0;i<5;i++){
+				Future5WeatherBean mFuture5WeatherBean = new Future5WeatherBean();
+				String strFutureTemperature = weatherInfo.getString("temp"+(i+2));
+				mFuture5WeatherBean.setStrTemperature(strFutureTemperature);
+				String strFutureWeather= weatherInfo.getString("weather"+(i+2));
+				mFuture5WeatherBean.setStrWeather(strFutureWeather);
+				String strFutureWindLevel = weatherInfo.getString("fl"+(i+2));
+				mFuture5WeatherBean.setStrWindLevel(strFutureWindLevel);
+				String []weeks = ForecastUtil.getFuture5Week(strWeekDay);
+				mFuture5WeatherBean.setStrWeek(weeks[i]);
+				String strFutureWind = weatherInfo.getString("wind"+(i+2));
+				mFuture5WeatherBean.setStrWind(strFutureWind);
+				future5WeatherList.add(mFuture5WeatherBean);
+			}
+			weatherBean.setFuture5WeatherList(future5WeatherList);
+			
+			String strTemperature1 = weatherInfo.getString("temp1");
+			weatherBean.setStrTemperature1(strTemperature1);
+			
+			String strWeather1 = weatherInfo.getString("weather1");
+			weatherBean.setStrWeather1(strWeather1);
+			
+			String strWind1 = weatherInfo.getString("wd");//风向
+			weatherBean.setStrWind1(strWind1);
+			String strWindLevel1 = weatherInfo.getString("wind1");//风力级别
+			weatherBean.setStrWindLevel1(strWindLevel1);
+//			try {
+//				String strDressingIndex = weatherInfo.getString("index");//今天穿衣指数;
+////				weatherBean.setStrDressingIndex(strDressingIndex);
+//				String strTravel = weatherInfo.getString("index_tr");//旅游
+////				weatherBean.setStrTravel(strTravel);
+//				String strTravel_D = weatherInfo.getString("index_tr_d");//旅游
+////				weatherBean.setStrTravel_D(strTravel_D);
+//				addBean2List(weatherOtherList,"建议: ","旅游",strTravel,strTravel_D);
+//				
+//				String str48DressingIndex = weatherInfo.getString("index48");
+////				weatherBean.setStr48DressingIndex(str48DressingIndex);
+//				String str48DressingIndex_D = weatherInfo.getString("index48_d");
+////				weatherBean.setStr48DressingIndex_D(str48DressingIndex_D);
+//				
+//				String strUltravioletRays = weatherInfo.getString("index_uv");
+////				weatherBean.setStrUltravioletRays(strUltravioletRays);
+//				String strUltravioletRays_D = weatherInfo.getString("index_uv_d");
+////				weatherBean.setStrUltravioletRays_D(strUltravioletRays_D);
+//				String str48UltravioletRays = weatherInfo.getString("index48_uv");//xxx
+////				weatherBean.setStr48UltravioletRays(str48UltravioletRays);
+//				addBean2List(weatherOtherList,"建议: ","紫外线强度",strUltravioletRays,strUltravioletRays_D);
+//				
+//				String strClearCar = weatherInfo.getString("index_xc");
+////				weatherBean.setStrClearCar(strClearCar);
+//				String strClearCar_D = weatherInfo.getString("index_xc_d");
+////				weatherBean.setStrClearCar_D(strClearCar_D);
+//				addBean2List(weatherOtherList,"建议: ","洗车",strClearCar,strClearCar_D);
+//				
+//				String strComfortIndex = weatherInfo.getString("index_co");
+////				weatherBean.setStrComfortIndex(strComfortIndex);
+//				String strComfortIndex_D = weatherInfo.getString("index_co_d");
+////				weatherBean.setStrComfortIndex_D(strComfortIndex_D);
+//				addBean2List(weatherOtherList,"详情: ","舒适指数",strComfortIndex,strComfortIndex_D);
+//				
+//				String strMorningExercises = weatherInfo.getString("index_cl");
+////				weatherBean.setStrMorningExercises(strMorningExercises);
+//				String strMorningExercises_D = weatherInfo.getString("index_cl_d");
+////				weatherBean.setStrMorningExercises_D(strMorningExercises_D);
+//				addBean2List(weatherOtherList,"建议: ","晨练",strMorningExercises,strMorningExercises_D);
+//				
+//				String strIndexAC = weatherInfo.getString("index_ac");
+//				String strIndexAC_D = weatherInfo.getString("index_ac_d");
+//				addBean2List(weatherOtherList,"建议: ","开空调",strIndexAC,strIndexAC_D);
+//				
+//				String strIndexDY = weatherInfo.getString("index_dy");
+//				String strIndexDY_D = weatherInfo.getString("index_dy_d");
+//				addBean2List(weatherOtherList,"建议: ","钩鱼",strIndexDY,strIndexDY_D);
+//				
+//				String strIndexGJ = weatherInfo.getString("index_gj");
+//				String strIndexGJ_D = weatherInfo.getString("index_gj_d");
+//				addBean2List(weatherOtherList,"建议: ","逛街",strIndexGJ,strIndexGJ_D);
+//				
+//				String strIndexGM = weatherInfo.getString("index_gm");
+//				String strIndexGM_D = weatherInfo.getString("index_gm_d");
+//				addBean2List(weatherOtherList,"建议: ","感冒",strIndexGM,strIndexGM_D);
+//				
+//				String strIndexJT = weatherInfo.getString("index_jt");
+//				String strIndexJT_D = weatherInfo.getString("index_jt_d");
+//				addBean2List(weatherOtherList,"详情: ","交通",strIndexJT,strIndexJT_D);
+//				
+//				String strIndexLK = weatherInfo.getString("index_lk");
+//				String strIndexLK_D = weatherInfo.getString("index_lk_d");
+//				addBean2List(weatherOtherList,"详情: ","路况",strIndexLK,strIndexLK_D);
+//				
+//				String strIndexHC = weatherInfo.getString("index_hc");
+//				String strIndexHC_D = weatherInfo.getString("index_hc_d");
+//				addBean2List(weatherOtherList,"建议: ","玩水",strIndexHC,strIndexHC_D);
+//				
+//				String strIndexPJ = weatherInfo.getString("index_pj");
+//				String strIndexPJ_D = weatherInfo.getString("index_pj_d");
+//				addBean2List(weatherOtherList,"建议: ","喝啤酒",strIndexPJ,strIndexPJ_D);
+//				
+//				String strIndexYH = weatherInfo.getString("index_yh");
+//				String strIndexYH_D = weatherInfo.getString("index_yh_d");
+//				addBean2List(weatherOtherList,"建议: ","约会指数",strIndexYH,strIndexYH_D);
+//				
+//				String strIndexZS = weatherInfo.getString("index_zs");
+//				String strIndexZS_D = weatherInfo.getString("index_zs_d");
+//				addBean2List(weatherOtherList,"建议: ","中暑指数",strIndexZS,strIndexZS_D);
+//				
+//				String strIndexXQ = weatherInfo.getString("index_xq");
+//				String strIndexXQ_D = weatherInfo.getString("index_xq_d");
+//				addBean2List(weatherOtherList,"建议: ","心情指数",strIndexXQ,strIndexXQ_D);
+//				
+//				String strIndexYS = weatherInfo.getString("index_ys");
+//				String strIndexYS_D = weatherInfo.getString("index_ys_d");
+//				addBean2List(weatherOtherList,"详情: ","带伞指数",strIndexYS,strIndexYS_D);
+//				
+//				String strIndexCT = weatherInfo.getString("index_ct");
+//				String strIndexCT_D = weatherInfo.getString("index_ct_d");
+//				addBean2List(weatherOtherList,"建议: ","穿衣指数",strIndexCT,strIndexCT_D);
+//				
+//				String strIndexNL = weatherInfo.getString("index_nl");
+//				String strIndexNL_D = weatherInfo.getString("index_nl_d");
+//				addBean2List(weatherOtherList,"建议: ","夜间外出",strIndexNL,strIndexNL_D);
+//				
+//				String strIndexPP = weatherInfo.getString("index_pp");
+//				String strIndexPP_D = weatherInfo.getString("index_pp_d");
+//				addBean2List(weatherOtherList,"建议: ","化妆指数",strIndexPP,strIndexPP_D);
+//				
+//				String strIndexPL = weatherInfo.getString("index_pl");
+//				String strIndexPL_D = weatherInfo.getString("index_pl_d");
+//				addBean2List(weatherOtherList,"建议: ","室外活动指数",strIndexPL,strIndexPL_D);
+//				
+//				String strIndexPK = weatherInfo.getString("index_pk");
+//				String strIndexPK_D = weatherInfo.getString("index_pk_d");
+//				addBean2List(weatherOtherList,"建议: ","放风筝",strIndexPK,strIndexPK_D);
+//				
+//				String strIndexMF = weatherInfo.getString("index_mf");
+//				String strIndexMF_D = weatherInfo.getString("index_mf_d");
+//				addBean2List(weatherOtherList,"建议: ","头发防护指数",strIndexMF,strIndexMF_D);
+//				
+//				String strDrying = weatherInfo.getString("index_ls");
+////				weatherBean.setStrDrying(strDrying);
+//				String strDrying_D = weatherInfo.getString("index_ls_d");
+////				weatherBean.setStrDrying_D(strDrying_D);
+//				addBean2List(weatherOtherList,"建议: ","晾晒",strDrying,strDrying_D);
+//				
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+			weatherBean.setOtherBeanList(weatherOtherList);
+			long strLastUpdateTime = jsonObject.getLong("t");
+			weatherBean.setStrLastUpdateTime(strLastUpdateTime);
+			PreferenceUtils.setPrefLong(HConstants.SP_UPDATE_WEATHER_TIME, strLastUpdateTime);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return weatherBean;
+	}
+
+	private static void addBean2List(
+			ArrayList<WeatherOtherBean> weatherOtherList,String strAdvice,String strTitle, String strSubTitle,
+			String strDescription) {
+		WeatherOtherBean mWeatherOtherBean = new WeatherOtherBean();
+		mWeatherOtherBean.setStrAdvice(strAdvice);
+		mWeatherOtherBean.setStrDescription(strDescription);
+		mWeatherOtherBean.setStrTitle(strTitle);
+		mWeatherOtherBean.setStrSubTitle(strSubTitle);
+		weatherOtherList.add(mWeatherOtherBean);
+	}
+
+    /**
+     * 获取指定城市CID编码。
+     * 
+     * @param city
+     *            城市
+     * @return 返回城市CID编码。错误或者城市不正确等则返回空字符串。
+     * @throws Exception
+     */
+    public static String getCityCode(String city) {
+    	if(TextUtils.isEmpty(city)){
+    		return "";
+    	}
+        Document doc = null;
+		try {
+			doc = DocumentBuilderFactory.newInstance()
+			        .newDocumentBuilder().parse(BaseApplication.getInstance().getAssets().open("city_code.xml"));
+		} catch (FileNotFoundException e) {
+		} catch (SAXException e) {
+		} catch (IOException e) {
+		} catch (ParserConfigurationException e) {
+		}
+        NodeList cityNameList = doc.getElementsByTagName("key");
+        NodeList cityCodeList = doc.getElementsByTagName("string");
+        for (int i = 0; i < cityNameList.getLength(); i++) {
+            Element ele = (Element) cityNameList.item(i);
+            if (ele.getTextContent().equals(city)) {
+        		String strCid = cityCodeList.item(i).getTextContent();
+        		return strCid;
+        	}
+//            if (!TextUtils.isEmpty("cid") && !TextUtils.isEmpty("name")) {
+//            	if (ele.getAttribute("name").equals(city)) {
+//            		String strCid = ele.getAttribute("cid");
+//            		return strCid;
+//            	}
+//            }
+        }
+        return "";
+    }
+    /**
+     * 获取天气数据bean
+     * @param strCityCode 城市编码
+     * @param updateTime 更新天气数据间隔时间
+     * @return WeatherBean
+     */
+    public static WeatherBean getWeatherBean(String strCityCode,long updateTime){
+    	WeatherBean  mWeatherBean =null;
+    	if(updateTime == 0){
+    		updateTime =1000*60*60;//1小时;
+    	}
+		if(!TextUtils.isEmpty(strCityCode)){
+			long lastUpdateWeatherTime = PreferenceUtils.getPrefLong(HConstants.SP_UPDATE_WEATHER_TIME, 0);
+			String strJson = PreferenceUtils.getPrefString(HConstants.SP_WEATHER_JSON, "");
+			if(lastUpdateWeatherTime!=0){
+				long currentTime = System.currentTimeMillis();
+				long tempTime = currentTime - lastUpdateWeatherTime;
+				Log.d("tempTime:::::",tempTime+"ms");
+				if(tempTime>updateTime){
+					mWeatherBean = getWeatherJson(strCityCode, mWeatherBean,
+							strJson);
+					
+				}else{
+					mWeatherBean = getWeatherBeanForJson(mWeatherBean, strJson);
+				}
+			}else{
+				mWeatherBean = getWeatherJson(strCityCode, mWeatherBean,strJson);
+			}
+		}
+		return mWeatherBean;
+    }
+
+	private static WeatherBean getWeatherJson(String strCityCode,
+			WeatherBean mWeatherBean, String strJson) {
+		if(SystemUtils.checkAllNet(BaseApplication.getInstance().getApplicationContext())){
+			String strReqUrl = weatherServiceUrl+strCityCode+".html";
+			 strJson = HttpNetUtils.get(strReqUrl,null);
+			mWeatherBean = getWeatherBeanForJson(mWeatherBean,strJson);
+			PreferenceUtils.setPrefString(HConstants.SP_WEATHER_JSON, strJson);
+		}else{
+			mWeatherBean = getWeatherBeanForJson(mWeatherBean,strJson);
+		}
+		return mWeatherBean;
+	}
+
+	private static WeatherBean getWeatherBeanForJson(WeatherBean mWeatherBean,
+			String strJson) {
+		if(!TextUtils.isEmpty(strJson)){
+			mWeatherBean  = WeatherManager.parserWeatherJson(strJson);
+			Log.d("WeatherBean:::::", mWeatherBean.toString());
+		}
+		return mWeatherBean;
+	}
+    /**
+     * 初始化位置配置信息
+     * @param intScanSpan 更新时间 
+     * 传入0时，默认1小时
+     */
+    public static  void InitLocation(int intScanSpan){
+    	LocationClientOption option = new LocationClientOption();
+    	option.setLocationMode(LocationMode.Hight_Accuracy);
+    	option.setCoorType("gcj02");
+    	if(0==intScanSpan){
+    		intScanSpan=1000*60*60;//1小时更新一次
+    	}
+    	option.setScanSpan(intScanSpan);
+    	option.setIsNeedAddress(true);
+    	mLocationClient.setLocOption(option);
+    }
+    public static void startLocation(){
+    	mLocationClient.start();
+    }
+    public static boolean isStartedLocation(){
+    	return mLocationClient.isStarted();
+    }
+    public static void stopLocation(){
+    	if(mLocationClient.isStarted()){
+    		mLocationClient.stop();
+    	}
+    }
+}
