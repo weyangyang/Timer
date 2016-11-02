@@ -260,7 +260,7 @@ private void setWeatherData() {
 	 boolean isSucc = PreferenceUtils.getPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, false);
 		if(isSucc){
 			btnActivation.setEnabled(false);
-			btnActivation.setText("PM2.5 "+mWeatherBean.getStrPm()+" "+mWeatherBean.getStrPmLevel());
+			btnActivation.setText(mWeatherBean.getStrPmLevel());
 			btnActivation.setBackgroundResource(R.drawable.btn_other_pressed_bg);
 			tvLoc.setText(mWeatherBean.getStrCity());
 		}

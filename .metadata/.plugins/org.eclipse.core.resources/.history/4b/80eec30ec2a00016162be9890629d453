@@ -55,7 +55,7 @@
          />
       <Button 
           android:id="@+id/btn_activation"
-          android:layout_width="110dp"
+          android:layout_width="100dp"
         android:layout_height="30dp"
         android:text="激活软件"
         android:paddingLeft="5dp"

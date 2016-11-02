@@ -15,7 +15,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.timer.utils.HConstants;
@@ -70,7 +69,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private int timeNum1 = 15;
 	private int timeNum2 = 15;
 	private int timeNum3 = 15;
-	private TextView tvLoc;
 	private Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -175,7 +173,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 	}
 
 	private void initView() {
-		tvLoc = (TextView) findViewById(R.id.tvLoc);
 		 View cardView1 =  findViewById(R.id.item_cardview);
          mWheelView1 = (WheelView)cardView1.findViewById(R.id.main_wv);
          mWheelView1.setTag(WHEELVIEW1_TAG);
@@ -256,14 +253,7 @@ public class SplashActivity extends Activity implements OnClickListener {
 			}
 	}
 private void setWeatherData() {
-	Toast.makeText(this, "实时空气污染指数 :"+mWeatherBean.getStrPm()+" "+mWeatherBean.getStrPmLevel(), Toast.LENGTH_LONG).show();
-	 boolean isSucc = PreferenceUtils.getPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, false);
-		if(isSucc){
-			btnActivation.setEnabled(false);
-			btnActivation.setText("PM2.5 "+mWeatherBean.getStrPm()+" "+mWeatherBean.getStrPmLevel());
-			btnActivation.setBackgroundResource(R.drawable.btn_other_pressed_bg);
-			tvLoc.setText(mWeatherBean.getStrCity());
-		}
+		Toast.makeText(this, "空气污染指数 :"+mWeatherBean.getStrPm()+" "+mWeatherBean.getStrPmLevel(), Toast.LENGTH_LONG).show();
 		
 	}
 

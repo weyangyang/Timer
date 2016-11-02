@@ -6,21 +6,7 @@
     android:background="@drawable/bg_item_cardview"
     android:gravity="center"
    >
-  <FrameLayout 
-       android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-      >
-        <TextView 
-         android:id="@+id/tvLoc"
-         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginLeft="2dp"
-        android:textSize="13sp"
-         />
-  </FrameLayout>
+  
 	<ImageView 
 	    android:id="@+id/ivAlarmClock"
 	    android:layout_width="wrap_content"
@@ -55,11 +41,9 @@
          />
       <Button 
           android:id="@+id/btn_activation"
-          android:layout_width="110dp"
+          android:layout_width="100dp"
         android:layout_height="30dp"
         android:text="激活软件"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
         android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:paddingTop="1dp"
