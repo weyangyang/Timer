@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="onResu" key="selection"/>
+		<item value="200" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="200"/>
 			<item value="onResu"/>
 			<item value="Resu"/>
 			<item value="getStringNumList"/>
@@ -15,7 +16,6 @@
 			<item value="onActi"/>
 			<item value="BG_ITEM_CARDVIEW"/>
 			<item value="item_cardview2"/>
-			<item value="setTextS"/>
 		</list>
 		<list key="replacehistory">
 		</list>
