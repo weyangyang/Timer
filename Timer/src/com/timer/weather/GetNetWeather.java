@@ -1,51 +1,85 @@
 package com.timer.weather;
 
-import com.timer.utils.AsyncTask;
-import com.timer.utils.HConstants;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import netutils.engine.NetReqCallBack;
-import netutils.http.HttpNetUtils;
-import sgecore.utils.PreferenceUtils;
 import android.text.TextUtils;
 
+import com.timer.BaseApplication;
+import com.timer.utils.AsyncTask;
+import com.timer.utils.HConstants;
+import com.timer.utils.PreferenceUtils;
+import com.timer.utils.SubstringUtils;
+
 public class GetNetWeather {
-static String  weatherServiceUrl = "http://weather.123.duba.net/static/weather_info/";
  public static void getWeatherWithNet(final String strCityName){
+	
 	 if(TextUtils.isEmpty(strCityName)){
 		 return;
 	 }
-	 //"http://weather.123.duba.net/static/weather_info/101010100.html"
 	
 	 new AsyncTask() {
 		
 		@Override
 		protected void onPreExectue() {
-			// TODO Auto-generated method stub
 			
 		}
 		
 		@Override
 		protected void onPostExecute() {
-			// TODO Auto-generated method stub
 			
 		}
 		
 		@Override
 		protected void doInbackgroud() {
-			String strCityCode = WeatherManager.getCityCode(strCityName);
-			 final String strReqUrl = weatherServiceUrl+strCityCode+".html";
-//			 final String strReqUrl = "http://weatherapi.market.xiaomi.com/wtr-v2/weather?cityId=101110101&imei=e32c8a29d0e8633283737f5d9f381d47&device=HM2013023&miuiVersion=JHBCNBD16.0&modDevice=&source=miuiWeatherApp";
-			 
-			HttpNetUtils.get(strReqUrl,new NetReqCallBack() {
-				
-				@Override
-				public void getSuccData(int statusCode, String strJson, String strUrl) {
-					if(!TextUtils.isEmpty(strJson)){
-						PreferenceUtils.setPrefString(HConstants.SP_WEATHER_JSON, strJson);
-					}
-				}
-			});	
+			 String jsonResult = request("http://www.tianqi.com/air/", "");
+			 String temp = SubstringUtils.substringBetween(jsonResult, "\">"+strCityName,"</tr>");
+			 String pm25 = SubstringUtils.substringBetween(temp, "<td>","</td>");
+			 PreferenceUtils.setPrefString(BaseApplication.getInstance().getApplicationContext(),HConstants.SP_PM25, pm25);
+			 PreferenceUtils.setPrefString(BaseApplication.getInstance().getApplicationContext(),HConstants.SP_CURRENT_CITY, strCityName);
 		}
 	}.execute();
  }
+
+
+ /**
+  * @param urlAll
+  *            :请求接口
+  * @param httpArg
+  *            :参数
+  * @return 返回结果
+  */
+ public static String request(String httpUrl, String httpArg) {
+     BufferedReader reader = null;
+     String result = null;
+     StringBuffer sbf = new StringBuffer();
+     httpUrl = httpUrl + httpArg;
+//     httpUrl = httpUrl + "?" + httpArg;
+
+     try {
+         URL url = new URL(httpUrl);
+         HttpURLConnection connection = (HttpURLConnection) url
+                 .openConnection();
+         connection.setRequestMethod("GET");
+         // 填入apikey到HTTP header				// ec0bf175d44eaec93c501f37298e94f6
+        // connection.setRequestProperty("apikey",  "ec0bf175d44eaec93c501f37298e94f6");
+         connection.connect();
+         InputStream is = connection.getInputStream();
+         reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+         String strRead = null;
+         while ((strRead = reader.readLine()) != null) {
+             sbf.append(strRead);
+             sbf.append("\r\n");
+         }
+         reader.close();
+         result = sbf.toString();
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+     return result;
+ }
+ 
 }

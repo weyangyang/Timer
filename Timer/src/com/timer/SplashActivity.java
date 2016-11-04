@@ -16,14 +16,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.timer.utils.AsyncTask;
 import com.timer.utils.HConstants;
 import com.timer.utils.PreferenceUtils;
 import com.timer.view.TimerTextView;
 import com.timer.view.TimerTextView.TimerTextViewListener;
 import com.timer.view.WheelView;
-import com.timer.weather.WeatherBean;
 import com.timer.weather.WeatherManager;
 @SuppressLint("NewApi")
 public class SplashActivity extends Activity implements OnClickListener {
@@ -66,7 +65,6 @@ public class SplashActivity extends Activity implements OnClickListener {
 	private Button btnActivation;
 	private Button btnProLib;
 	private Button btnProBuy;
-	private WeatherBean mWeatherBean;
 	private int timeNum1 = 15;
 	private int timeNum2 = 15;
 	private int timeNum3 = 15;
@@ -241,13 +239,13 @@ public class SplashActivity extends Activity implements OnClickListener {
         mWheelView3.setOffset(WHEELVIEW_OFFSET);
         mWheelView3.setSeletion(WHEELVIEW_SELECT_TIME);
         mWheelView3.setItems(numList);
-    	String strJson = PreferenceUtils.getPrefString(this, HConstants.SP_WEATHER_JSON, "");
-		if(!TextUtils.isEmpty(strJson)){
-			 mWeatherBean = WeatherManager.parserWeatherJson(strJson);
-			if(mWeatherBean!=null){
+    	String pm25 = PreferenceUtils.getPrefString(this, HConstants.SP_PM25, "");
+		if(!TextUtils.isEmpty(pm25)){
 				setWeatherData();
+				String currentCity = PreferenceUtils.getPrefString(BaseApplication.getInstance().getApplicationContext(),HConstants.SP_CURRENT_CITY, "");
+				if(!TextUtils.isEmpty(currentCity)){
+					getWeatherData4net(currentCity);
 				}
-			}else{
 				if(WeatherManager.isStartedLocation()){
 					notifyRefashWeatherData();
 				}else{
@@ -257,30 +255,66 @@ public class SplashActivity extends Activity implements OnClickListener {
 				}
 			}
 	}
+private void getWeatherData4net(final String currentCity) {
+		new AsyncTask() {
+			
+			@Override
+			protected void onPreExectue() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			protected void onPostExecute() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			protected void doInbackgroud() {
+				WeatherManager.getWeatherData(currentCity);
+			}
+		};
+		
+	}
+
 private void setWeatherData() {
 	 boolean isSucc = PreferenceUtils.getPrefBoolean(this, PreferenceUtils.KEY_SOFT_ACTIVATION_SUCC, false);
 		if(isSucc){
+			String pm25 = PreferenceUtils.getPrefString(BaseApplication.getInstance().getApplicationContext(),HConstants.SP_PM25, "");
+			String currentCity = PreferenceUtils.getPrefString(BaseApplication.getInstance().getApplicationContext(),HConstants.SP_CURRENT_CITY, "");
+			
 			btnActivation.setEnabled(false);
-			btnActivation.setText(mWeatherBean.getStrPmLevel());
-			setBtnActivationBg(mWeatherBean.getStrPm());
-			tvLoc.setText(mWeatherBean.getStrCity());
-			tvPmShow.setText("实时空气污染指数 :"+mWeatherBean.getStrPm());
+			
+			setBtnActivationBg(pm25);
+			tvLoc.setText(currentCity);
+			tvPmShow.setText("实时空气污染指数 :"+pm25);
 		}
 		
 	}
 private void setBtnActivationBg(String pm){
+	if(TextUtils.isEmpty(pm)){
+		btnActivation.setText("已激活");
+		return;
+	}
 	int tempPM = Integer.parseInt(pm);
 	if(tempPM>0 && tempPM<51){
+		btnActivation.setText("优");
 		btnActivation.setBackgroundResource(R.drawable.bg_pm1);
 	}else if(tempPM>50 && tempPM <101){
 		btnActivation.setBackgroundResource(R.drawable.bg_pm2);
+		btnActivation.setText("良");
 	}else if(tempPM>100 && tempPM <151){
+		btnActivation.setText("轻度污染");
 		btnActivation.setBackgroundResource(R.drawable.bg_pm3);
 	}else if(tempPM>150 && tempPM <201){
+		btnActivation.setText("中度污染");
 		btnActivation.setBackgroundResource(R.drawable.bg_pm4);
 	}else if(tempPM>200 && tempPM <301){
+		btnActivation.setText("重度污染");
 		btnActivation.setBackgroundResource(R.drawable.bg_pm5);
 	}else if(tempPM>300){
+		btnActivation.setText("严重污染");
 		btnActivation.setBackgroundResource(R.drawable.bg_pm6);
 	}
 }
@@ -288,17 +322,18 @@ private void notifyRefashWeatherData() {
 	handler.postDelayed(new Runnable() {
 		@Override
 		public void run() {
-			String strJson = PreferenceUtils.getPrefString(SplashActivity.this,HConstants.SP_WEATHER_JSON, "");
-			if(!TextUtils.isEmpty(strJson)){
-				 mWeatherBean = WeatherManager.parserWeatherJson(strJson);
-				 if(mWeatherBean!=null){
+			String pm25 = PreferenceUtils.getPrefString(SplashActivity.this,HConstants.SP_PM25, "");
+			if(!TextUtils.isEmpty(pm25)){
+				
 						setWeatherData();
-				}
 			}
 		}
 	}, 1500);
 }
-
+@Override
+protected void onDestroy() {
+	super.onDestroy();
+}
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	super.onActivityResult(requestCode, resultCode, data);

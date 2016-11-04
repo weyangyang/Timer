@@ -152,6 +152,44 @@ public class HttpNetUtils {
 			statusCode = response.getStatusLine().getStatusCode();
 			if (statusCode >= 200 && statusCode < 300) {
 				resultString = getNetSuccData(mNetReqCallBack, resultString, response,url);
+				System.out.println(resultString);
+			}
+		} catch (ClientProtocolException e1) {
+			mNetReqCallBack.getExceptionMsg(NetConstants.CLIENT_PROTOCOL_EXCEPTION, e1.getMessage(),url);
+		} catch (IOException e1) {
+			mNetReqCallBack.getExceptionMsg(NetConstants.IO_EXCEPTION, e1.getMessage(),url);
+		}catch (Exception e1) {
+			mNetReqCallBack.getExceptionMsg(NetConstants.EXEPTION, e1.getMessage(),url);
+			//ConnectionPoolTimeoutException,ConnectionTimeoutException与SocketTimeoutException。
+		}
+		return resultString;
+	}
+	public static String getWeather(String url, NetReqCallBack mNetReqCallBack) {
+		int statusCode = 0;
+		String resultString = "";
+		HttpResponse response = null;
+		try {
+			url = url.replaceAll(" ", "%20");
+			HttpGet mHttpGet = new HttpGet(url);
+			HttpHeader header = new HttpHeader();
+			header.addHeader("Host", "wthrcdn.etouch.cn");
+			header.addHeader("uid", "!07dad0ffd473b043fd92d314f9110552");
+			header.addHeader("width", "1080");
+			header.addHeader("spam", "Channel ID");
+			header.addHeader("uuid", "07dad0ffd473b043fd92d314f9110552");
+			header.addHeader("height", "1776");
+			header.addHeader("sid", "07dad0ffd473b043fd92d314f91105521145887");
+			header.addHeader("Cache-Control", "no-cache");
+			header.addHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0");
+			header.setHeader(mHttpGet);
+			HttpClient client = getHttpClient();
+			response = client.execute(mHttpGet);
+			statusCode = response.getStatusLine().getStatusCode();
+			if (statusCode >= 200 && statusCode < 300) {
+				HttpEntity entity = response.getEntity();
+				resultString = getData(entity, statusCode, url);
+				
+				mNetReqCallBack.getSuccData(statusCode, resultString, url);
 			}
 		} catch (ClientProtocolException e1) {
 			mNetReqCallBack.getExceptionMsg(NetConstants.CLIENT_PROTOCOL_EXCEPTION, e1.getMessage(),url);
@@ -318,34 +356,34 @@ public class HttpNetUtils {
 		return strJson;
 	}
 
-//	private static String getData( HttpEntity entity, int statusCode,String strUrl) throws ParseException, IOException {
-//		String strJson = "";
-//		try {
-//			byte[] bytesResult = null;
-//			// 读出下行 Byte Array
-//			bytesResult = readBytes(entity.getContent(), (int) entity.getContentLength());
-//			// 尝试解压两次
-//			for (int i = 1; i <= 1; i++) {
-//				try {
-//					bytesResult = unzip(bytesResult);
-//				} catch (Exception e) {
-//					break;
-//				}
-//			}
-//			strJson = new String(bytesResult);
-//		} catch (Exception e) {
-//			// readBytes 不成功，就按照原有的方式读出
-//			//mNetReqCallBack.getExceptionMsg(NetConstants.EXEPTION, e.getMessage(),strUrl);
-//			if(entity!=null){
-//					strJson = EntityUtils.toString(entity, CHAR_SET);
-//				
-//				return strJson;
-//			}else{
-//				return "";
-//			}
-//		}
-//		return strJson;
-//	}
+	private static String getData( HttpEntity entity, int statusCode,String strUrl) throws ParseException, IOException {
+		String strJson = "";
+		try {
+			byte[] bytesResult = null;
+			// 读出下行 Byte Array
+			bytesResult = readBytes(entity.getContent(), (int) entity.getContentLength());
+			// 尝试解压两次
+			for (int i = 1; i <= 1; i++) {
+				try {
+					bytesResult = unzip(bytesResult);
+				} catch (Exception e) {
+					break;
+				}
+			}
+			strJson = new String(bytesResult);
+		} catch (Exception e) {
+			// readBytes 不成功，就按照原有的方式读出
+			//mNetReqCallBack.getExceptionMsg(NetConstants.EXEPTION, e.getMessage(),strUrl);
+			if(entity!=null){
+					strJson = EntityUtils.toString(entity, CHAR_SET);
+				
+				return strJson;
+			}else{
+				return "";
+			}
+		}
+		return strJson;
+	}
 
 	public static String post(String strUrl, NetReqCallBack mNetReqCallBack, NameValuePair... params) {
 		return post(strUrl, null, mNetReqCallBack, params);

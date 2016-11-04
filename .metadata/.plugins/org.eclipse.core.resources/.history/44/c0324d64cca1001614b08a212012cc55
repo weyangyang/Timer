@@ -1,0 +1,135 @@
+package com.timer.weather;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import netutils.engine.NetReqCallBack;
+import netutils.http.HttpNetUtils;
+import sgecore.utils.PreferenceUtils;
+import android.text.TextUtils;
+
+import com.timer.utils.AsyncTask;
+import com.timer.utils.HConstants;
+import com.timer.utils.SubstringUtils;
+
+public class GetNetWeather {
+//static String  weatherServiceUrl = "http://wthrcdn.etouch.cn/WeatherApi?citykey=";
+static String  weatherServiceUrl = "http://www.pm25.in/";
+//static String  weatherServiceUrl = "http://weather.123.duba.net/static/weather_info/";
+ public static void getWeatherWithNet(final String strCityName){
+	
+	 if(TextUtils.isEmpty(strCityName)){
+		 return;
+	 }
+	 //"http://weather.123.duba.net/static/weather_info/101010100.html"
+	
+	 new AsyncTask() {
+		
+		@Override
+		protected void onPreExectue() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		protected void onPostExecute() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		protected void doInbackgroud() {
+			String strCityCode = WeatherManager.getCityCode(strCityName);
+			 final String  strReqUrl = weatherServiceUrl+strCityName;
+			 String str = requestGet(strReqUrl);
+			 String pm25 = SubstringUtils.substringBetween(str, "<pm25>", "pm25>");
+				String pm2 = SubstringUtils.substringBetween(str, "<environment>", "environment>");
+				System.out.println(pm25 + pm2);
+//			 final String strReqUrl = "http://weatherapi.market.xiaomi.com/wtr-v2/weather?cityId=101110101&imei=e32c8a29d0e8633283737f5d9f381d47&device=HM2013023&miuiVersion=JHBCNBD16.0&modDevice=&source=miuiWeatherApp";
+//			HttpNetUtils.getWeather(strReqUrl,new NetReqCallBack() {
+//				
+//				@Override
+//				public void getSuccData(int statusCode, String strJson, String strUrl) {
+//					String pm25 = SubstringUtils.substringBetween(strJson, "<pm25>", "pm25>");
+//					String pm2 = SubstringUtils.substringBetween(strJson, "<environment>", "environment>");
+//					if(!TextUtils.isEmpty(pm25)){
+//						PreferenceUtils.setPrefString(HConstants.SP_WEATHER_JSON, pm25);
+//					}
+//				}
+//			}
+//			);	
+		}
+	}.execute();
+ }
+ /**
+  * 将输入流转换成字符串
+  *
+  * @param is 从网络获取的输入流
+  * @return
+  */
+ public static String streamToString(InputStream is) {
+     try {
+         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+         byte[] buffer = new byte[1024];
+         int len = 0;
+         while ((len = is.read(buffer)) != -1) {
+             baos.write(buffer, 0, len);
+         }
+         baos.close();
+         is.close();
+         byte[] byteArray = baos.toByteArray();
+         return new String(byteArray);
+     } catch (Exception e) {
+    	 e.printStackTrace();
+         return "";
+     }
+ }
+ private static String requestGet(String requestUrl) {
+	 String result = "";
+     try {
+         // 新建一个URL对象
+         URL url = new URL(requestUrl);
+         // 打开一个HttpURLConnection连接
+         HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
+         // 设置连接主机超时时间
+         urlConn.setConnectTimeout(5 * 1000);
+         //设置从主机读取数据超时
+         urlConn.setReadTimeout(5 * 1000);
+         // 设置是否使用缓存  默认是true
+         urlConn.setUseCaches(true);
+         // 设置为Post请求
+         urlConn.setRequestMethod("GET");
+         //urlConn设置请求头信息
+         //设置请求中的媒体类型信息。
+         urlConn.setRequestProperty("Content-Type", "application/json");
+         urlConn.setRequestProperty("Host", "wthrcdn.etouch.cn");
+         urlConn.setRequestProperty("uid", "!07dad0ffd473b043fd92d314f9110552");
+         urlConn.setRequestProperty("width", "1080");
+         urlConn.setRequestProperty("spam", "Channel ID");
+         urlConn.setRequestProperty("uuid", "07dad0ffd473b043fd92d314f9110552");
+         urlConn.setRequestProperty("height", "1776");
+         urlConn.setRequestProperty("sid", "07dad0ffd473b043fd92d314f91105521145887");
+         urlConn.setRequestProperty("Cache-Control", "no-cache");
+         urlConn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0) Gecko/20100101 Firefox/6.0");
+         //设置客户端与服务连接类型
+         urlConn.addRequestProperty("Connection", "Keep-Alive");
+         // 开始连接
+         urlConn.connect();
+         // 判断请求是否成功
+         if (urlConn.getResponseCode() == 200) {
+             // 获取返回的数据
+        	 result= streamToString(urlConn.getInputStream());
+         } else {
+        	 result= "";
+         }
+         // 关闭连接
+         urlConn.disconnect();
+     } catch (Exception e) {
+    	 result= "";
+     }
+     return result;
+     
+ }
+}

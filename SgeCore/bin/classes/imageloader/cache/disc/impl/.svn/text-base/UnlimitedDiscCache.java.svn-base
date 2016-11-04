@@ -1,0 +1,34 @@
+package com.sge.imageloader.cache.disc.impl;
+
+import com.sge.imageloader.cache.disc.BaseDiscCache;
+import com.sge.imageloader.cache.disc.DiscCacheAware;
+import com.sge.imageloader.cache.disc.naming.FileNameGenerator;
+import com.sge.imageloader.core.DefaultConfigurationFactory;
+
+import java.io.File;
+
+/**
+ * Default implementation of {@linkplain DiscCacheAware disc cache}. Cache size is unlimited.
+ *
+ * @see BaseDiscCache
+ */
+public class UnlimitedDiscCache extends BaseDiscCache {
+
+	/** @param cacheDir Directory for file caching */
+	public UnlimitedDiscCache(File cacheDir) {
+		this(cacheDir, DefaultConfigurationFactory.createFileNameGenerator());
+	}
+
+	/**
+	 * @param cacheDir          Directory for file caching
+	 * @param fileNameGenerator Name generator for cached files
+	 */
+	public UnlimitedDiscCache(File cacheDir, FileNameGenerator fileNameGenerator) {
+		super(cacheDir, fileNameGenerator);
+	}
+
+	@Override
+	public void put(String key, File file) {
+		// Do nothing
+	}
+}
