@@ -10123,3 +10123,6 @@ org.eclipse.core.internal.resources.ResourceException: A resource already exists
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:122)
 !SUBENTRY 1 org.eclipse.core.resources 4 272 2016-11-07 12:13:36.688
 !MESSAGE A resource already exists on disk '/Users/liyusheng/Timer/QR_CodeScan/.settings'.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2016-11-07 13:34:43.182
+!MESSAGE Failed to load properties file for project 'WyyScan'
