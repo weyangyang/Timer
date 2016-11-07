@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <color name="guide_typeface">#fff</color>
+    <color name="guide_page_title_bg">#0000</color>
+    <color name="bg_welcome">#eee</color>
+    <color name="item_select">#a7cd3d</color>
+    <!-- 线 -->
+    <color name="darker_gray">#ff5F646C</color>
+    <!-- 深灰色 -->
+    <color name="light_gray">#ffB2B2B2</color>
+    <!-- 浅灰色 -->
+    <color name="home_tab_bar_divider">#ffe5e5e5</color>
+    <color name="title_bar_bg">#fff9f9f9</color>
+    <color name="green">#ff23a82d</color>
+    <color name="red">#ffbf392f</color>
+    <color name="white">#ffffffff</color>
+    <color name="color_member_detail">#CCCCCC</color>
+    <color name="black">#ff000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="tab_widget_select">#58b8b6</color>
+    <color name="tab_widget_normal">#d5d5d5</color>
+<!-- main_tab_title -->
+
+    <color name="bg_tab_main_up_title">#42a7b9</color>
+    <color name="bg_ship_list_devider">#aed9e1</color>
+    <color name="bg_setting">#c2ecf4</color>
+    <color name="bg_setting_devider">#10ffffff</color>
+    <color name="bg_pregressbar">#84cbca</color>
+    <color name="bg_btn_pressed">#79d3d1</color>
+
+</resources>

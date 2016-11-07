@@ -1,0 +1,16 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#f8f8f8"
+    android:orientation="vertical" >
+        
+	    <com.qsvxin.view.slideview.XListView
+	        android:id="@+id/mListView"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:cacheColorHint="@android:color/transparent"
+	        android:listSelector="@drawable/response_item_select"
+	        android:divider="@null"
+	        android:fastScrollEnabled="true"
+	        android:scrollbars="none" />
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+<RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:id="@+id/main_title" 
+            android:layout_alignParentTop="true"
+            android:background="@color/bg_tab_main_up_title"
+            android:gravity="center_vertical"  >  
+            <Button
+            android:id="@+id/btnLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn_back"
+            android:textColor="#ffffff" />
+                />      
+            
+            <TextView
+                android:id="@+id/textv_mainTitle"
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:text="@string/str_two_code"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"     
+                android:textColor="#ffffff" /> 
+        </RelativeLayout>
+        <RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            >
+    <SurfaceView
+        android:id="@+id/preview_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <com.qsvxin.twocode.view.ViewfinderView
+        android:id="@+id/viewfinder_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@color/transparent" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp" />
+    <ImageView
+        android:id="@+id/light_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/flish_light"
+        android:layout_marginTop="15dp"
+        android:visibility="gone"
+        android:onClick="lightSwitch" />
+</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">微洋洋</string>
+    <string name="str_guide2">\n微官网\n力争国内最大\n微信公众服务平台</string>
+    <string name="str_guide1">\n微餐饮\n手指一抖即可点餐</string>
+    <string name="str_guide3">微CRM\n移动办公不再有距离</string>
+    <string name="str_guide4">微房产\n360° 全景看房\n微洋洋领你走向生活</string>
+    <string name="str_guide_door">"\n微洋洋，将改变您的生活方式\n \n "</string>
+    <string name="str_guide_start">开始</string>
+    <string name="str_prompt">提示</string>
+    <string name="str_welcome1">让我们一起改变世界</string>
+    <string name="str_login">登录</string>
+    <string name="str_welcome_hint_login">使用微洋洋号登录</string>
+    <string name="str_register">注册</string>
+    <string name="str_welcome_hint_register">如果您没有微洋洋号，请注册</string>
+    <string name="str_login_hint1">微洋洋号</string>
+    <string name="str_passwd">密码</string>
+    <string name="str_forget_passwd">忘记密码?</string>
+    <string name="str_back">返回</string>
+    <string name="str_logining">正在登录</string>
+    <string name="str_vorder_form">微订单</string>
+    <string name="str_vorder_dtails">订单详情</string>
+    <string name="str_vmembers_dtails">会员详情</string>
+    <string name="str_vgroupbuy_dtails">团购详情</string>
+    <string name="str_vgroup_buy">微团购</string>
+    <string name="str_vchat">微聊</string>
+    <string name="str_vmembers">微会员</string>
+    <string name="str_exit_vyangyang">退出微洋洋</string>
+    <string name="str_clear_cache">清除缓存</string>
+    <string name="str_clear_vorder">清空订单缓存</string>
+    <string name="str_clear_vmembers">清空会员缓存</string>
+    <string name="str_clear_vgroup">清空团购缓存</string>
+    <string name="str_clear_vchat">清空微聊缓存</string>
+    <string name="str_exit_tips">退出后，你还是可以收到消息.\n确定要退出？</string>
+    <string name="str_yes">是</string>
+    <string name="str_no">否</string>
+    <string name="str_exit">退出</string>
+    <string name="str_setting">设置</string>
+    <string name="str_sure">确定</string>
+    <string name="str_vorder_call">联系他</string>
+    <string name="str_vorder_del">删除</string>
+    <string name="str_vorder_distr">发货</string>
+    <string name="str_confirm_vorder_distr">确认发货</string>
+    <string name="str_input_courier_number">请输入快递单号</string>
+    <string name="str_accept_order">受理</string>
+    <string name="str_vmember_getting">正在更新会员数据</string>
+    <string name="str_vmember_error">获取会员信息失败，请稍后再试！</string>
+    <string name="str_vmember_net_error">网络异常，请稍后再试！</string>
+    <string name="str_net_timeout">网络连接超时！</string>
+    <string name="str_vmember_is_join">已关注</string>
+    <string name="str_vmember_is_not_join">未关注</string>
+    <string name="str_vmember_visitor">游客</string>
+    <string name="str_vmember_is_not_vip">非会员</string>
+    <string name="str_vmember_phone_is_null">臣妾做不到阿，此用户未填写联系方式呢！</string>
+    <string name="str_vmember_secrecy">保密</string>
+    <string name="str_vmember_call">语音联系</string>
+    <string name="str_vmember_msg">发送短信</string>
+    <string name="str_vmember_cardid">会员卡号：</string>
+    <string name="str_vmember_phone">手机号码：</string>
+    <string name="str_vmember_ask_join">是否关注：</string>
+    <string name="str_vmember_usedintegral">已用积分：</string>
+    <string name="str_vmember_residueintegral">剩余积分：</string>
+    <string name="str_vmember_explain">个性签名：</string>
+    <string name="str_vgroupbuy_error">获取团购信息失败，请稍后再试！</string>
+    <string name="str_vgroupbuy_getting">正在更新团购数据</string>
+    <string name="str_vgroupbuy_order_finish">完成订单</string>
+    <string name="str_two_code">扫一扫 </string>
+  <!-- 下拉刷新，上拉加载更多 -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+</resources>

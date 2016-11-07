@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/exit_layout"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@drawable/login_edit_pressed" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:padding="5dp"
+            android:textColor="@color/bg_tab_main_up_title"
+            android:textSize="20sp"
+            android:text="@string/str_clear_cache" />
+        <View 
+              android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_btn_pressed"
+            />
+		<Button 
+		    android:id="@+id/btn_delete_order"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:text="@string/str_clear_vorder"
+		    android:textColor="#fff"
+		    android:background="@drawable/btn_style"
+		    />
+		<Button 
+		    android:id="@+id/btn_delete_vgroup"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:text="@string/str_clear_vgroup"
+		    android:textColor="#fff"
+		    android:background="@drawable/btn_style"
+		    />
+		<Button 
+		    android:id="@+id/btn_delete_vchat"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:text="@string/str_clear_vchat"
+		    android:textColor="#fff"
+		    android:background="@drawable/btn_style"
+		    />
+		<Button 
+		    android:id="@+id/btn_delete_vmembers"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:text="@string/str_clear_vmembers"
+		    android:textColor="#fff"
+		    android:background="@drawable/btn_style"
+		    />
+    </LinearLayout>

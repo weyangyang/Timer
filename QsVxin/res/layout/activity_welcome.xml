@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_welcome"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/str_welcome1"
+        android:textColor="@color/bg_tab_main_up_title"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/main_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/btn_style"
+        android:gravity="center"
+        android:onClick="welcome_login"
+        android:paddingLeft="130dp"
+        android:paddingRight="130dp"
+        android:text="@string/str_login"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="@string/str_welcome_hint_login"
+        android:textColor="@color/light_gray"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/main_regist_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_style"
+        android:gravity="center"
+        android:onClick="welcome_register"
+        android:paddingLeft="130dp"
+        android:paddingRight="130dp"
+        android:text="@string/str_register"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="@string/str_welcome_hint_register"
+        android:textColor="@color/light_gray"
+        android:textSize="14sp" />
+
+</LinearLayout>
