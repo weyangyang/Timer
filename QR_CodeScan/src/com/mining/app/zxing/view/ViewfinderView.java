@@ -83,7 +83,7 @@ public final class ViewfinderView extends View {
 	/**
 	 * 字体距离扫描框下面的距离
 	 */
-	private static final int TEXT_PADDING_TOP = 30;
+	private static final int TEXT_PADDING_TOP = 60;
 	
 	/**
 	 * 画笔对象的引用
@@ -195,12 +195,12 @@ public final class ViewfinderView extends View {
 			
 			
 			//画扫描框下面的字
-			paint.setColor(Color.WHITE);
-			paint.setTextSize(TEXT_SIZE * density);
-			paint.setAlpha(0x40);
-			paint.setTypeface(Typeface.create("System", Typeface.BOLD));
-			canvas.drawText(getResources().getString(R.string.scan_text), frame.left, (float) (frame.bottom + (float)TEXT_PADDING_TOP *density), paint);
-			
+//			paint.setColor(Color.WHITE);
+//			paint.setTextSize(TEXT_SIZE * density);
+//			paint.setAlpha(0x40);
+//			paint.setTypeface(Typeface.create("System", Typeface.BOLD));
+//			canvas.drawText(getResources().getString(R.string.scan_text), frame.left, (float) (frame.bottom + (float)TEXT_PADDING_TOP *density), paint);
+//			
 			
 
 			Collection<ResultPoint> currentPossible = possibleResultPoints;

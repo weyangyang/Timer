@@ -124,6 +124,7 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		if (resultString.equals("")) {
 			Toast.makeText(MipcaActivityCapture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else {
+			//在此处处理扫码成功后的代码逻辑
 			restartPreviewAfterDelay(1000L);//重复扫码
 			
 //			Intent resultIntent = new Intent();

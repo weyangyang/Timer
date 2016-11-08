@@ -225,8 +225,8 @@ public final class CameraManager {
       }
       int width = screenResolution.x * 3 / 4;
       int height = screenResolution.y * 3 / 4;
-      int leftOffset = (screenResolution.x - width) / 2;
-      int topOffset = (screenResolution.y - height) / 2;
+      int leftOffset = (screenResolution.x - width+100) / 2;
+      int topOffset = (screenResolution.y - height+400) / 2;//ÐÞ¸Ä¿òÀë¶¥²¿µÄ¾àÀë
       if (width < MIN_FRAME_WIDTH) {
     	  width = dip2px(getContext(), MIN_FRAME_WIDTH);
       } else if (width > MAX_FRAME_WIDTH) {
