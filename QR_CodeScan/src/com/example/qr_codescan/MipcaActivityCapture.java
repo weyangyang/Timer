@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Vector;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
@@ -13,6 +12,7 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
@@ -52,7 +52,7 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		//ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-		
+		this.setResult(RESULT_OK);
 		Button mButtonBack = (Button) findViewById(R.id.button_back);
 		mButtonBack.setOnClickListener(new OnClickListener() {
 			
@@ -99,7 +99,12 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		}
 		CameraManager.get().closeDriver();
 	}
-
+	  public void restartPreviewAfterDelay(long delayMS) {
+		    if (handler != null) {
+		      handler.sendEmptyMessageDelayed(R.id.restart_preview, delayMS);
+		    }
+		   // resetStatusView();
+		  }
 	@Override
 	protected void onDestroy() {
 		inactivityTimer.shutdown();
@@ -115,17 +120,18 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		inactivityTimer.onActivity();
 		playBeepSoundAndVibrate();
 		String resultString = result.getText();
+		Toast.makeText(MipcaActivityCapture.this, result.getText(), Toast.LENGTH_SHORT).show();
 		if (resultString.equals("")) {
 			Toast.makeText(MipcaActivityCapture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else {
-			Intent resultIntent = new Intent();
-			Bundle bundle = new Bundle();
-			bundle.putString("result", resultString);
-			bundle.putParcelable("bitmap", barcode);
-			resultIntent.putExtras(bundle);
-			this.setResult(RESULT_OK, resultIntent);
+			restartPreviewAfterDelay(1000L);//ÖØ¸´É¨Âë
+			
+//			Intent resultIntent = new Intent();
+//			resultIntent.putExtra("result", resultString);
+//			resultIntent.putExtra("bitmap", barcode);
+//			MipcaActivityCapture.this.startActivity(resultIntent);
+//			MipcaActivityCapture.this.finish();
 		}
-		MipcaActivityCapture.this.finish();
 	}
 	
 	private void initCamera(SurfaceHolder surfaceHolder) {
@@ -175,7 +181,27 @@ public class MipcaActivityCapture extends Activity implements Callback {
 		viewfinderView.drawViewfinder();
 
 	}
-
+	 @Override
+	  public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    switch (keyCode) {
+	      case KeyEvent.KEYCODE_BACK:
+	          return true;
+	       // }
+//	        break;
+//	      case KeyEvent.KEYCODE_FOCUS:
+//	      case KeyEvent.KEYCODE_CAMERA:
+//	        // Handle these events so they don't launch the Camera app
+//	        return true;
+//	      // Use volume up/down to turn on light
+//	      case KeyEvent.KEYCODE_VOLUME_DOWN:
+//	        cameraManager.setTorch(false);
+//	        return true;
+//	      case KeyEvent.KEYCODE_VOLUME_UP:
+//	        cameraManager.setTorch(true);
+//	        return true;
+	    }
+	    return super.onKeyDown(keyCode, event);
+	  }
 	private void initBeepSound() {
 		if (playBeep && mediaPlayer == null) {
 			// The volume on STREAM_SYSTEM is not adjustable, and users found it

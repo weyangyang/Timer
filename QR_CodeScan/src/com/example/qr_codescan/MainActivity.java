@@ -4,6 +4,7 @@ package com.example.qr_codescan;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,13 +22,13 @@ public class MainActivity extends Activity {
 	 * 显示扫描拍的图片
 	 */
 	private ImageView mImageView;
-	
+	private Bitmap bitmap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		bitmap=BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
 		mTextView = (TextView) findViewById(R.id.result); 
 		mImageView = (ImageView) findViewById(R.id.qrcode_bitmap);
 		
@@ -53,11 +54,12 @@ public class MainActivity extends Activity {
         switch (requestCode) {
 		case SCANNIN_GREQUEST_CODE:
 			if(resultCode == RESULT_OK){
-				Bundle bundle = data.getExtras();
+				if(data!=null)
 				//显示扫描到的内容
-				mTextView.setText(bundle.getString("result"));
+				mTextView.setText(data.getStringExtra("result"));
 				//显示
-				mImageView.setImageBitmap((Bitmap) data.getParcelableExtra("bitmap"));
+				//bitmap = data.getParcelableExtra("bitmap");
+				mImageView.setImageBitmap(bitmap );
 			}
 			break;
 		}
