@@ -5,23 +5,19 @@
 	</section>
 	<section name="">
 		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
-	</section>
-	<section name="">
-		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
 		<item value="1000" key="org.eclipse.jdt.search.resultpage.limit"/>
 		<item value="TRUE" key="org.eclipse.jdt.search.resultpage.limit_enabled"/>
 	</section>
+	<section name="">
+		<item value="1000" key="org.eclipse.search.resultpage.limit"/>
+	</section>
 	<section name="TextSearchPage">
-		<item value="4" key="HISTORY_SIZE"/>
+		<item value="6" key="HISTORY_SIZE"/>
 		<item value="false" key="CASE_SENSITIVE"/>
 		<item value="true" key="REG_EX_SEARCH"/>
 		<item value="false" key="WHOLE_WORD"/>
 		<item value="false" key="SEARCH_DERIVED"/>
-		<section name="EXTENSIONS">
-			<item value="*.java" key="0"/>
-			<item value="\n" key="1"/>
-		</section>
-		<section name="HISTORY2">
+		<section name="HISTORY4">
 			<item value="true" key="ignoreCase"/>
 			<item value="3" key="scope"/>
 			<item value="false" key="isWholeWord"/>
@@ -33,7 +29,7 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY3">
+		<section name="HISTORY5">
 			<item value="true" key="ignoreCase"/>
 			<item value="0" key="scope"/>
 			<item value="false" key="isWholeWord"/>
@@ -45,7 +41,11 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY0">
+		<section name="EXTENSIONS">
+			<item value="*.java" key="0"/>
+			<item value="\n" key="1"/>
+		</section>
+		<section name="HISTORY2">
 			<item value="true" key="ignoreCase"/>
 			<item value="3" key="scope"/>
 			<item value="false" key="isWholeWord"/>
@@ -57,11 +57,35 @@
 			<list key="workingSets">
 			</list>
 		</section>
-		<section name="HISTORY1">
+		<section name="HISTORY3">
 			<item value="true" key="ignoreCase"/>
 			<item value="3" key="scope"/>
 			<item value="false" key="isWholeWord"/>
 			<item value="getCityCode\(" key="textPattern"/>
+			<item value="true" key="isRegExSearch"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY0">
+			<item value="true" key="ignoreCase"/>
+			<item value="3" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="scan_text" key="textPattern"/>
+			<item value="true" key="isRegExSearch"/>
+			<list key="fileNamePatterns">
+				<item value="*.java"/>
+			</list>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item value="true" key="ignoreCase"/>
+			<item value="3" key="scope"/>
+			<item value="false" key="isWholeWord"/>
+			<item value="requestPreviewFrame" key="textPattern"/>
 			<item value="true" key="isRegExSearch"/>
 			<list key="fileNamePatterns">
 				<item value="*.java"/>

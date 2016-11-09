@@ -19,14 +19,12 @@ package com.mining.app.zxing.camera;
 import android.content.Context;
 import android.graphics.Point;
 import android.hardware.Camera;
-import android.hardware.Camera.Size;
 import android.os.Build;
 import android.util.Log;
 import android.view.Display;
 import android.view.WindowManager;
 
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.regex.Pattern;
 
 final class CameraConfigurationManager {
@@ -100,52 +98,31 @@ final class CameraConfigurationManager {
   String getPreviewFormatString() {
     return previewFormatString;
   }
-  /**
-   * »ñÈ¡×î¼ÑÍ¼Ïñ
-   * @param parameters
-   * @param screenResolution
-   * @return
-   */
-  private static  Point getCameraResolution(Camera.Parameters parameters, Point screenResolution){
-		float tmp = 0f;
-		float mindiff = 100f;
-		float x_d_y = (float)screenResolution.x / (float)screenResolution.y;
-		Size best = null;
-		List<Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
-		for(Size s : supportedPreviewSizes){
-			tmp = Math.abs(((float)s.height/(float)s.width)-x_d_y);
-			if(tmp<mindiff){
-				mindiff = tmp;
-				best = s;
-			}
-		}
-		return new Point(best.width, best.height); 
-	}
-  
-//  private static Point getCameraResolution(Camera.Parameters parameters, Point screenResolution) {
-//
-//    String previewSizeValueString = parameters.get("preview-size-values");
-//    // saw this on Xperia
-//    if (previewSizeValueString == null) {
-//      previewSizeValueString = parameters.get("preview-size-value");
-//    }
-//
-//    Point cameraResolution = null;
-//
-//    if (previewSizeValueString != null) {
-//      Log.d(TAG, "preview-size-values parameter: " + previewSizeValueString);
-//      cameraResolution = findBestPreviewSizeValue(previewSizeValueString, screenResolution);
-//    }
-//
-//    if (cameraResolution == null) {
-//      // Ensure that the camera resolution is a multiple of 8, as the screen may not be.
-//      cameraResolution = new Point(
-//          (screenResolution.x >> 3) << 3,
-//          (screenResolution.y >> 3) << 3);
-//    }
-//
-//    return cameraResolution;
-//  }
+
+  private static Point getCameraResolution(Camera.Parameters parameters, Point screenResolution) {
+
+    String previewSizeValueString = parameters.get("preview-size-values");
+    // saw this on Xperia
+    if (previewSizeValueString == null) {
+      previewSizeValueString = parameters.get("preview-size-value");
+    }
+
+    Point cameraResolution = null;
+
+    if (previewSizeValueString != null) {
+      Log.d(TAG, "preview-size-values parameter: " + previewSizeValueString);
+      cameraResolution = findBestPreviewSizeValue(previewSizeValueString, screenResolution);
+    }
+
+    if (cameraResolution == null) {
+      // Ensure that the camera resolution is a multiple of 8, as the screen may not be.
+      cameraResolution = new Point(
+          (screenResolution.x >> 3) << 3,
+          (screenResolution.y >> 3) << 3);
+    }
+
+    return cameraResolution;
+  }
 
   private static Point findBestPreviewSizeValue(CharSequence previewSizeValueString, Point screenResolution) {
     int bestX = 0;

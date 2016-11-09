@@ -17,14 +17,12 @@
 package com.mining.app.zxing.camera;
 
 import java.io.IOException;
-import java.util.List;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
-import android.hardware.Camera.Size;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
@@ -247,7 +245,6 @@ public final class CameraManager {
     }
     return framingRect;
   }
-
   public static int dip2px(Context context, float dipValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (dipValue * scale + 0.5f);

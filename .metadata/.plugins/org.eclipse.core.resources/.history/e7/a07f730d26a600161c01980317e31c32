@@ -247,7 +247,21 @@ public final class CameraManager {
     }
     return framingRect;
   }
-
+  private Point getBestCameraResolution(Camera.Parameters parameters, Point screenResolution){
+		float tmp = 0f;
+		float mindiff = 100f;
+		float x_d_y = (float)screenResolution.x / (float)screenResolution.y;
+		Size best = null;
+		List<Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
+		for(Size s : supportedPreviewSizes){
+			tmp = Math.abs(((float)s.height/(float)s.width)-x_d_y);
+			if(tmp<mindiff){
+				mindiff = tmp;
+				best = s;
+			}
+		}
+		return new Point(best.width, best.height); 
+	}
   public static int dip2px(Context context, float dipValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (dipValue * scale + 0.5f);

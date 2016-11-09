@@ -17,14 +17,12 @@
 package com.mining.app.zxing.camera;
 
 import java.io.IOException;
-import java.util.List;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
-import android.hardware.Camera.Size;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
@@ -40,12 +38,12 @@ public final class CameraManager {
 
   private static final String TAG = CameraManager.class.getSimpleName();
 
-//  private static final int MIN_FRAME_WIDTH = 120;
-//  private static final int MIN_FRAME_HEIGHT = 120;
   private static final int MIN_FRAME_WIDTH = 120;
   private static final int MIN_FRAME_HEIGHT = 120;
+//  private static final int MIN_FRAME_WIDTH = 240;
+//  private static final int MIN_FRAME_HEIGHT = 240;
   private static final int MAX_FRAME_WIDTH = 240;
-  private static final int MAX_FRAME_HEIGHT = 180;
+  private static final int MAX_FRAME_HEIGHT = 200;
 
   private static CameraManager cameraManager;
 
@@ -229,8 +227,6 @@ public final class CameraManager {
       int height = screenResolution.y * 3 / 4;
       int leftOffset = (screenResolution.x - width+100) / 2;
       int topOffset = (screenResolution.y - height+400) / 2;//ÐÞ¸Ä¿òÀë¶¥²¿µÄ¾àÀë
-//      int leftOffset = (screenResolution.x - width+100) / 2;
-//      int topOffset = (screenResolution.y - height+400) / 2;//ÐÞ¸Ä¿òÀë¶¥²¿µÄ¾àÀë
       if (width < MIN_FRAME_WIDTH) {
     	  width = dip2px(getContext(), MIN_FRAME_WIDTH);
       } else if (width > MAX_FRAME_WIDTH) {
@@ -247,7 +243,6 @@ public final class CameraManager {
     }
     return framingRect;
   }
-
   public static int dip2px(Context context, float dipValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;
 		return (int) (dipValue * scale + 0.5f);
