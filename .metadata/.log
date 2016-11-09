@@ -12886,3 +12886,28 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.jdt.core 4 0 2016-11-09 12:36:52.829
 !MESSAGE Invalid ZIP archive: /Users/liyusheng/Timer/WyyScan/bin/wyyscan.jar
+
+!ENTRY org.eclipse.ui 4 0 2016-11-09 12:42:43.791
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2016-11-09 12:48:56.096
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2016-11-09 12:49:13.376
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2016-11-09 12:50:34.249
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2016-11-09 12:57:29.525
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
