@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.media.AudioManager;
@@ -25,11 +26,11 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.mining.app.zxing.camera.BitmapUtils;
-import com.mining.app.zxing.camera.CameraManager;
-import com.mining.app.zxing.decoding.CaptureActivityHandler;
-import com.mining.app.zxing.decoding.InactivityTimer;
-import com.mining.app.zxing.view.ViewfinderView;
+import com.wyy.pay.camera.BitmapUtils;
+import com.wyy.pay.camera.CameraManager;
+import com.wyy.pay.decoding.CaptureActivityHandler;
+import com.wyy.pay.decoding.InactivityTimer;
+import com.wyy.pay.view.ViewfinderView;
 /**
  * Initial the camera
  * @author Ryan.Tang
@@ -56,7 +57,6 @@ private ImageView logoView;
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
 		logoView = (ImageView) findViewById(R.id.tv3);
-		this.setResult(RESULT_OK);
 		Button mButtonBack = (Button) findViewById(R.id.button_back);
 		mButtonBack.setOnClickListener(new OnClickListener() {
 			
@@ -129,17 +129,19 @@ private ImageView logoView;
 			Toast.makeText(MipcaActivityCapture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else {
 			if(barcode!=null){
-				Bitmap bt = BitmapUtils.scaleImage(barcode, 60, 60);
+				Bitmap bt = BitmapUtils.scaleImage(barcode, 200, 200);
 				logoView.setImageBitmap(bt);
+				Intent resultIntent = new Intent();
+				resultIntent.putExtra("result", resultString);
+				resultIntent.putExtra("bitmap", bt);
+				MipcaActivityCapture.this.setResult(RESULT_OK, resultIntent);
+				MipcaActivityCapture.this.finish();
+				return;
 			}
 			//在此处处理扫码成功后的代码逻辑
 			restartPreviewAfterDelay(1000L);//重复扫码
 			
-//			Intent resultIntent = new Intent();
-//			resultIntent.putExtra("result", resultString);
-//			resultIntent.putExtra("bitmap", barcode);
-//			MipcaActivityCapture.this.startActivity(resultIntent);
-//			MipcaActivityCapture.this.finish();
+		
 		}
 	}
 	

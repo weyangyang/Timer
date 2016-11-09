@@ -1,3 +1,6 @@
 1478593798114	Copy compilation units
 1478593914905	Copy compilation units
 1478594105411	Delete element
+1478661099368	Rename package 'com.mining.app.zxing.camera'
+1478661130259	Rename package 'com.mining.app.zxing.view'
+1478661152358	Rename package 'com.mining.app.zxing.decoding'

@@ -22,13 +22,11 @@ public class MainActivity extends Activity {
 	 * 显示扫描拍的图片
 	 */
 	private ImageView mImageView;
-	private Bitmap bitmap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		bitmap=BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
 		mTextView = (TextView) findViewById(R.id.result); 
 		mImageView = (ImageView) findViewById(R.id.qrcode_bitmap);
 		
@@ -58,7 +56,7 @@ public class MainActivity extends Activity {
 				//显示扫描到的内容
 				mTextView.setText(data.getStringExtra("result"));
 				//显示
-				//bitmap = data.getParcelableExtra("bitmap");
+			Bitmap	bitmap = data.getParcelableExtra("bitmap");
 				mImageView.setImageBitmap(bitmap );
 			}
 			break;
