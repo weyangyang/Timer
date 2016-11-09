@@ -21,7 +21,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -31,10 +30,6 @@ import com.wyy.pay.camera.CameraManager;
 import com.wyy.pay.decoding.CaptureActivityHandler;
 import com.wyy.pay.decoding.InactivityTimer;
 import com.wyy.pay.view.ViewfinderView;
-/**
- * Initial the camera
- * @author Ryan.Tang
- */
 public class MipcaActivityCapture extends Activity implements Callback {
 
 	private CaptureActivityHandler handler;
@@ -203,13 +198,13 @@ private ImageView logoView;
 //	      case KeyEvent.KEYCODE_CAMERA:
 //	        // Handle these events so they don't launch the Camera app
 //	        return true;
-//	      // Use volume up/down to turn on light
-//	      case KeyEvent.KEYCODE_VOLUME_DOWN:
-//	        cameraManager.setTorch(false);
-//	        return true;
-//	      case KeyEvent.KEYCODE_VOLUME_UP:
-//	        cameraManager.setTorch(true);
-//	        return true;
+	      // Use volume up/down to turn on light
+	      case KeyEvent.KEYCODE_VOLUME_DOWN:
+	        CameraManager.get().setTorch(false);
+	        return true;
+	      case KeyEvent.KEYCODE_VOLUME_UP:
+	    	  CameraManager.get().setTorch(true);
+	        return true;
 	    }
 	    return super.onKeyDown(keyCode, event);
 	  }

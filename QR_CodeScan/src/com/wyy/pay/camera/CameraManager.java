@@ -1,41 +1,16 @@
-/*
- * Copyright (C) 2008 ZXing authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.wyy.pay.camera;
 
 import java.io.IOException;
-import java.util.List;
 
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
-import android.hardware.Camera.Size;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
-
-/**
- * This object wraps the Camera service object and expects to be the only one talking to it. The
- * implementation encapsulates the steps needed to take preview-sized images, which are used for
- * both preview and decoding.
- *
- */
 public final class CameraManager {
 
   private static final String TAG = CameraManager.class.getSimpleName();
@@ -48,7 +23,7 @@ public final class CameraManager {
   private static final int MAX_FRAME_HEIGHT = 180;
 
   private static CameraManager cameraManager;
-
+  private AutoFocusManager autoFocusManager;
   static final int SDK_INT; // Later we can use Build.VERSION.SDK_INT
   static {
     int sdkInt;
@@ -112,7 +87,19 @@ public final class CameraManager {
     previewCallback = new PreviewCallback(configManager, useOneShotPreviewCallback);
     autoFocusCallback = new AutoFocusCallback();
   }
-
+  public synchronized void setTorch(boolean newSetting) {
+	    if (newSetting != configManager.getTorchState(camera)) {
+	      if (camera != null) {
+	        if (autoFocusManager != null) {
+	          autoFocusManager.stop();
+	        }
+	        configManager.setTorch(camera, newSetting);
+	        if (autoFocusManager != null) {
+	          autoFocusManager.start();
+	        }
+	      }
+	    }
+	  }
   /**
    * Opens the camera driver and initializes the hardware parameters.
    *
@@ -161,6 +148,7 @@ public final class CameraManager {
     if (camera != null && !previewing) {
       camera.startPreview();
       previewing = true;
+      autoFocusManager = new AutoFocusManager(context, camera);
     }
   }
 
@@ -168,6 +156,10 @@ public final class CameraManager {
    * Tells the camera to stop drawing preview frames.
    */
   public void stopPreview() {
+	   if (autoFocusManager != null) {
+		      autoFocusManager.stop();
+		      autoFocusManager = null;
+		    }
     if (camera != null && previewing) {
       if (!useOneShotPreviewCallback) {
         camera.setPreviewCallback(null);
