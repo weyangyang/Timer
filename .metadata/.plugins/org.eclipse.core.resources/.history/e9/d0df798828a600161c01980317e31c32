@@ -1,0 +1,5 @@
+package com.mining.app.zxing.camera;
+
+public class BitmapUtils {
+
+}

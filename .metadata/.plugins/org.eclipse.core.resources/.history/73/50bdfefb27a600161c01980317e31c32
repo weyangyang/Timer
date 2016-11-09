@@ -19,13 +19,11 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.mining.app.zxing.camera.BitmapUtils;
 import com.mining.app.zxing.camera.CameraManager;
 import com.mining.app.zxing.decoding.CaptureActivityHandler;
 import com.mining.app.zxing.decoding.InactivityTimer;
@@ -46,7 +44,7 @@ public class MipcaActivityCapture extends Activity implements Callback {
 	private boolean playBeep;
 	private static final float BEEP_VOLUME = 0.10f;
 	private boolean vibrate;
-private ImageView logoView;
+private TextView logoView;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +53,7 @@ private ImageView logoView;
 		//ViewUtil.addTopView(getApplicationContext(), this, R.string.scan_card);
 		CameraManager.init(getApplication());
 		viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-		logoView = (ImageView) findViewById(R.id.tv3);
+		logoView = (TextView) findViewById(R.id.tv3);
 		this.setResult(RESULT_OK);
 		Button mButtonBack = (Button) findViewById(R.id.button_back);
 		mButtonBack.setOnClickListener(new OnClickListener() {
@@ -128,10 +126,6 @@ private ImageView logoView;
 		if (resultString.equals("")) {
 			Toast.makeText(MipcaActivityCapture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else {
-			if(barcode!=null){
-				Bitmap bt = BitmapUtils.scaleImage(barcode, 60, 60);
-				logoView.setImageBitmap(bt);
-			}
 			//在此处处理扫码成功后的代码逻辑
 			restartPreviewAfterDelay(1000L);//重复扫码
 			

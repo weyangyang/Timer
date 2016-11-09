@@ -131,6 +131,7 @@ private ImageView logoView;
 			if(barcode!=null){
 				Bitmap bt = BitmapUtils.scaleImage(barcode, 60, 60);
 				logoView.setImageBitmap(bt);
+				return;
 			}
 			//在此处处理扫码成功后的代码逻辑
 			restartPreviewAfterDelay(1000L);//重复扫码

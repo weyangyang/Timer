@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.mining.app.zxing.camera.BitmapUtils;
 import com.mining.app.zxing.camera.CameraManager;
 import com.mining.app.zxing.decoding.CaptureActivityHandler;
 import com.mining.app.zxing.decoding.InactivityTimer;
@@ -128,10 +127,6 @@ private ImageView logoView;
 		if (resultString.equals("")) {
 			Toast.makeText(MipcaActivityCapture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
 		}else {
-			if(barcode!=null){
-				Bitmap bt = BitmapUtils.scaleImage(barcode, 60, 60);
-				logoView.setImageBitmap(bt);
-			}
 			//在此处处理扫码成功后的代码逻辑
 			restartPreviewAfterDelay(1000L);//重复扫码
 			

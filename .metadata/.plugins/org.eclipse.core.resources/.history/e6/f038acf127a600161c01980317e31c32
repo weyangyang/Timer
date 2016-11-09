@@ -55,7 +55,7 @@
              android:layout_alignParentBottom="true"
              android:gravity="center_horizontal"
             >
-        <ImageView 
+        <TextView 
             android:id="@+id/tv3"
             android:layout_marginBottom="20dp"
 		     android:layout_width="50dp"
